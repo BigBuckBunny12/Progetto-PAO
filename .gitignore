@@ -1,0 +1,17 @@
+build-*/
+*.pro.user*
+*.autosave
+*.obj
+*.o
+*.a
+*.so
+*.dll
+*.exe
+*.moc
+Makefile*
+*.qrc.depends
+*.qmlc
+*.jsc
+*.swp
+*.swo
+*.log

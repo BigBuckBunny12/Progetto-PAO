@@ -1,0 +1,19 @@
+# ninja log v6
+54	5177	7754484185061393	MediaViewer_autogen/timestamp	cf062bbd97f25e8b
+54	5177	7754484185061393	MediaViewer_autogen/mocs_compilation.cpp	cf062bbd97f25e8b
+54	5177	7754484185061393	C:/Users/gabri/Desktop/Gabriele/Progetto PAO/Progetto/MediaViewer/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/MediaViewer_autogen/timestamp	cf062bbd97f25e8b
+54	5177	7754484185061393	C:/Users/gabri/Desktop/Gabriele/Progetto PAO/Progetto/MediaViewer/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/MediaViewer_autogen/mocs_compilation.cpp	cf062bbd97f25e8b
+5185	6041	7754484196929649	MediaViewer_autogen/EWIEGA46WW/qrc_resource.cpp	7727730145ffbb13
+5185	6041	7754484196929649	C:/Users/gabri/Desktop/Gabriele/Progetto PAO/Progetto/MediaViewer/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/MediaViewer_autogen/EWIEGA46WW/qrc_resource.cpp	7727730145ffbb13
+6057	10785	7754484199804407	CMakeFiles/MediaViewer.dir/imedia.cpp.obj	20bca3a26398da80
+6045	10926	7754484199673783	CMakeFiles/MediaViewer.dir/main.cpp.obj	613df10519d29047
+6052	11056	7754484199743587	CMakeFiles/MediaViewer.dir/media.cpp.obj	3f9fb63a3264d82
+6041	11167	7754484199643854	CMakeFiles/MediaViewer.dir/MediaViewer_autogen/mocs_compilation.cpp.obj	1e2a863769fe0c0c
+6054	11419	7754484199773504	CMakeFiles/MediaViewer.dir/mediamanager.cpp.obj	c14d2b7d4843896f
+6049	11454	7754484199713668	CMakeFiles/MediaViewer.dir/mainwindow.cpp.obj	601d4d6757a311af
+11419	11870	7754484253415591	CMakeFiles/MediaViewer.dir/MediaViewer_autogen/EWIEGA46WW/qrc_resource.cpp.obj	47ebb419c7b18547
+10786	13511	7754484247090440	CMakeFiles/MediaViewer.dir/book.cpp.obj	ff855ae0eea512b0
+10926	13574	7754484248489323	CMakeFiles/MediaViewer.dir/movie.cpp.obj	77161ff2e5ea9cb3
+11056	13713	7754484249797202	CMakeFiles/MediaViewer.dir/article.cpp.obj	dfb8ba8c2ed7018d
+11167	14793	7754484250893629	CMakeFiles/MediaViewer.dir/createmediadialog.cpp.obj	b0a67e7a7713a877
+14793	15020	7754484287168916	MediaViewer.exe	daa2c9a0d4042266

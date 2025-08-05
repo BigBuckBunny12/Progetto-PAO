@@ -1,0 +1,9 @@
+C:/Users/gabri/Desktop/Gabriele/Progetto PAO/Progetto/MediaViewer/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/CMakeFiles/MediaViewer.dir
+C:/Users/gabri/Desktop/Gabriele/Progetto PAO/Progetto/MediaViewer/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/CMakeFiles/edit_cache.dir
+C:/Users/gabri/Desktop/Gabriele/Progetto PAO/Progetto/MediaViewer/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/CMakeFiles/rebuild_cache.dir
+C:/Users/gabri/Desktop/Gabriele/Progetto PAO/Progetto/MediaViewer/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/CMakeFiles/list_install_components.dir
+C:/Users/gabri/Desktop/Gabriele/Progetto PAO/Progetto/MediaViewer/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/CMakeFiles/install.dir
+C:/Users/gabri/Desktop/Gabriele/Progetto PAO/Progetto/MediaViewer/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/CMakeFiles/install/local.dir
+C:/Users/gabri/Desktop/Gabriele/Progetto PAO/Progetto/MediaViewer/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/CMakeFiles/install/strip.dir
+C:/Users/gabri/Desktop/Gabriele/Progetto PAO/Progetto/MediaViewer/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/CMakeFiles/MediaViewer_autogen_timestamp_deps.dir
+C:/Users/gabri/Desktop/Gabriele/Progetto PAO/Progetto/MediaViewer/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/CMakeFiles/MediaViewer_autogen.dir
