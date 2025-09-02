@@ -16,3 +16,15 @@ QList<MediaParam> Movie::getMediaParams() const {
         MediaParam{ "Copertina", MediaParamType::Image, QPixmap(coverImageUrl) }
     };
 }
+
+QString Movie::getTitle() const { return title; }
+int Movie::getPublicationYear() const { return publicationYear; }
+int Movie::getDuration() const { return duration; }
+QString Movie::getProducer() const { return producer; }
+QString Movie::getCoverImageUrl() const { return coverImageUrl; }
+
+void Movie::setTitle(const QString& t) { title = t; }
+void Movie::setPublicationYear(int y) { publicationYear = y; }
+void Movie::setDuration(int d) { duration = d; }
+void Movie::setProducer(const QString& p) { producer = p; }
+void Movie::setCoverImageUrl(const QString& url) { coverImageUrl = url; }

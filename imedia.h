@@ -1,6 +1,7 @@
 #ifndef IMEDIA_H
 #define IMEDIA_H
 #include "mediatypes.h"
+#include "mediavisitor.h"
 #include <QString>
 #include <qvariant.h>
 
@@ -18,6 +19,7 @@ public:
     int getUid() const;
     void setUid(int);
     virtual QList<MediaParam> getMediaParams() const = 0;
+    virtual void accept(MediaVisitor& visitor) = 0;
 };
 
 #endif // IMEDIA_H

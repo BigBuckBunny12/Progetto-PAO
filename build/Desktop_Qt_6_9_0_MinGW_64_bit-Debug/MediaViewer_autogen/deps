@@ -597,8 +597,6 @@ MediaViewer_autogen/timestamp: \
 	C:/Users/gabri/Desktop/Gabriele/Progetto\ PAO/Progetto/MediaViewer/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/CMakeFiles/3.30.5/CMakeRCCompiler.cmake \
 	C:/Users/gabri/Desktop/Gabriele/Progetto\ PAO/Progetto/MediaViewer/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/CMakeFiles/3.30.5/CMakeSystem.cmake \
 	C:/Users/gabri/Desktop/Gabriele/Progetto\ PAO/Progetto/MediaViewer/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/MediaViewer_autogen/moc_predefs.h \
-	C:/Users/gabri/Desktop/Gabriele/Progetto\ PAO/Progetto/MediaViewer/createmediadialog.cpp \
-	C:/Users/gabri/Desktop/Gabriele/Progetto\ PAO/Progetto/MediaViewer/createmediadialog.h \
 	C:/Users/gabri/Desktop/Gabriele/Progetto\ PAO/Progetto/MediaViewer/imedia.cpp \
 	C:/Users/gabri/Desktop/Gabriele/Progetto\ PAO/Progetto/MediaViewer/imedia.h \
 	C:/Users/gabri/Desktop/Gabriele/Progetto\ PAO/Progetto/MediaViewer/main.cpp \
@@ -613,7 +611,9 @@ MediaViewer_autogen/timestamp: \
 	C:/Users/gabri/Desktop/Gabriele/Progetto\ PAO/Progetto/MediaViewer/movie.cpp \
 	C:/Users/gabri/Desktop/Gabriele/Progetto\ PAO/Progetto/MediaViewer/movie.h \
 	C:/Users/gabri/Desktop/Gabriele/Progetto\ PAO/Progetto/MediaViewer/resource.qrc \
-	C:/Users/gabri/Desktop/Gabriele/Progetto\ PAO/Progetto/MediaViewer/createmediadialog.ui \
+	C:/Users/gabri/Desktop/Gabriele/Progetto\ PAO/Progetto/MediaViewer/updatemediadialog.cpp \
+	C:/Users/gabri/Desktop/Gabriele/Progetto\ PAO/Progetto/MediaViewer/updatemediadialog.h \
 	C:/Users/gabri/Desktop/Gabriele/Progetto\ PAO/Progetto/MediaViewer/mainwindow.ui \
 	C:/Users/gabri/Desktop/Gabriele/Progetto\ PAO/Progetto/MediaViewer/media.ui \
+	C:/Users/gabri/Desktop/Gabriele/Progetto\ PAO/Progetto/MediaViewer/updatemediadialog.ui \
 	C:/Qt/Tools/CMake_64/bin/cmake.exe

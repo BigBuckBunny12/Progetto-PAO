@@ -202,7 +202,7 @@
        </property>
        <item>
         <widget class="QStackedWidget" name="dialogContainer">
-         <widget class="QWidget" name="updateMediaDialog"/>
+         <widget class="QWidget" name="createMediaDialog"/>
          <widget class="QWidget" name="saveDialog"/>
          <widget class="QWidget" name="loadDialog"/>
         </widget>

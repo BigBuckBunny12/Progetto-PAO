@@ -1,13 +1,20 @@
 #include "mediamanager.h"
 
-int MediaManager::currentUid = 1;
+MediaManager::~MediaManager() {
+    for (IMedia* media : mediaList) {
+        delete media;
+    }
+    mediaList.clear();
+}
 
-MediaManager::MediaManager() {}
-
-MediaManager::~MediaManager() {}
+MediaManager& MediaManager::instance() {
+    static MediaManager singletonInstance;
+    return singletonInstance;
+}
 
 // aggiunge un media all'elenco dei media
 void MediaManager::addMedia(IMedia* media) {
+    if(!media) return;
     media->setUid(currentUid);
     mediaList.push_back(media);
     currentUid++;

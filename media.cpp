@@ -14,3 +14,13 @@ Media::~Media()
 }
 
 float Media::aspectRatio = 311.0 / 500.0;
+
+void Media::setLabel(QString str) {
+    ui->mediaTitle->setText(str);
+}
+
+void Media::setImage(QString path) {
+    QPixmap pixmap(path);
+    if(pixmap.isNull()) return;
+    ui->mediaImage->setPixmap(pixmap);
+}

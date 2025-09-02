@@ -19,6 +19,7 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QScrollArea>
 #include <QtWidgets/QSpacerItem>
+#include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -37,7 +38,11 @@ public:
     QLineEdit *searchMediaField;
     QSpacerItem *horizontalSpacer;
     QFrame *contentFrame;
-    QVBoxLayout *verticalLayout_4;
+    QHBoxLayout *horizontalLayout;
+    QStackedWidget *dialogContainer;
+    QWidget *createMediaDialog;
+    QWidget *saveDialog;
+    QWidget *loadDialog;
     QScrollArea *scrollArea;
     QWidget *gridLayoutWidget;
     QGridLayout *mediaGrid;
@@ -132,10 +137,24 @@ public:
         contentFrame->setFrameShape(QFrame::Shape::StyledPanel);
         contentFrame->setFrameShadow(QFrame::Shadow::Raised);
         contentFrame->setLineWidth(0);
-        verticalLayout_4 = new QVBoxLayout(contentFrame);
-        verticalLayout_4->setSpacing(0);
-        verticalLayout_4->setObjectName("verticalLayout_4");
-        verticalLayout_4->setContentsMargins(0, 0, 0, 0);
+        horizontalLayout = new QHBoxLayout(contentFrame);
+        horizontalLayout->setSpacing(0);
+        horizontalLayout->setObjectName("horizontalLayout");
+        horizontalLayout->setContentsMargins(0, 0, 0, 0);
+        dialogContainer = new QStackedWidget(contentFrame);
+        dialogContainer->setObjectName("dialogContainer");
+        createMediaDialog = new QWidget();
+        createMediaDialog->setObjectName("createMediaDialog");
+        dialogContainer->addWidget(createMediaDialog);
+        saveDialog = new QWidget();
+        saveDialog->setObjectName("saveDialog");
+        dialogContainer->addWidget(saveDialog);
+        loadDialog = new QWidget();
+        loadDialog->setObjectName("loadDialog");
+        dialogContainer->addWidget(loadDialog);
+
+        horizontalLayout->addWidget(dialogContainer);
+
         scrollArea = new QScrollArea(contentFrame);
         scrollArea->setObjectName("scrollArea");
         QSizePolicy sizePolicy4(QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Expanding);
@@ -147,7 +166,7 @@ public:
         scrollArea->setWidgetResizable(true);
         gridLayoutWidget = new QWidget();
         gridLayoutWidget->setObjectName("gridLayoutWidget");
-        gridLayoutWidget->setGeometry(QRect(0, 0, 796, 554));
+        gridLayoutWidget->setGeometry(QRect(0, 0, 397, 554));
         sizePolicy4.setHeightForWidth(gridLayoutWidget->sizePolicy().hasHeightForWidth());
         gridLayoutWidget->setSizePolicy(sizePolicy4);
         gridLayoutWidget->setAutoFillBackground(true);
@@ -158,7 +177,7 @@ public:
         mediaGrid->setContentsMargins(12, 12, 12, 12);
         scrollArea->setWidget(gridLayoutWidget);
 
-        verticalLayout_4->addWidget(scrollArea);
+        horizontalLayout->addWidget(scrollArea);
 
 
         verticalLayout_3->addWidget(contentFrame);

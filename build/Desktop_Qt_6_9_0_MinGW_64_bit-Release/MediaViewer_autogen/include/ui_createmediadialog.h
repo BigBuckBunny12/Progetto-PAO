@@ -35,8 +35,8 @@ public:
     QLineEdit *lineEdit;
     QHBoxLayout *actionButtonsLayout;
     QSpacerItem *horizontalSpacer;
-    QPushButton *pushButton;
-    QPushButton *pushButton_2;
+    QPushButton *CancelButton;
+    QPushButton *ConfirmButton;
 
     void setupUi(QWidget *CreateMediaDialog)
     {
@@ -94,15 +94,15 @@ public:
 
         actionButtonsLayout->addItem(horizontalSpacer);
 
-        pushButton = new QPushButton(CreateMediaDialog);
-        pushButton->setObjectName("pushButton");
+        CancelButton = new QPushButton(CreateMediaDialog);
+        CancelButton->setObjectName("CancelButton");
 
-        actionButtonsLayout->addWidget(pushButton);
+        actionButtonsLayout->addWidget(CancelButton);
 
-        pushButton_2 = new QPushButton(CreateMediaDialog);
-        pushButton_2->setObjectName("pushButton_2");
+        ConfirmButton = new QPushButton(CreateMediaDialog);
+        ConfirmButton->setObjectName("ConfirmButton");
 
-        actionButtonsLayout->addWidget(pushButton_2);
+        actionButtonsLayout->addWidget(ConfirmButton);
 
 
         verticalLayout->addLayout(actionButtonsLayout);
@@ -123,8 +123,8 @@ public:
         label->setText(QCoreApplication::translate("CreateMediaDialog", "Crea un nuovo media", nullptr));
         mediaDropdown->setPlaceholderText(QCoreApplication::translate("CreateMediaDialog", "Seleziona la tipologia di media da creare", nullptr));
         label_2->setText(QCoreApplication::translate("CreateMediaDialog", "Numero di pagine: ", nullptr));
-        pushButton->setText(QCoreApplication::translate("CreateMediaDialog", "Annulla", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("CreateMediaDialog", "Crea", nullptr));
+        CancelButton->setText(QCoreApplication::translate("CreateMediaDialog", "Annulla", nullptr));
+        ConfirmButton->setText(QCoreApplication::translate("CreateMediaDialog", "Crea", nullptr));
     } // retranslateUi
 
 };

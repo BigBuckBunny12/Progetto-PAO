@@ -14,6 +14,9 @@ class Media : public QWidget
 public:
     explicit Media(QWidget *parent = nullptr);
     ~Media();
+    void setLabel(QString str);
+    void setImage(QString path);
+
     static float aspectRatio;
 
 private:

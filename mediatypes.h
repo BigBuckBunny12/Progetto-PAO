@@ -5,6 +5,7 @@
 
 enum class MediaParamType {
     String,
+    Duration,
     Int,
     Image,
     Bool,

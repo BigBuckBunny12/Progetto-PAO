@@ -345,12 +345,6 @@
 			null
 		],
 		[
-			"C:/Users/gabri/Desktop/Gabriele/Progetto PAO/Progetto/MediaViewer/createmediadialog.h",
-			"MU",
-			"EWIEGA46WW/moc_createmediadialog.cpp",
-			null
-		],
-		[
 			"C:/Users/gabri/Desktop/Gabriele/Progetto PAO/Progetto/MediaViewer/imedia.h",
 			"MU",
 			"EWIEGA46WW/moc_imedia.cpp",
@@ -390,6 +384,12 @@
 			"C:/Users/gabri/Desktop/Gabriele/Progetto PAO/Progetto/MediaViewer/movie.h",
 			"MU",
 			"EWIEGA46WW/moc_movie.cpp",
+			null
+		],
+		[
+			"C:/Users/gabri/Desktop/Gabriele/Progetto PAO/Progetto/MediaViewer/updatemediadialog.h",
+			"MU",
+			"EWIEGA46WW/moc_updatemediadialog.cpp",
 			null
 		]
 	],
@@ -475,11 +475,6 @@
 			null
 		],
 		[
-			"C:/Users/gabri/Desktop/Gabriele/Progetto PAO/Progetto/MediaViewer/createmediadialog.cpp",
-			"MU",
-			null
-		],
-		[
 			"C:/Users/gabri/Desktop/Gabriele/Progetto PAO/Progetto/MediaViewer/imedia.cpp",
 			"MU",
 			null
@@ -506,6 +501,11 @@
 		],
 		[
 			"C:/Users/gabri/Desktop/Gabriele/Progetto PAO/Progetto/MediaViewer/movie.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/gabri/Desktop/Gabriele/Progetto PAO/Progetto/MediaViewer/updatemediadialog.cpp",
 			"MU",
 			null
 		]

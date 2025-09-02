@@ -92,14 +92,14 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="CancelButton">
        <property name="text">
         <string>Annulla</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_2">
+      <widget class="QPushButton" name="ConfirmButton">
        <property name="text">
         <string>Crea</string>
        </property>

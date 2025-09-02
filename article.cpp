@@ -20,3 +20,19 @@ QList<MediaParam> Article::getMediaParams() const {
         MediaParam{ "Copertina", MediaParamType::Image, QPixmap(coverImageUrl) }
     };
 }
+
+QString Article::getTitle() const { return title; }
+int Article::getPublicationYear() const { return publicationYear; }
+QString Article::getSource() const { return source; }
+QString Article::getDoi() const { return doi; }
+int Article::getIssueNumber() const { return issueNumber; }
+bool Article::getIsScientificPaper() const { return isScientificPaper; }
+QString Article::getCoverImageUrl() const { return coverImageUrl; }
+
+void Article::setTitle(const QString& t) { title = t; }
+void Article::setPublicationYear(int y) { publicationYear = y; }
+void Article::setSource(const QString& s) { source = s; }
+void Article::setDoi(const QString& d) { doi = d; }
+void Article::setIssueNumber(int n) { issueNumber = n; }
+void Article::setIsScientificPaper(bool b) { isScientificPaper = b; }
+void Article::setCoverImageUrl(const QString& url) { coverImageUrl = url; }

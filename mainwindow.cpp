@@ -2,6 +2,7 @@
 #include "./ui_mainwindow.h"
 #include "media.h"
 #include "createmediadialog.h"
+#include "mediawidgetvisitor.h"
 #include <QDebug>
 #include <qstackedwidget.h>
 
@@ -11,10 +12,14 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    CreateMediaDialog* updateMediaDialog = new CreateMediaDialog();
-    QVBoxLayout *updateMediaLayout = new QVBoxLayout(ui->updateMediaDialog);
-    ui->updateMediaDialog->setLayout(updateMediaLayout);
-    ui->updateMediaDialog->layout()->addWidget(updateMediaDialog);
+    createMediaDialog = new CreateMediaDialog();
+    QVBoxLayout *updateMediaLayout = new QVBoxLayout(ui->createMediaDialog);
+    ui->createMediaDialog->setLayout(updateMediaLayout);
+    ui->createMediaDialog->layout()->addWidget(createMediaDialog);
+    connect(createMediaDialog, &CreateMediaDialog::mediaCreated,
+            this, &MainWindow::onMediaCreated);
+
+    ui->dialogContainer->hide();
 }
 
 MainWindow::~MainWindow()
@@ -24,6 +29,9 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_newMediaButton_clicked()
 {
+    ui->dialogContainer->show();
+    ui->dialogContainer->setCurrentWidget(ui->dialogContainer);
+    createMediaDialog->setUpdateMode(CreateMediaDialog::updateModes::CREATE);
     // qui sotto vengono creati i widget dei media
     qDebug() << this->width();
 
@@ -50,7 +58,18 @@ void MainWindow::on_newMediaButton_clicked()
 
 }
 
-void MainWindow::reflowMediaGrid()
+void MainWindow::onMediaCreated(IMedia* media) const {
+    const int MAX_COLUMNS = 5;
+    const int column = ui->mediaGrid->count() % MAX_COLUMNS;
+    const int row = ui->mediaGrid->count() / MAX_COLUMNS;
+    Media* mediaWidget = new Media();
+    MediaWidgetVisitor mediaCustomizer(*mediaWidget);
+    media->accept(mediaCustomizer);
+    ui->mediaGrid->addWidget(mediaWidget , row , column);
+    reflowMediaGrid();
+}
+
+void MainWindow::reflowMediaGrid() const
 {
     ui->gridLayoutWidget->setFixedWidth(this->width());
     const int MAX_COLUMNS = 5;

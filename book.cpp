@@ -18,3 +18,17 @@ QList<MediaParam> Book::getMediaParams() const {
         MediaParam{ "Copertina", MediaParamType::Image, QPixmap(coverImageUrl) }
     };
 }
+
+QString Book::getTitle() const { return title; }
+int Book::getPublicationYear() const { return publicationYear; }
+QString Book::getAuthor() const { return author; }
+int Book::getTotalPages() const { return totalPages; }
+QString Book::getPublisher() const { return publisher; }
+QString Book::getCoverImageUrl() const { return coverImageUrl; }
+
+void Book::setTitle(const QString& t) { title = t; }
+void Book::setPublicationYear(int y) { publicationYear = y; }
+void Book::setAuthor(const QString& a) { author = a; }
+void Book::setTotalPages(quint8 p) { totalPages = p; }
+void Book::setPublisher(const QString& p) { publisher = p; }
+void Book::setCoverImageUrl(const QString& url) { coverImageUrl = url; }

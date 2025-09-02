@@ -17,15 +17,28 @@ class CreateMediaDialog : public QWidget
 public:
     explicit CreateMediaDialog(QWidget *parent = nullptr);
     ~CreateMediaDialog();
+    enum class updateModes {
+        CREATE,
+        UPDATE
+    };
+    void setUpdateMode(const CreateMediaDialog::updateModes);
+    QWidget* findWidgetByTag(const QString& tag) const;
 
 private slots:
     void on_mediaDropdown_currentIndexChanged(const int index);
 
+    void on_ConfirmButton_clicked();
+
+signals:
+    void mediaCreated(IMedia* media);
+
 private:
     Ui::CreateMediaDialog *ui;
-    void addParamWidgetToLayout(const MediaParam parameter, QFormLayout* layout);
     void updateMediaCreationForm(const MediaType);
     void openMediaImageSelection(QLabel* imageViewer);
+    CreateMediaDialog::updateModes updateMode;
+    bool areInputsValid() const;
+    QList<QVariant> collectUserInput(QFormLayout* layout) const;
     IMedia* pendingMedia;
 };
 

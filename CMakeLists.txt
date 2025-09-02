@@ -33,6 +33,15 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         createmediadialog.h createmediadialog.cpp createmediadialog.ui
         mediaregistry.h
         mediatypes.h
+        mediavisitor.h
+        mediacreationformvisitor.h mediacreationformvisitor.cpp
+        getuserinputvisitor.h getuserinputvisitor.cpp
+        checkuserinputvisitor.h checkuserinputvisitor.cpp
+        mediawidgetvisitor.h mediawidgetvisitor.cpp
+        applyuserinputvisitor.h applyuserinputvisitor.cpp
+
+
+
 
 
 

@@ -121,9 +121,9 @@ build CMakeFiles/MediaViewer.dir/article.cpp.obj: CXX_COMPILER__MediaViewer_unsc
   OBJECT_DIR = CMakeFiles\MediaViewer.dir
   OBJECT_FILE_DIR = CMakeFiles\MediaViewer.dir
 
-build CMakeFiles/MediaViewer.dir/createmediadialog.cpp.obj: CXX_COMPILER__MediaViewer_unscanned_Debug C$:/Users/gabri/Desktop/Gabriele/Progetto$ PAO/Progetto/MediaViewer/createmediadialog.cpp || cmake_object_order_depends_target_MediaViewer
+build CMakeFiles/MediaViewer.dir/updatemediadialog.cpp.obj: CXX_COMPILER__MediaViewer_unscanned_Debug C$:/Users/gabri/Desktop/Gabriele/Progetto$ PAO/Progetto/MediaViewer/updatemediadialog.cpp || cmake_object_order_depends_target_MediaViewer
   DEFINES = -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
-  DEP_FILE = CMakeFiles\MediaViewer.dir\createmediadialog.cpp.obj.d
+  DEP_FILE = CMakeFiles\MediaViewer.dir\updatemediadialog.cpp.obj.d
   FLAGS = -DQT_QML_DEBUG -g -std=gnu++17 -fdiagnostics-color=always
   INCLUDES = -I"C:/Users/gabri/Desktop/Gabriele/Progetto PAO/Progetto/MediaViewer/build/Desktop_Qt_6_9_0_MinGW_64_bit-Debug/MediaViewer_autogen/include" -isystem C:/Qt/6.9.0/mingw_64/include/QtCore -isystem C:/Qt/6.9.0/mingw_64/include -isystem C:/Qt/6.9.0/mingw_64/mkspecs/win32-g++ -isystem C:/Qt/6.9.0/mingw_64/include/QtWidgets -isystem C:/Qt/6.9.0/mingw_64/include/QtGui
   OBJECT_DIR = CMakeFiles\MediaViewer.dir
@@ -145,7 +145,7 @@ build CMakeFiles/MediaViewer.dir/MediaViewer_autogen/EWIEGA46WW/qrc_resource.cpp
 #############################################
 # Link the executable MediaViewer.exe
 
-build MediaViewer.exe: CXX_EXECUTABLE_LINKER__MediaViewer_Debug CMakeFiles/MediaViewer.dir/MediaViewer_autogen/mocs_compilation.cpp.obj CMakeFiles/MediaViewer.dir/main.cpp.obj CMakeFiles/MediaViewer.dir/mainwindow.cpp.obj CMakeFiles/MediaViewer.dir/media.cpp.obj CMakeFiles/MediaViewer.dir/mediamanager.cpp.obj CMakeFiles/MediaViewer.dir/imedia.cpp.obj CMakeFiles/MediaViewer.dir/book.cpp.obj CMakeFiles/MediaViewer.dir/movie.cpp.obj CMakeFiles/MediaViewer.dir/article.cpp.obj CMakeFiles/MediaViewer.dir/createmediadialog.cpp.obj CMakeFiles/MediaViewer.dir/MediaViewer_autogen/EWIEGA46WW/qrc_resource.cpp.obj | C$:/Qt/6.9.0/mingw_64/lib/libQt6Widgets.a C$:/Qt/6.9.0/mingw_64/lib/libQt6Gui.a C$:/Qt/6.9.0/mingw_64/lib/libQt6Core.a C$:/Qt/6.9.0/mingw_64/lib/libQt6EntryPoint.a || MediaViewer_autogen MediaViewer_autogen_timestamp_deps
+build MediaViewer.exe: CXX_EXECUTABLE_LINKER__MediaViewer_Debug CMakeFiles/MediaViewer.dir/MediaViewer_autogen/mocs_compilation.cpp.obj CMakeFiles/MediaViewer.dir/main.cpp.obj CMakeFiles/MediaViewer.dir/mainwindow.cpp.obj CMakeFiles/MediaViewer.dir/media.cpp.obj CMakeFiles/MediaViewer.dir/mediamanager.cpp.obj CMakeFiles/MediaViewer.dir/imedia.cpp.obj CMakeFiles/MediaViewer.dir/book.cpp.obj CMakeFiles/MediaViewer.dir/movie.cpp.obj CMakeFiles/MediaViewer.dir/article.cpp.obj CMakeFiles/MediaViewer.dir/updatemediadialog.cpp.obj CMakeFiles/MediaViewer.dir/MediaViewer_autogen/EWIEGA46WW/qrc_resource.cpp.obj | C$:/Qt/6.9.0/mingw_64/lib/libQt6Widgets.a C$:/Qt/6.9.0/mingw_64/lib/libQt6Gui.a C$:/Qt/6.9.0/mingw_64/lib/libQt6Core.a C$:/Qt/6.9.0/mingw_64/lib/libQt6EntryPoint.a || MediaViewer_autogen MediaViewer_autogen_timestamp_deps
   FLAGS = -DQT_QML_DEBUG -g
   LINK_FLAGS = -mwindows
   LINK_LIBRARIES = C:/Qt/6.9.0/mingw_64/lib/libQt6Widgets.a  C:/Qt/6.9.0/mingw_64/lib/libQt6Gui.a  C:/Qt/6.9.0/mingw_64/lib/libQt6Core.a  -lmpr  -luserenv  -lmingw32  C:/Qt/6.9.0/mingw_64/lib/libQt6EntryPoint.a  -lshell32  -ld3d11  -ldxgi  -ldxguid  -ld3d12  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
@@ -232,7 +232,7 @@ build MediaViewer_autogen_timestamp_deps: phony
 #############################################
 # Utility command for MediaViewer_autogen
 
-build MediaViewer_autogen: phony CMakeFiles/MediaViewer_autogen MediaViewer_autogen/include/ui_mainwindow.h MediaViewer_autogen/include/ui_media.h MediaViewer_autogen/include/ui_createmediadialog.h MediaViewer_autogen/timestamp MediaViewer_autogen/mocs_compilation.cpp MediaViewer_autogen_timestamp_deps
+build MediaViewer_autogen: phony CMakeFiles/MediaViewer_autogen MediaViewer_autogen/include/ui_mainwindow.h MediaViewer_autogen/include/ui_media.h MediaViewer_autogen/include/ui_updatemediadialog.h MediaViewer_autogen/timestamp MediaViewer_autogen/mocs_compilation.cpp MediaViewer_autogen_timestamp_deps
 
 
 #############################################
@@ -258,7 +258,7 @@ build MediaViewer_autogen/EWIEGA46WW/qrc_resource.cpp | ${cmake_ninja_workdir}Me
 #############################################
 # Phony custom command for CMakeFiles\MediaViewer_autogen
 
-build CMakeFiles/MediaViewer_autogen MediaViewer_autogen/include/ui_mainwindow.h MediaViewer_autogen/include/ui_media.h MediaViewer_autogen/include/ui_createmediadialog.h | ${cmake_ninja_workdir}CMakeFiles/MediaViewer_autogen ${cmake_ninja_workdir}MediaViewer_autogen/include/ui_mainwindow.h ${cmake_ninja_workdir}MediaViewer_autogen/include/ui_media.h ${cmake_ninja_workdir}MediaViewer_autogen/include/ui_createmediadialog.h: phony MediaViewer_autogen/timestamp || MediaViewer_autogen_timestamp_deps
+build CMakeFiles/MediaViewer_autogen MediaViewer_autogen/include/ui_mainwindow.h MediaViewer_autogen/include/ui_media.h MediaViewer_autogen/include/ui_updatemediadialog.h | ${cmake_ninja_workdir}CMakeFiles/MediaViewer_autogen ${cmake_ninja_workdir}MediaViewer_autogen/include/ui_mainwindow.h ${cmake_ninja_workdir}MediaViewer_autogen/include/ui_media.h ${cmake_ninja_workdir}MediaViewer_autogen/include/ui_updatemediadialog.h: phony MediaViewer_autogen/timestamp || MediaViewer_autogen_timestamp_deps
 
 # =============================================================================
 # Target aliases.
