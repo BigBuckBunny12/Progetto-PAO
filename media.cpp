@@ -1,9 +1,7 @@
 #include "media.h"
 #include "ui_media.h"
 
-Media::Media(QWidget *parent)
-    : QWidget(parent)
-    , ui(new Ui::Media)
+Media::Media(IMedia* mediaObj, QWidget *parent): QWidget(parent), ui(new Ui::Media), mediaObject(mediaObj)
 {
     ui->setupUi(this);
 }
@@ -23,4 +21,15 @@ void Media::setImage(QString path) {
     QPixmap pixmap(path);
     if(pixmap.isNull()) return;
     ui->mediaImage->setPixmap(pixmap);
+}
+
+void Media::mousePressEvent(QMouseEvent* event) {
+    if (event->button() == Qt::LeftButton) {
+        emit clicked(this);
+    }
+    QWidget::mousePressEvent(event);
+}
+
+IMedia* Media::getMediaObject() const {
+    return mediaObject;
 }

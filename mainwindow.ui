@@ -202,9 +202,10 @@
        </property>
        <item>
         <widget class="QStackedWidget" name="dialogContainer">
-         <widget class="QWidget" name="createMediaDialog"/>
-         <widget class="QWidget" name="saveDialog"/>
-         <widget class="QWidget" name="loadDialog"/>
+         <widget class="QWidget" name="createMediaPage"/>
+         <widget class="QWidget" name="viewMediaPage"/>
+         <widget class="QWidget" name="savePage"/>
+         <widget class="QWidget" name="loadPage"/>
         </widget>
        </item>
        <item>

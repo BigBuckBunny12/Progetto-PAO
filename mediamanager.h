@@ -4,8 +4,9 @@
 #include <vector>
 #include "IMedia.h"
 
-class MediaManager
+class MediaManager : public QObject
 {
+    Q_OBJECT
 private:
     MediaManager() = default;
     ~MediaManager();
@@ -14,12 +15,16 @@ private:
 
     std::vector<IMedia*> mediaList;
     int currentUid = 1;
+    int findMediaIndexByUid(int uid) const;
 
 public:
     static MediaManager& instance();
     void addMedia(IMedia* media);
     void deleteMedia(IMedia* media);
     void loadMediaList(const std::vector<IMedia*>& mediaVector);
+
+signals:
+    void mediaRemoved(IMedia* media) const;
 };
 
 #endif // MEDIAMANAGER_H

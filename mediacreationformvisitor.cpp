@@ -5,22 +5,28 @@
 #include <QPixmap>
 
 // I seguenti metodi sono usati per facilitare la creazione del form evitando ripetizioni nel codice
-QLineEdit* MediaCreationFormVisitor::addLineEdit(const QString& label, const QString& tag, bool numeric) {
-    QLineEdit* edit = new QLineEdit(parent);
+QLineEdit* MediaCreationFormVisitor::addLineEdit(const QString& label, const QString& tag, const QString& startText, bool numeric) {
+    QLineEdit* lineWidget = new QLineEdit(parent);
     if (numeric) {
-        edit->setValidator(new QIntValidator(edit));
+        lineWidget->setValidator(new QIntValidator(lineWidget));
     }
-    addRow(label, edit, tag);
-    return edit;
+    if(model->getBehaviour() == EDIT) {
+        lineWidget->setText(startText);
+    }
+    addRow(label, lineWidget, tag);
+    return lineWidget;
 }
 
-QCheckBox* MediaCreationFormVisitor::addCheckBox(const QString& label, const QString& tag) {
+QCheckBox* MediaCreationFormVisitor::addCheckBox(const QString& label, const QString& tag, const bool& startValue) {
     QCheckBox* check = new QCheckBox(parent);
+    if(model->getBehaviour() == EDIT) {
+        check->setChecked(startValue);
+    }
     addRow(label, check, tag);
     return check;
 }
 
-QPushButton* MediaCreationFormVisitor::addImageSelector(const QString& label, const QString& tag) {
+QPushButton* MediaCreationFormVisitor::addImageSelector(const QString& label, const QString& tag, const QString& startText) {
     QPushButton* btn = new QPushButton("Seleziona immagine", parent);
     QLabel* imageViewer = new QLabel(parent);
     imageViewer->setFixedSize(100, 100);
@@ -56,28 +62,40 @@ void MediaCreationFormVisitor::addRow(const QString& label, QWidget* widget, con
 
 // Visitor pattern
 void MediaCreationFormVisitor::visit(Book& book) {
-    addLineEdit("Titolo", "title");
-    addLineEdit("Anno di pubblicazione", "year", true);
-    addLineEdit("Autore", "author");
-    addLineEdit("Numero pagine", "pages", true);
-    addLineEdit("Editore", "publisher");
-    addImageSelector("Copertina", "cover");
+    Book* editingMedia = &book;
+    if(model->getBehaviour() == EDIT) {
+        editingMedia = static_cast<Book*>(model->getEditingMedia());
+    }
+    addLineEdit("Titolo", "title", editingMedia->getTitle(), false);
+    addLineEdit("Anno di pubblicazione", "year", QString::number(editingMedia->getPublicationYear()), true);
+    addLineEdit("Autore", "author", editingMedia->getAuthor(), false);
+    addLineEdit("Numero pagine", "pages", QString::number(editingMedia->getTotalPages()), true);
+    addLineEdit("Editore", "publisher", editingMedia->getPublisher(), false);
+    addImageSelector("Copertina", "cover", editingMedia->getCoverImageUrl());
 }
 
 void MediaCreationFormVisitor::visit(Movie& movie) {
-    addLineEdit("Titolo", "title");
-    addLineEdit("Anno di pubblicazione", "year", true);
-    addLineEdit("Durata (minuti)", "duration", true);
-    addLineEdit("Produttore", "producer");
-    addImageSelector("Copertina", "cover");
+    Movie* editingMedia = &movie;
+    if(model->getBehaviour() == EDIT) {
+        editingMedia = static_cast<Movie*>(model->getEditingMedia());
+    }
+    addLineEdit("Titolo", "title", editingMedia->getTitle(), false);
+    addLineEdit("Anno di pubblicazione", "year", QString::number(editingMedia->getPublicationYear()), true);
+    addLineEdit("Durata (minuti)", "duration", QString::number(editingMedia->getDuration()), true);
+    addLineEdit("Produttore", "producer", editingMedia->getProducer(), false);
+    addImageSelector("Copertina", "cover", editingMedia->getCoverImageUrl());
 }
 
 void MediaCreationFormVisitor::visit(Article& article) {
-    addLineEdit("Titolo", "title");
-    addLineEdit("Anno di pubblicazione", "year", true);
-    addLineEdit("Fonte", "source");
-    addLineEdit("DOI", "doi");
-    addLineEdit("Numero fascicolo", "issueNumber", true);
-    addCheckBox("Articolo scientifico", "isScientificPaper");
-    addImageSelector("Copertina", "cover");
+    Article* editingMedia = &article;
+    if(model->getBehaviour() == EDIT) {
+        editingMedia = static_cast<Article*>(model->getEditingMedia());
+    }
+    addLineEdit("Titolo", "title", editingMedia->getTitle(), false);
+    addLineEdit("Anno di pubblicazione", "year", QString::number(editingMedia->getPublicationYear()), true);
+    addLineEdit("Fonte", "source", editingMedia->getSource(), false);
+    addLineEdit("DOI", "doi", editingMedia->getDoi(), false);
+    addLineEdit("Numero fascicolo", "issueNumber", QString::number(editingMedia->getIssueNumber()), true);
+    addCheckBox("Articolo scientifico", "isScientificPaper", editingMedia->getIsScientificPaper());
+    addImageSelector("Copertina", "cover", editingMedia->getCoverImageUrl());
 }

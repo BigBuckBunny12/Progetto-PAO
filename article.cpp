@@ -1,6 +1,8 @@
 #include "article.h"
 #include <qpixmap.h>
 
+Article::Article(): IMedia("", "", 0) {}
+
 Article::Article(const QString& coverImageUrl, const QString& title, const int publicationYear, const int uid,
                  const QString& source, const QString& doi, quint16 issueNumber, bool isScientificPaper):
                  IMedia(coverImageUrl, title, publicationYear),
@@ -19,6 +21,18 @@ QList<MediaParam> Article::getMediaParams() const {
         MediaParam{ "Articolo scientifico", MediaParamType::Bool, isScientificPaper},
         MediaParam{ "Copertina", MediaParamType::Image, QPixmap(coverImageUrl) }
     };
+}
+
+IMedia* Article::clone() const {
+    Article* copy = new Article();
+    copy->setTitle(this->getTitle());
+    copy->setPublicationYear(this->getPublicationYear());
+    copy->setSource(this->getSource());
+    copy->setDoi(this->getDoi());
+    copy->setIssueNumber(this->getIssueNumber());
+    copy->setIsScientificPaper(this->getIsScientificPaper());
+    copy->setCoverImageUrl(this->getCoverImageUrl());
+    return copy;
 }
 
 QString Article::getTitle() const { return title; }

@@ -1,0 +1,75 @@
+QT += core gui widgets
+
+CONFIG += c++17 console
+CONFIG -= app_bundle
+
+TEMPLATE = app
+TARGET = MediaViewer
+
+# Sorgenti C++
+SOURCES += \
+    createmediamodel.cpp \
+    editmediacreationvisitor.cpp \
+    editmediadialog.cpp \
+    editmediamodel.cpp \
+    main.cpp \
+    mainwindow.cpp \
+    mainwindowmodel.cpp \
+    media.cpp \
+    mediamanager.cpp \
+    imedia.cpp \
+    book.cpp \
+    movie.cpp \
+    article.cpp \
+    createmediadialog.cpp \
+    mediacreationformvisitor.cpp \
+    getuserinputvisitor.cpp \
+    checkuserinputvisitor.cpp \
+    mediawidgetvisitor.cpp \
+    applyuserinputvisitor.cpp \
+    viewmediacreationvisitor.cpp \
+    viewmediadialog.cpp \
+    viewmediamodel.cpp
+
+# Header
+HEADERS += \
+    createmediamodel.h \
+    editmediacreationvisitor.h \
+    editmediadialog.h \
+    editmediamodel.h \
+    mainwindow.h \
+    mainwindowmodel.h \
+    media.h \
+    mediamanager.h \
+    imedia.h \
+    book.h \
+    movie.h \
+    article.h \
+    createmediadialog.h \
+    mediaregistry.h \
+    mediatypes.h \
+    mediavisitor.h \
+    mediacreationformvisitor.h \
+    getuserinputvisitor.h \
+    checkuserinputvisitor.h \
+    mediawidgetvisitor.h \
+    applyuserinputvisitor.h \
+    viewmediacreationvisitor.h \
+    viewmediadialog.h \
+    viewmediamodel.h
+
+# Form UI
+FORMS += \
+    editmediadialog.ui \
+    mainwindow.ui \
+    media.ui \
+    createmediadialog.ui \
+    viewmediadialog.ui
+
+# Risorse
+RESOURCES += \
+    resource.qrc
+
+# File extra (immagini, ecc.)
+DISTFILES += \
+    img/test.jpg

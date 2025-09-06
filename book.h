@@ -11,7 +11,9 @@ private:
     QString publisher;
 
 public:
+    Book();
     Book(const QString& coverImageUrl, const QString& title, const int publicationYear, const int uid, const QString& author, quint8 totalPages, const QString& publisher);
+    IMedia* clone() const override;
     QList<MediaParam> getMediaParams() const override;
     void accept(MediaVisitor& visitor) override {
         visitor.visit(*this);

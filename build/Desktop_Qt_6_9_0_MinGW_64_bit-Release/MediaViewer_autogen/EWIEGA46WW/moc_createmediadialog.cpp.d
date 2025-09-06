@@ -166,6 +166,7 @@ C:/Users/gabri/Desktop/Gabriele/Progetto\ PAO/Progetto/MediaViewer/build/Desktop
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qlayout.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qlayoutitem.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qsizepolicy.h \
+  C:/Qt/6.9.0/mingw_64/include/QtWidgets/qstackedwidget.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qtwidgets-config.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qtwidgetsexports.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qtwidgetsglobal.h \

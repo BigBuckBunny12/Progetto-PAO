@@ -6,6 +6,18 @@ IMedia::IMedia(const QString& coverImageUrl, const QString& title, int publicati
     publicationYear(publicationYear)
     {}
 
+QString IMedia::getTitle() const {
+    return title;
+}
+
+QString IMedia::getCoverImageUrl() const {
+    return coverImageUrl;
+}
+
+int IMedia::getPublicationYear() const {
+    return publicationYear;
+}
+
 int IMedia::getUid() const {
     return uid;
 }

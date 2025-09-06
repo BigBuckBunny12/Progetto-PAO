@@ -1,6 +1,9 @@
 #include "movie.h"
 #include <qpixmap.h>
 
+Movie::Movie() : IMedia("", "", 0) {}
+
+
 Movie::Movie(const QString& coverImageUrl, const QString& title, const int publicationYear, const int uid,
              quint16 duration, const QString& producer):
              IMedia(coverImageUrl, title, publicationYear),
@@ -15,6 +18,16 @@ QList<MediaParam> Movie::getMediaParams() const {
         MediaParam{ "Produttore", MediaParamType::String, producer },
         MediaParam{ "Copertina", MediaParamType::Image, QPixmap(coverImageUrl) }
     };
+}
+
+IMedia* Movie::clone() const {
+    Movie* copy = new Movie();
+    copy->setTitle(this->getTitle());
+    copy->setPublicationYear(this->getPublicationYear());
+    copy->setDuration(this->getDuration());
+    copy->setProducer(this->getProducer());
+    copy->setCoverImageUrl(this->getCoverImageUrl());
+    return copy;
 }
 
 QString Movie::getTitle() const { return title; }

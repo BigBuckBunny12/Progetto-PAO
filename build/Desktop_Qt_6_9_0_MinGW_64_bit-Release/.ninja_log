@@ -1,80 +1,60 @@
 # ninja log v6
-1043	1117	7785223263005425	MediaViewer_autogen/EWIEGA46WW/qrc_resource.cpp	7727730145ffbb13
-3388	7286	7785482597393062	CMakeFiles/MediaViewer.dir/media.cpp.obj	3f9fb63a3264d82
-918	4937	7785460157672112	CMakeFiles/MediaViewer.dir/main.cpp.obj	613df10519d29047
+3396	7196	7785482597472847	CMakeFiles/MediaViewer.dir/article.cpp.obj	dfb8ba8c2ed7018d
+24	231	7786113800398304	C:/Users/gabri/Desktop/Gabriele/Progetto PAO/Progetto/MediaViewer/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/MediaViewer_autogen/mocs_compilation.cpp	cf062bbd97f25e8b
+4417	4639	7786113844324124	MediaViewer.exe	15abc2a5e293698b
+248	4105	7785078465841706	CMakeFiles/MediaViewer.dir/updatemediadialog.cpp.obj	bdf00553804effb2
+1043	1117	7785223263005425	C:/Users/gabri/Desktop/Gabriele/Progetto PAO/Progetto/MediaViewer/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/MediaViewer_autogen/EWIEGA46WW/qrc_resource.cpp	7727730145ffbb13
+245	3447	7785498978629628	CMakeFiles/MediaViewer.dir/mediacreationformvisitor.cpp.obj	295a6185596f69a3
+24	231	7786113800398304	C:/Users/gabri/Desktop/Gabriele/Progetto PAO/Progetto/MediaViewer/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/MediaViewer_autogen/timestamp	cf062bbd97f25e8b
+3638	3978	7785224176850736	CMakeFiles/MediaViewer.dir/MediaViewer_autogen/EWIEGA46WW/qrc_resource.cpp.obj	47ebb419c7b18547
+55	66	7785223251137813	clean	139b443fbd37261f
+24	231	7786113800398304	MediaViewer_autogen/mocs_compilation.cpp	cf062bbd97f25e8b
+233	3436	7785495101878597	CMakeFiles/MediaViewer.dir/applyuserinputvisitor.cpp.obj	354fa4b1c8ffd661
+232	3108	7786113802482978	CMakeFiles/MediaViewer.dir/mainwindow.cpp.obj	601d4d6757a311af
+24	231	7786113800398304	MediaViewer_autogen/timestamp	cf062bbd97f25e8b
+7460	10547	7785482638114953	CMakeFiles/MediaViewer.dir/mediawidgetvisitor.cpp.obj	490f00e33c5eb8a4
 7287	10531	7785482636381360	CMakeFiles/MediaViewer.dir/checkuserinputvisitor.cpp.obj	ac7f341caabcf30d
+1043	1117	7785223263005425	MediaViewer_autogen/EWIEGA46WW/qrc_resource.cpp	7727730145ffbb13
+235	2803	7786113802512900	CMakeFiles/MediaViewer.dir/media.cpp.obj	3f9fb63a3264d82
+939	4212	7786111807498827	CMakeFiles/MediaViewer.dir/main.cpp.obj	613df10519d29047
 1042	3514	7785292842337037	CMakeFiles/MediaViewer.dir/mediamanager.cpp.obj	c14d2b7d4843896f
-7196	10782	7785482635474351	CMakeFiles/MediaViewer.dir/getuserinputvisitor.cpp.obj	a096e89e6180c514
+230	3756	7785495101848672	CMakeFiles/MediaViewer.dir/getuserinputvisitor.cpp.obj	a096e89e6180c514
 3393	7192	7785482597452906	CMakeFiles/MediaViewer.dir/movie.cpp.obj	77161ff2e5ea9cb3
 28	54	7785223250871080	CMakeFiles/clean.additional	321391b2684b2653
 1131	4422	7785223263224841	CMakeFiles/MediaViewer.dir/imedia.cpp.obj	20bca3a26398da80
 3390	7087	7785482597422992	CMakeFiles/MediaViewer.dir/book.cpp.obj	ff855ae0eea512b0
-3382	7460	7785482597333260	CMakeFiles/MediaViewer.dir/MediaViewer_autogen/mocs_compilation.cpp.obj	1e2a863769fe0c0c
-7087	11955	7785482634386454	CMakeFiles/MediaViewer.dir/createmediadialog.cpp.obj	b0a67e7a7713a877
-7460	10547	7785482638114953	CMakeFiles/MediaViewer.dir/mediawidgetvisitor.cpp.obj	490f00e33c5eb8a4
-61	3381	7785482596442777	MediaViewer_autogen/timestamp	cf062bbd97f25e8b
-3385	7827	7785482597363432	CMakeFiles/MediaViewer.dir/mainwindow.cpp.obj	601d4d6757a311af
-61	3381	7785482596442777	MediaViewer_autogen/mocs_compilation.cpp	cf062bbd97f25e8b
-55	66	7785223251137813	clean	139b443fbd37261f
-3638	3978	7785224176850736	CMakeFiles/MediaViewer.dir/MediaViewer_autogen/EWIEGA46WW/qrc_resource.cpp.obj	47ebb419c7b18547
-61	3381	7785482596442777	C:/Users/gabri/Desktop/Gabriele/Progetto PAO/Progetto/MediaViewer/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/MediaViewer_autogen/timestamp	cf062bbd97f25e8b
-7192	11082	7785482635444418	CMakeFiles/MediaViewer.dir/mediacreationformvisitor.cpp.obj	295a6185596f69a3
-1043	1117	7785223263005425	C:/Users/gabri/Desktop/Gabriele/Progetto PAO/Progetto/MediaViewer/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/MediaViewer_autogen/EWIEGA46WW/qrc_resource.cpp	7727730145ffbb13
-248	4105	7785078465841706	CMakeFiles/MediaViewer.dir/updatemediadialog.cpp.obj	bdf00553804effb2
-11956	12412	7785482683071081	MediaViewer.exe	a917496ac3c65f15
-61	3381	7785482596442777	C:/Users/gabri/Desktop/Gabriele/Progetto PAO/Progetto/MediaViewer/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/MediaViewer_autogen/mocs_compilation.cpp	cf062bbd97f25e8b
-3396	7196	7785482597472847	CMakeFiles/MediaViewer.dir/article.cpp.obj	dfb8ba8c2ed7018d
-37	242	7785491138958133	MediaViewer_autogen/timestamp	cf062bbd97f25e8b
-37	242	7785491138958133	MediaViewer_autogen/mocs_compilation.cpp	cf062bbd97f25e8b
-37	242	7785491138958133	C:/Users/gabri/Desktop/Gabriele/Progetto PAO/Progetto/MediaViewer/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/MediaViewer_autogen/timestamp	cf062bbd97f25e8b
-37	242	7785491138958133	C:/Users/gabri/Desktop/Gabriele/Progetto PAO/Progetto/MediaViewer/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/MediaViewer_autogen/mocs_compilation.cpp	cf062bbd97f25e8b
-251	2755	7785491141103558	CMakeFiles/MediaViewer.dir/applyuserinputvisitor.cpp.obj	354fa4b1c8ffd661
-246	2825	7785491141043740	CMakeFiles/MediaViewer.dir/media.cpp.obj	3f9fb63a3264d82
-243	3119	7785491141014008	CMakeFiles/MediaViewer.dir/mainwindow.cpp.obj	601d4d6757a311af
-249	4335	7785491141073634	CMakeFiles/MediaViewer.dir/createmediadialog.cpp.obj	b0a67e7a7713a877
-4335	4557	7785491181941194	MediaViewer.exe	15abc2a5e293698b
-37	230	7785493059019567	MediaViewer_autogen/timestamp	cf062bbd97f25e8b
-37	230	7785493059019567	MediaViewer_autogen/mocs_compilation.cpp	cf062bbd97f25e8b
-37	230	7785493059019567	C:/Users/gabri/Desktop/Gabriele/Progetto PAO/Progetto/MediaViewer/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/MediaViewer_autogen/timestamp	cf062bbd97f25e8b
-37	230	7785493059019567	C:/Users/gabri/Desktop/Gabriele/Progetto PAO/Progetto/MediaViewer/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/MediaViewer_autogen/mocs_compilation.cpp	cf062bbd97f25e8b
-234	3441	7785493060995173	CMakeFiles/MediaViewer.dir/media.cpp.obj	3f9fb63a3264d82
-242	3487	7785493061074967	CMakeFiles/MediaViewer.dir/applyuserinputvisitor.cpp.obj	354fa4b1c8ffd661
-240	3708	7785493061045049	CMakeFiles/MediaViewer.dir/getuserinputvisitor.cpp.obj	a096e89e6180c514
-231	3733	7785493060965263	CMakeFiles/MediaViewer.dir/mainwindow.cpp.obj	601d4d6757a311af
-237	4916	7785493061015122	CMakeFiles/MediaViewer.dir/createmediadialog.cpp.obj	b0a67e7a7713a877
-4916	5139	7785493107807126	MediaViewer.exe	15abc2a5e293698b
-22	220	7785495099768558	MediaViewer_autogen/timestamp	cf062bbd97f25e8b
-22	220	7785495099768558	MediaViewer_autogen/mocs_compilation.cpp	cf062bbd97f25e8b
-22	220	7785495099768558	C:/Users/gabri/Desktop/Gabriele/Progetto PAO/Progetto/MediaViewer/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/MediaViewer_autogen/timestamp	cf062bbd97f25e8b
-22	220	7785495099768558	C:/Users/gabri/Desktop/Gabriele/Progetto PAO/Progetto/MediaViewer/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/MediaViewer_autogen/mocs_compilation.cpp	cf062bbd97f25e8b
-233	3436	7785495101878597	CMakeFiles/MediaViewer.dir/applyuserinputvisitor.cpp.obj	354fa4b1c8ffd661
-225	3462	7785495101798814	CMakeFiles/MediaViewer.dir/media.cpp.obj	3f9fb63a3264d82
-222	3702	7785495101768887	CMakeFiles/MediaViewer.dir/mainwindow.cpp.obj	601d4d6757a311af
-230	3756	7785495101848672	CMakeFiles/MediaViewer.dir/getuserinputvisitor.cpp.obj	a096e89e6180c514
-228	4931	7785495101828729	CMakeFiles/MediaViewer.dir/createmediadialog.cpp.obj	b0a67e7a7713a877
-4932	5151	7785495148867512	MediaViewer.exe	15abc2a5e293698b
-42	248	7785496917510451	MediaViewer_autogen/timestamp	cf062bbd97f25e8b
-42	248	7785496917510451	MediaViewer_autogen/mocs_compilation.cpp	cf062bbd97f25e8b
-42	248	7785496917510451	C:/Users/gabri/Desktop/Gabriele/Progetto PAO/Progetto/MediaViewer/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/MediaViewer_autogen/timestamp	cf062bbd97f25e8b
-42	248	7785496917510451	C:/Users/gabri/Desktop/Gabriele/Progetto PAO/Progetto/MediaViewer/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/MediaViewer_autogen/mocs_compilation.cpp	cf062bbd97f25e8b
-253	2725	7785496919625876	CMakeFiles/MediaViewer.dir/media.cpp.obj	3f9fb63a3264d82
-250	3051	7785496919595963	CMakeFiles/MediaViewer.dir/mainwindow.cpp.obj	601d4d6757a311af
-256	4510	7785496919655803	CMakeFiles/MediaViewer.dir/createmediadialog.cpp.obj	b0a67e7a7713a877
-4510	4744	7785496962200906	MediaViewer.exe	15abc2a5e293698b
-41	244	7785497627738247	MediaViewer_autogen/timestamp	cf062bbd97f25e8b
-41	244	7785497627738247	MediaViewer_autogen/mocs_compilation.cpp	cf062bbd97f25e8b
-41	244	7785497627738247	C:/Users/gabri/Desktop/Gabriele/Progetto PAO/Progetto/MediaViewer/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/MediaViewer_autogen/timestamp	cf062bbd97f25e8b
-41	244	7785497627738247	C:/Users/gabri/Desktop/Gabriele/Progetto PAO/Progetto/MediaViewer/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/MediaViewer_autogen/mocs_compilation.cpp	cf062bbd97f25e8b
-248	2722	7785497629810481	CMakeFiles/MediaViewer.dir/media.cpp.obj	3f9fb63a3264d82
-245	3053	7785497629780553	CMakeFiles/MediaViewer.dir/mainwindow.cpp.obj	601d4d6757a311af
-251	4417	7785497629840395	CMakeFiles/MediaViewer.dir/createmediadialog.cpp.obj	b0a67e7a7713a877
-4417	4665	7785497671504316	MediaViewer.exe	15abc2a5e293698b
-40	233	7785498976579909	MediaViewer_autogen/timestamp	cf062bbd97f25e8b
-40	233	7785498976579909	MediaViewer_autogen/mocs_compilation.cpp	cf062bbd97f25e8b
-40	233	7785498976579909	C:/Users/gabri/Desktop/Gabriele/Progetto PAO/Progetto/MediaViewer/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/MediaViewer_autogen/timestamp	cf062bbd97f25e8b
-40	233	7785498976579909	C:/Users/gabri/Desktop/Gabriele/Progetto PAO/Progetto/MediaViewer/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/MediaViewer_autogen/mocs_compilation.cpp	cf062bbd97f25e8b
-238	2929	7785498978559808	CMakeFiles/MediaViewer.dir/media.cpp.obj	3f9fb63a3264d82
-235	3194	7785498978529892	CMakeFiles/MediaViewer.dir/mainwindow.cpp.obj	601d4d6757a311af
-245	3447	7785498978629628	CMakeFiles/MediaViewer.dir/mediacreationformvisitor.cpp.obj	295a6185596f69a3
-240	4439	7785498978579755	CMakeFiles/MediaViewer.dir/createmediadialog.cpp.obj	b0a67e7a7713a877
-4440	4660	7785499020571392	MediaViewer.exe	15abc2a5e293698b
+936	4417	7786111807470196	CMakeFiles/MediaViewer.dir/MediaViewer_autogen/mocs_compilation.cpp.obj	1e2a863769fe0c0c
+238	4416	7786113802542820	CMakeFiles/MediaViewer.dir/createmediadialog.cpp.obj	b0a67e7a7713a877
+42	276	7786137886809962	MediaViewer_autogen/timestamp	cf062bbd97f25e8b
+42	276	7786137886809962	MediaViewer_autogen/mocs_compilation.cpp	cf062bbd97f25e8b
+42	276	7786137886809962	C:/Users/gabri/Desktop/Gabriele/Progetto PAO/Progetto/MediaViewer/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/MediaViewer_autogen/timestamp	cf062bbd97f25e8b
+42	276	7786137886809962	C:/Users/gabri/Desktop/Gabriele/Progetto PAO/Progetto/MediaViewer/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/MediaViewer_autogen/mocs_compilation.cpp	cf062bbd97f25e8b
+280	2818	7786137889193592	CMakeFiles/MediaViewer.dir/media.cpp.obj	3f9fb63a3264d82
+278	3091	7786137889163673	CMakeFiles/MediaViewer.dir/mainwindow.cpp.obj	601d4d6757a311af
+283	4391	7786137889223513	CMakeFiles/MediaViewer.dir/createmediadialog.cpp.obj	b0a67e7a7713a877
+4392	4620	7786137930307518	MediaViewer.exe	15abc2a5e293698b
+31	63	7786140638427593	CMakeFiles/clean.additional	321391b2684b2653
+64	78	7786140638753581	clean	139b443fbd37261f
+30	1066	7786140649224705	MediaViewer_autogen/timestamp	cf062bbd97f25e8b
+30	1066	7786140649224705	MediaViewer_autogen/mocs_compilation.cpp	cf062bbd97f25e8b
+30	1066	7786140649224705	C:/Users/gabri/Desktop/Gabriele/Progetto PAO/Progetto/MediaViewer/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/MediaViewer_autogen/timestamp	cf062bbd97f25e8b
+30	1066	7786140649224705	C:/Users/gabri/Desktop/Gabriele/Progetto PAO/Progetto/MediaViewer/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/MediaViewer_autogen/mocs_compilation.cpp	cf062bbd97f25e8b
+1067	1161	7786140651073866	MediaViewer_autogen/EWIEGA46WW/qrc_resource.cpp	7727730145ffbb13
+1067	1161	7786140651073866	C:/Users/gabri/Desktop/Gabriele/Progetto PAO/Progetto/MediaViewer/build/Desktop_Qt_6_9_0_MinGW_64_bit-Release/MediaViewer_autogen/EWIEGA46WW/qrc_resource.cpp	7727730145ffbb13
+1173	4543	7786140651273328	CMakeFiles/MediaViewer.dir/mediamanager.cpp.obj	c14d2b7d4843896f
+1175	4628	7786140651303250	CMakeFiles/MediaViewer.dir/imedia.cpp.obj	20bca3a26398da80
+1164	5101	7786140651193547	CMakeFiles/MediaViewer.dir/main.cpp.obj	613df10519d29047
+1170	5177	7786140651253389	CMakeFiles/MediaViewer.dir/media.cpp.obj	3f9fb63a3264d82
+1161	5269	7786140651163626	CMakeFiles/MediaViewer.dir/MediaViewer_autogen/mocs_compilation.cpp.obj	1e2a863769fe0c0c
+1167	5634	7786140651223465	CMakeFiles/MediaViewer.dir/mainwindow.cpp.obj	601d4d6757a311af
+4543	8792	7786140684985942	CMakeFiles/MediaViewer.dir/book.cpp.obj	ff855ae0eea512b0
+4628	8875	7786140685830317	CMakeFiles/MediaViewer.dir/movie.cpp.obj	77161ff2e5ea9cb3
+5101	9119	7786140690561393	CMakeFiles/MediaViewer.dir/article.cpp.obj	dfb8ba8c2ed7018d
+5634	10849	7786140695886259	CMakeFiles/MediaViewer.dir/getuserinputvisitor.cpp.obj	a096e89e6180c514
+5270	10966	7786140692245540	CMakeFiles/MediaViewer.dir/mediacreationformvisitor.cpp.obj	295a6185596f69a3
+10849	11287	7786140748041964	CMakeFiles/MediaViewer.dir/MediaViewer_autogen/EWIEGA46WW/qrc_resource.cpp.obj	47ebb419c7b18547
+5177	12101	7786140691320373	CMakeFiles/MediaViewer.dir/createmediadialog.cpp.obj	b0a67e7a7713a877
+8875	12426	7786140728303420	CMakeFiles/MediaViewer.dir/mediawidgetvisitor.cpp.obj	490f00e33c5eb8a4
+8792	12507	7786140727463735	CMakeFiles/MediaViewer.dir/checkuserinputvisitor.cpp.obj	ac7f341caabcf30d
+9120	12700	7786140730748543	CMakeFiles/MediaViewer.dir/applyuserinputvisitor.cpp.obj	354fa4b1c8ffd661
+12700	12976	7786140766547461	MediaViewer.exe	15abc2a5e293698b

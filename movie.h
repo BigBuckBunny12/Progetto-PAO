@@ -11,11 +11,13 @@ private:
     QString producer;
 
 public:
+    Movie();
     Movie(const QString& coverImageUrl, const QString& title, const int publicationYear, const int uid, quint16 duration, const QString& producer);
     QList<MediaParam> getMediaParams() const override;
     void accept(MediaVisitor& visitor) override {
         visitor.visit(*this);
     }
+    IMedia* clone() const override;
 
     QString getTitle() const;
     int getPublicationYear() const;
