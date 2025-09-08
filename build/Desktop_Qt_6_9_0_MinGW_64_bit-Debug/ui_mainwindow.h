@@ -200,6 +200,9 @@ public:
         saveButton->setText(QCoreApplication::translate("MainWindow", "S", nullptr));
         loadButton->setText(QCoreApplication::translate("MainWindow", "L", nullptr));
         newMediaButton->setText(QCoreApplication::translate("MainWindow", "+", nullptr));
+#if QT_CONFIG(statustip)
+        gridLayoutWidget->setStatusTip(QCoreApplication::translate("MainWindow", "TESTO", nullptr));
+#endif // QT_CONFIG(statustip)
     } // retranslateUi
 
 };

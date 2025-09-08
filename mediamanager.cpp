@@ -18,6 +18,7 @@ void MediaManager::addMedia(IMedia* media) {
     media->setUid(currentUid);
     mediaList.push_back(media);
     currentUid++;
+    emit mediaCreated(media);
 }
 
 int MediaManager::findMediaIndexByUid(int uid) const {
@@ -46,4 +47,21 @@ void MediaManager::deleteMedia(IMedia* media) {
     delete mediaList[index];
     mediaList.erase(mediaList.begin() + index);
     emit mediaRemoved(media);
+}
+
+std::vector<IMedia*> MediaManager::getMediaList() const {
+    return mediaList;
+}
+
+std::vector<IMedia*> MediaManager::getMediaMatchingString(const QString& str) const {
+    if(str.trimmed().isEmpty()) {
+        return std::vector<IMedia*>();
+    }
+    std::vector<IMedia*> matches;
+    for (IMedia* media : mediaList) {
+        if(media->getTitle().startsWith(str, Qt::CaseInsensitive)) {
+            matches.push_back(media);
+        }
+    }
+    return matches;
 }

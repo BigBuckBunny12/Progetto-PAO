@@ -12,14 +12,10 @@ void CheckUserInputVisitor::checkInputNotEmpty(const QVariant& value) {
     }
 }
 
-void CheckUserInputVisitor::checkPositiveInteger(const QVariant& value) {
-    if (!value.canConvert<int>()) {
+void CheckUserInputVisitor::checkPositiveInteger(const QVariant& value, const int threshold) {
+    if (!value.canConvert<int>() && value.toInt() <= 0 && value.toInt() <= threshold) {
         isValidInput = false;
         return;
-    }
-
-    if (value.toInt() <= 0) {
-        isValidInput = false;
     }
 }
 
@@ -48,7 +44,7 @@ void CheckUserInputVisitor::visit(Book& book) {
 void CheckUserInputVisitor::visit(Movie& movie) {
     checkInputNotEmpty(userInput.value("title"));
     checkValidYear(userInput.value("year"));
-    checkPositiveInteger(userInput.value("duration"));
+    checkPositiveInteger(userInput.value("duration"), 65535);
     checkInputNotEmpty(userInput.value("producer"));
 }
 

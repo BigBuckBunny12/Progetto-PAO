@@ -7,12 +7,12 @@
 class Book : public IMedia {
 private:
     QString author;
-    quint8 totalPages;
+    int totalPages;
     QString publisher;
 
 public:
     Book();
-    Book(const QString& coverImageUrl, const QString& title, const int publicationYear, const int uid, const QString& author, quint8 totalPages, const QString& publisher);
+    Book(const QString& coverImageUrl, const QString& title, const int publicationYear, const int uid, const QString& author, int totalPages, const QString& publisher);
     IMedia* clone() const override;
     QList<MediaParam> getMediaParams() const override;
     void accept(MediaVisitor& visitor) override {

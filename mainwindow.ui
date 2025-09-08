@@ -237,6 +237,9 @@
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
+          <property name="statusTip">
+           <string/>
+          </property>
           <property name="autoFillBackground">
            <bool>true</bool>
           </property>

@@ -9,9 +9,6 @@ TARGET = MediaViewer
 # Sorgenti C++
 SOURCES += \
     createmediamodel.cpp \
-    editmediacreationvisitor.cpp \
-    editmediadialog.cpp \
-    editmediamodel.cpp \
     main.cpp \
     mainwindow.cpp \
     mainwindowmodel.cpp \
@@ -34,9 +31,6 @@ SOURCES += \
 # Header
 HEADERS += \
     createmediamodel.h \
-    editmediacreationvisitor.h \
-    editmediadialog.h \
-    editmediamodel.h \
     mainwindow.h \
     mainwindowmodel.h \
     media.h \
@@ -60,7 +54,6 @@ HEADERS += \
 
 # Form UI
 FORMS += \
-    editmediadialog.ui \
     mainwindow.ui \
     media.ui \
     createmediadialog.ui \

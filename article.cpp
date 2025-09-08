@@ -4,7 +4,7 @@
 Article::Article(): IMedia("", "", 0) {}
 
 Article::Article(const QString& coverImageUrl, const QString& title, const int publicationYear, const int uid,
-                 const QString& source, const QString& doi, quint16 issueNumber, bool isScientificPaper):
+                 const QString& source, const QString& doi, int issueNumber, bool isScientificPaper):
                  IMedia(coverImageUrl, title, publicationYear),
                  source(source),
                  isScientificPaper(isScientificPaper),

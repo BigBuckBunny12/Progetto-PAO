@@ -30,7 +30,6 @@ IMedia* CreateMediaModel::getEditingMedia() const {
 
 void CreateMediaModel::createMedia(IMedia* media) {
     MediaManager::instance().addMedia(media);
-    emit mediaCreated(media);
 }
 
 bool CreateMediaModel::processInput(const MediaInput& userInput) {
@@ -39,13 +38,16 @@ bool CreateMediaModel::processInput(const MediaInput& userInput) {
     if(inputChecker.getResult()) {
         qDebug() << "Input utente valido";
         ApplyUserInputVisitor inputToMediaSetter(userInput);
-        pendingMedia->accept(inputToMediaSetter);
         if(currentBehaviour == CREATE) {
+            pendingMedia->accept(inputToMediaSetter);
             createMedia(pendingMedia->clone());
-        } else {
-
+            return true;
         }
-        return true;
+        if(currentBehaviour == EDIT) {
+            editingMedia->accept(inputToMediaSetter);
+            emit mediaUpdated(editingMedia);
+            return true;
+        }
     }
 
     qDebug() << "Input utente NON valido";

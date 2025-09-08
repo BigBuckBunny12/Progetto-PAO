@@ -63,9 +63,9 @@ void MediaCreationFormVisitor::addRow(const QString& label, QWidget* widget, con
 // Visitor pattern
 void MediaCreationFormVisitor::visit(Book& book) {
     Book* editingMedia = &book;
-    if(model->getBehaviour() == EDIT) {
-        editingMedia = static_cast<Book*>(model->getEditingMedia());
-    }
+    // if(model->getBehaviour() == EDIT) {
+    //     editingMedia = static_cast<Book*>(model->getEditingMedia());
+    // }
     addLineEdit("Titolo", "title", editingMedia->getTitle(), false);
     addLineEdit("Anno di pubblicazione", "year", QString::number(editingMedia->getPublicationYear()), true);
     addLineEdit("Autore", "author", editingMedia->getAuthor(), false);
@@ -76,9 +76,9 @@ void MediaCreationFormVisitor::visit(Book& book) {
 
 void MediaCreationFormVisitor::visit(Movie& movie) {
     Movie* editingMedia = &movie;
-    if(model->getBehaviour() == EDIT) {
-        editingMedia = static_cast<Movie*>(model->getEditingMedia());
-    }
+    // if(model->getBehaviour() == EDIT) {
+    //     editingMedia = static_cast<Movie*>(model->getEditingMedia());
+    // }
     addLineEdit("Titolo", "title", editingMedia->getTitle(), false);
     addLineEdit("Anno di pubblicazione", "year", QString::number(editingMedia->getPublicationYear()), true);
     addLineEdit("Durata (minuti)", "duration", QString::number(editingMedia->getDuration()), true);
@@ -88,9 +88,9 @@ void MediaCreationFormVisitor::visit(Movie& movie) {
 
 void MediaCreationFormVisitor::visit(Article& article) {
     Article* editingMedia = &article;
-    if(model->getBehaviour() == EDIT) {
-        editingMedia = static_cast<Article*>(model->getEditingMedia());
-    }
+    // if(model->getBehaviour() == EDIT) {
+    //     editingMedia = static_cast<Article*>(model->getEditingMedia());
+    // }
     addLineEdit("Titolo", "title", editingMedia->getTitle(), false);
     addLineEdit("Anno di pubblicazione", "year", QString::number(editingMedia->getPublicationYear()), true);
     addLineEdit("Fonte", "source", editingMedia->getSource(), false);

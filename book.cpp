@@ -4,7 +4,7 @@
 Book::Book(): IMedia("", "", 0) {}
 
 Book::Book(const QString& coverImageUrl, const QString& title, const int publicationYear, const int uid,
-           const QString& author, quint8 totalPages, const QString& publisher):
+           const QString& author, int totalPages, const QString& publisher):
            IMedia(coverImageUrl, title, publicationYear),
            author(author),
            totalPages(totalPages),

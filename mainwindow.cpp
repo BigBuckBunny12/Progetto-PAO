@@ -25,11 +25,14 @@ MainWindow::MainWindow(MainWindowModel* windowModel, QWidget *parent)
     ui->viewMediaPage->layout()->addWidget(viewMediaDialog);
 
     // setup connessioni
-    connect(createMediaModel, &CreateMediaModel::mediaCreated,
+    connect(&MediaManager::instance(), &MediaManager::mediaCreated,
             this, &MainWindow::onMediaCreated);
 
     connect(&MediaManager::instance(), &MediaManager::mediaRemoved,
                      this, &MainWindow::onMediaRemoved);
+
+    connect(createMediaModel, &CreateMediaModel::mediaUpdated,
+            this, &MainWindow::onMediaUpdated);
 
     connect(viewMediaDialog, &ViewMediaDialog::editMediaRequested,
             this, &MainWindow::editMedia);
@@ -46,6 +49,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_newMediaButton_clicked()
 {
+    createMediaDialog->setBehaviour(CREATE);
     ui->dialogContainer->show();
     ui->dialogContainer->setCurrentWidget(ui->createMediaPage);
     // qui sotto vengono creati i widget dei media
@@ -81,31 +85,34 @@ void MainWindow::viewMedia(IMedia* media) const {
     viewMediaDialog->displayMedia(media);
 }
 
-void MainWindow::onMediaCreated(IMedia* media) const {
-    const int MAX_COLUMNS = 5;
-    const int column = ui->mediaGrid->count() % MAX_COLUMNS;
-    const int row = ui->mediaGrid->count() / MAX_COLUMNS;
+void MainWindow::onMediaCreated(IMedia* media) {
     Media* mediaWidget = new Media(media);
     MediaWidgetVisitor mediaCustomizer(*mediaWidget);
     media->accept(mediaCustomizer);
-    ui->mediaGrid->addWidget(mediaWidget , row , column);
-    reflowMediaGrid();
     connect(mediaWidget, &Media::clicked, this, [this](Media* media){
         qDebug() << "Media* (connect): " << media;
         viewMedia(model->getAssociatedMediaObject(media));
     });
     model->mapMediaToWidget(media, mediaWidget);
+    refreshMediaGrid(ui->searchMediaField->displayText());
 }
 
-void MainWindow::onMediaRemoved(IMedia* media) const {
+void MainWindow::onMediaRemoved(IMedia* media) {
     Media* mediaWidget = model->getAssociatedMediaWidget(media);
     ui->mediaGrid->removeWidget(mediaWidget);
     model->unmapMediaFromWidget(media, mediaWidget);
     delete mediaWidget;
-    reflowMediaGrid();
+    refreshMediaGrid(ui->searchMediaField->displayText());
 }
 
-void MainWindow::reflowMediaGrid() const
+void MainWindow::onMediaUpdated(IMedia* updatedMedia) {
+    Media* mediaWidget = model->getAssociatedMediaWidget(updatedMedia);
+    MediaWidgetVisitor mediaCustomizer(*mediaWidget);
+    updatedMedia->accept(mediaCustomizer);
+    refreshMediaGrid(ui->searchMediaField->displayText());
+}
+
+void MainWindow::reflowMediaGrid()
 {
     ui->gridLayoutWidget->setFixedWidth(this->width());
     const int MAX_COLUMNS = 5;
@@ -128,6 +135,7 @@ void MainWindow::reflowMediaGrid() const
 }
 
 void MainWindow::editMedia(IMedia* mediaToEdit) const {
+    qDebug() << "MediaToEdit: " << mediaToEdit->getTitle();
     ui->dialogContainer->show();
     ui->dialogContainer->setCurrentWidget(ui->createMediaPage);
     createMediaDialog->setBehaviour(EDIT , mediaToEdit);
@@ -137,5 +145,36 @@ void MainWindow::resizeEvent(QResizeEvent* event)
 {
     QMainWindow::resizeEvent(event);
     reflowMediaGrid();
+}
+
+void MainWindow::refreshMediaGrid(const QString mediaFilter) {
+    std::vector<IMedia*> queryResult = model->getMediaFromSearch(mediaFilter);
+    displayMediaList(queryResult);
+    reflowMediaGrid();
+}
+
+void MainWindow::displayMediaList(std::vector<IMedia*> list) {
+    QLayoutItem* item;
+    while ((item = ui->mediaGrid->takeAt(0)) != nullptr) {
+        if (item->widget()) {
+            item->widget()->setParent(nullptr);
+        }
+        delete item;
+    }
+
+    int row = 0, col = 0;
+    for(IMedia* media : list) {
+        ui->mediaGrid->addWidget(model->getAssociatedMediaWidget(media), row, col);
+        col++;
+        if (col == GRID_MAX_COLUMNS) {
+            col = 0;
+            row++;
+        }
+    }
+}
+
+void MainWindow::on_searchMediaField_textChanged(const QString& query)
+{
+    refreshMediaGrid(query);
 }
 

@@ -42,7 +42,9 @@ private:
     Ui::CreateMediaDialog *ui;
     void createMedia(IMedia*);
     void close();
-    void updateMediaCreationForm(const MediaType);
+    void updateFormToCreateMedia(const MediaType);
+    void updateFormToEditMedia(IMedia*);
+    void updateForm(IMedia*);
     void openMediaImageSelection(QLabel* imageViewer);
     bool areInputsValid() const;
     QList<QVariant> collectUserInput(QFormLayout* layout) const;

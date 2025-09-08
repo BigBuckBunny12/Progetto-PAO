@@ -35,10 +35,12 @@ CreateMediaDialog::~CreateMediaDialog()
 }
 
 void CreateMediaDialog::setBehaviour(MediaCreationBehaviour targetBehaviour, IMedia* mediaToEdit) {
-    model->setBehaviour(targetBehaviour);
+    model->setBehaviour(targetBehaviour, mediaToEdit);
+
     if(targetBehaviour == CREATE) {
         ui->dialogTitle->setText("Crea un nuovo media");
         ui->mediaDropdown->show();
+        ui->ConfirmButton->setText("Crea");
         return;
     }
 
@@ -49,18 +51,21 @@ void CreateMediaDialog::setBehaviour(MediaCreationBehaviour targetBehaviour, IMe
         }
 
         ui->dialogTitle->setText("Modifica " + mediaToEdit->getTitle());
+        ui->ConfirmButton->setText("Modifica");
         ui->mediaDropdown->hide();
+        updateForm(mediaToEdit);
     }
 }
 
-void CreateMediaDialog::updateMediaCreationForm(const MediaType mediaType) {
+void CreateMediaDialog::updateForm(IMedia* mediaToShow) {
+    qDebug() << "Media to show form" << mediaToShow->getTitle();
     QLayoutItem *child;
     while ((child = ui->mediaInfoLayout->takeAt(0)) != nullptr) {
         delete child->widget();
         delete child;
     }
     MediaCreationFormVisitor formGenerator(ui->mediaInfoLayout, model, this);
-    model->setPendingMedia(mediaType)->accept(formGenerator);
+    mediaToShow->accept(formGenerator);
 }
 
 void CreateMediaDialog::close() {
@@ -71,7 +76,7 @@ void CreateMediaDialog::on_mediaDropdown_currentIndexChanged(const int index) {
     QVariant data = ui->mediaDropdown->itemData(index);
     if (!data.isValid()) return;
     MediaType type = static_cast<MediaType>(data.toInt());
-    updateMediaCreationForm(type);
+    updateForm(model->setPendingMedia(type));
 }
 
 void CreateMediaDialog::on_ConfirmButton_clicked() {

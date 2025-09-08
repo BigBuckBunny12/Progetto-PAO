@@ -20,8 +20,8 @@ public:
     void setBehaviour(MediaCreationBehaviour behaviour, IMedia* media = nullptr);
     IMedia* getEditingMedia() const;
     MediaCreationBehaviour getBehaviour() const;
-    void createMedia(IMedia*);
-    void editMedia(IMedia*);
+    void createMedia(IMedia* mediaToCreate);
+    void editMedia(IMedia* mediaToEdit, IMedia* editedMedia);
     bool processInput(const MediaInput& input);
 
 private:
@@ -30,7 +30,7 @@ private:
     MediaCreationBehaviour currentBehaviour;
 
 signals:
-    void mediaCreated(IMedia* media);
+    void mediaUpdated(IMedia* media);
 };
 
 #endif // CREATEMEDIAMODEL_H

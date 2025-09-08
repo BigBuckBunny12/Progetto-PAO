@@ -1,7 +1,4 @@
 debug/createmediamodel.o
-debug/editmediacreationvisitor.o
-debug/editmediadialog.o
-debug/editmediamodel.o
 debug/main.o
 debug/mainwindow.o
 debug/mainwindowmodel.o
@@ -22,7 +19,6 @@ debug/viewmediadialog.o
 debug/viewmediamodel.o
 debug/qrc_resource.o
 debug/moc_createmediamodel.o
-debug/moc_editmediadialog.o
 debug/moc_mainwindow.o
 debug/moc_media.o
 debug/moc_mediamanager.o

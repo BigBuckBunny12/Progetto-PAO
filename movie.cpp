@@ -5,7 +5,7 @@ Movie::Movie() : IMedia("", "", 0) {}
 
 
 Movie::Movie(const QString& coverImageUrl, const QString& title, const int publicationYear, const int uid,
-             quint16 duration, const QString& producer):
+             const int duration, const QString& producer):
              IMedia(coverImageUrl, title, publicationYear),
              duration(duration),
              producer(producer) {}

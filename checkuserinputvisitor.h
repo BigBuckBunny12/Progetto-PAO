@@ -19,7 +19,7 @@ private:
     MediaInput userInput;
     bool isValidInput;
     void checkInputNotEmpty(const QVariant& input);
-    void checkPositiveInteger(const QVariant& input);
+    void checkPositiveInteger(const QVariant& input, const int threshold = 2147483647);
     void checkValidYear(const QVariant& input);
 };
 

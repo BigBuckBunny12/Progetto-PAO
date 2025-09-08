@@ -1,6 +1,8 @@
 #include "mainwindowmodel.h"
 
-MainWindowModel::MainWindowModel() {}
+MainWindowModel::MainWindowModel() {
+    displayMediaList = MediaManager::instance().getMediaList();
+}
 
 void MainWindowModel::unmapMediaFromWidget(IMedia* media, Media* widget) {
     if (mediaWidgetMap.contains(media) && mediaWidgetMap[media] == widget) {
@@ -22,4 +24,9 @@ Media* MainWindowModel::getAssociatedMediaWidget(IMedia* media) const {
 
 IMedia* MainWindowModel::getAssociatedMediaObject(Media* widget) const {
     return widgetMediaMap[widget];
+}
+
+std::vector<IMedia*> MainWindowModel::getMediaFromSearch(const QString& query) const {
+    if(query.trimmed().isEmpty()) return MediaManager::instance().getMediaList();
+    return MediaManager::instance().getMediaMatchingString(query);
 }

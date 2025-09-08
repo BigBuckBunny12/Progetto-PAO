@@ -39,14 +39,14 @@ template <> constexpr inline auto CreateMediaModel::qt_create_metaobjectdata<qt_
     namespace QMC = QtMocConstants;
     QtMocHelpers::StringRefStorage qt_stringData {
         "CreateMediaModel",
-        "mediaCreated",
+        "mediaUpdated",
         "",
         "IMedia*",
         "media"
     };
 
     QtMocHelpers::UintData qt_methods {
-        // Signal 'mediaCreated'
+        // Signal 'mediaUpdated'
         QtMocHelpers::SignalData<void(IMedia *)>(1, 2, QMC::AccessPublic, QMetaType::Void, {{
             { 0x80000000 | 3, 4 },
         }}),
@@ -73,12 +73,12 @@ void CreateMediaModel::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
     auto *_t = static_cast<CreateMediaModel *>(_o);
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
-        case 0: _t->mediaCreated((*reinterpret_cast< std::add_pointer_t<IMedia*>>(_a[1]))); break;
+        case 0: _t->mediaUpdated((*reinterpret_cast< std::add_pointer_t<IMedia*>>(_a[1]))); break;
         default: ;
         }
     }
     if (_c == QMetaObject::IndexOfMethod) {
-        if (QtMocHelpers::indexOfMethod<void (CreateMediaModel::*)(IMedia * )>(_a, &CreateMediaModel::mediaCreated, 0))
+        if (QtMocHelpers::indexOfMethod<void (CreateMediaModel::*)(IMedia * )>(_a, &CreateMediaModel::mediaUpdated, 0))
             return;
     }
 }
@@ -115,7 +115,7 @@ int CreateMediaModel::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void CreateMediaModel::mediaCreated(IMedia * _t1)
+void CreateMediaModel::mediaUpdated(IMedia * _t1)
 {
     QMetaObject::activate<void>(this, &staticMetaObject, 0, nullptr, _t1);
 }

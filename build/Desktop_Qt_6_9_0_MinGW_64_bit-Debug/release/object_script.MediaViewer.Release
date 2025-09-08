@@ -1,7 +1,4 @@
 release/createmediamodel.o
-release/editmediacreationvisitor.o
-release/editmediadialog.o
-release/editmediamodel.o
 release/main.o
 release/mainwindow.o
 release/mainwindowmodel.o
@@ -22,7 +19,6 @@ release/viewmediadialog.o
 release/viewmediamodel.o
 release/qrc_resource.o
 release/moc_createmediamodel.o
-release/moc_editmediadialog.o
 release/moc_mainwindow.o
 release/moc_media.o
 release/moc_mediamanager.o

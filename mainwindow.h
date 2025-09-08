@@ -25,8 +25,11 @@ public:
 
 private slots:
     void on_newMediaButton_clicked();
-    void onMediaCreated(IMedia* media) const;
-    void onMediaRemoved(IMedia* media) const;
+    void onMediaCreated(IMedia* media);
+    void onMediaRemoved(IMedia* media);
+    void onMediaUpdated(IMedia* media);
+
+    void on_searchMediaField_textChanged(const QString &arg1);
 
 protected:
     void resizeEvent(QResizeEvent* event) override;
@@ -36,6 +39,9 @@ private:
     MainWindowModel* model;
     CreateMediaDialog* createMediaDialog;
     ViewMediaDialog* viewMediaDialog;
-    void reflowMediaGrid() const;
+    const int GRID_MAX_COLUMNS = 5;
+    void reflowMediaGrid();
+    void refreshMediaGrid(const QString mediaFilter = "");
+    void displayMediaList(std::vector<IMedia*> list);
 };
 #endif // MAINWINDOW_H
