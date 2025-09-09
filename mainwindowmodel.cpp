@@ -26,6 +26,11 @@ IMedia* MainWindowModel::getAssociatedMediaObject(Media* widget) const {
     return widgetMediaMap[widget];
 }
 
+void MainWindowModel::clearMappings() {
+    mediaWidgetMap.clear();
+    widgetMediaMap.clear();
+}
+
 std::vector<IMedia*> MainWindowModel::getMediaFromSearch(const QString& query) const {
     if(query.trimmed().isEmpty()) return MediaManager::instance().getMediaList();
     return MediaManager::instance().getMediaMatchingString(query);

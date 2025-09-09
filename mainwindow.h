@@ -31,6 +31,10 @@ private slots:
 
     void on_searchMediaField_textChanged(const QString &arg1);
 
+    void on_saveButton_clicked();
+
+    void on_loadButton_clicked();
+
 protected:
     void resizeEvent(QResizeEvent* event) override;
 
@@ -43,5 +47,6 @@ private:
     void reflowMediaGrid();
     void refreshMediaGrid(const QString mediaFilter = "");
     void displayMediaList(std::vector<IMedia*> list);
+    void clearMediaGrid();
 };
 #endif // MAINWINDOW_H

@@ -22,6 +22,7 @@ public:
     void updateMedia(IMedia* oldMedia, IMedia* newMedia);
     void addMedia(IMedia* media);
     void deleteMedia(IMedia* media);
+    void clearMediaList();
     void loadMediaList(const std::vector<IMedia*>& mediaVector);
     std::vector<IMedia*> getMediaList() const;
     std::vector<IMedia*> getMediaMatchingString(const QString& str) const;

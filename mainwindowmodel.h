@@ -12,6 +12,7 @@ public:
     void unmapMediaFromWidget(IMedia* media , Media* widget);
     Media* getAssociatedMediaWidget(IMedia* media) const;
     IMedia* getAssociatedMediaObject(Media* widget) const;
+    void clearMappings();
     std::vector<IMedia*> getMediaFromSearch(const QString& query) const;
 private:
     std::vector<IMedia*> displayMediaList;

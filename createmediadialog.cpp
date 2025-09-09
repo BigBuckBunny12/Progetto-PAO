@@ -41,6 +41,8 @@ void CreateMediaDialog::setBehaviour(MediaCreationBehaviour targetBehaviour, IMe
         ui->dialogTitle->setText("Crea un nuovo media");
         ui->mediaDropdown->show();
         ui->ConfirmButton->setText("Crea");
+        ui->mediaDropdown->setCurrentIndex(0);
+        updateForm(model->getPendingMedia());
         return;
     }
 
@@ -51,7 +53,7 @@ void CreateMediaDialog::setBehaviour(MediaCreationBehaviour targetBehaviour, IMe
         }
 
         ui->dialogTitle->setText("Modifica " + mediaToEdit->getTitle());
-        ui->ConfirmButton->setText("Modifica");
+        ui->ConfirmButton->setText("Conferma");
         ui->mediaDropdown->hide();
         updateForm(mediaToEdit);
     }

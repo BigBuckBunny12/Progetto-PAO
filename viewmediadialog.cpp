@@ -35,3 +35,9 @@ void ViewMediaDialog::on_editButton_clicked()
     }
 }
 
+
+void ViewMediaDialog::on_exitButton_clicked()
+{
+    dialogContainer->hide();
+}
+

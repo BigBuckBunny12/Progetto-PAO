@@ -3,6 +3,7 @@
 #include "media.h"
 #include "createmediadialog.h"
 #include "mediawidgetvisitor.h"
+#include "jsonmanager.h"
 #include <QDebug>
 #include <qstackedwidget.h>
 
@@ -24,21 +25,18 @@ MainWindow::MainWindow(MainWindowModel* windowModel, QWidget *parent)
     ui->viewMediaPage->setLayout(viewMediaLayout);
     ui->viewMediaPage->layout()->addWidget(viewMediaDialog);
 
-    // setup connessioni
-    connect(&MediaManager::instance(), &MediaManager::mediaCreated,
-            this, &MainWindow::onMediaCreated);
+    // Setup connessioni
+    connect(&MediaManager::instance(), &MediaManager::mediaCreated, this, &MainWindow::onMediaCreated);
+    connect(&MediaManager::instance(), &MediaManager::mediaRemoved, this, &MainWindow::onMediaRemoved);
+    connect(createMediaModel, &CreateMediaModel::mediaUpdated, this, &MainWindow::onMediaUpdated);
+    connect(viewMediaDialog, &ViewMediaDialog::editMediaRequested, this, &MainWindow::editMedia);
 
-    connect(&MediaManager::instance(), &MediaManager::mediaRemoved,
-                     this, &MainWindow::onMediaRemoved);
-
-    connect(createMediaModel, &CreateMediaModel::mediaUpdated,
-            this, &MainWindow::onMediaUpdated);
-
-    connect(viewMediaDialog, &ViewMediaDialog::editMediaRequested,
-            this, &MainWindow::editMedia);
-
-
+    // Chiusura dialog
     ui->dialogContainer->hide();
+
+    // Setup degli elementi grafici
+    ui->saveButton->setIcon(QIcon(":/resources/img/save_icon.png"));
+    ui->saveButton->setIconSize(QSize(ui->saveButton->width() * 0.6,ui->saveButton->height() * 0.6));
 
 }
 
@@ -173,8 +171,57 @@ void MainWindow::displayMediaList(std::vector<IMedia*> list) {
     }
 }
 
+void MainWindow::clearMediaGrid() {
+    if(!ui->mediaGrid) return;
+    QLayoutItem* item;
+    while ((item = ui->mediaGrid->takeAt(0)) != nullptr) {
+        if (item->widget()) {
+            delete item->widget();
+        }
+        delete item;
+    }
+}
+
 void MainWindow::on_searchMediaField_textChanged(const QString& query)
 {
     refreshMediaGrid(query);
 }
+
+
+void MainWindow::on_saveButton_clicked()
+{
+    QString filePath = QFileDialog::getSaveFileName(
+        this,
+        "Salva media",
+        QString(),
+        "File JSON (*.json)"
+        );
+
+    if (filePath.isEmpty()) {
+        return;
+    }
+
+    std::vector<IMedia*> mediaList = MediaManager::instance().getMediaList();
+    JsonManager::instance().saveMediaData(mediaList, filePath);
+}
+
+
+void MainWindow::on_loadButton_clicked()
+{
+    QString filePath = QFileDialog::getOpenFileName(
+        this,
+        "Carica media",
+        QString(),
+        "File JSON (*.json)"
+        );
+
+    if (filePath.isEmpty()) {
+        return;
+    }
+
+    std::vector<IMedia*> mediaList = JsonManager::instance().loadMediaData(filePath);
+    ui->searchMediaField->setText("");
+    refreshMediaGrid();
+}
+
 

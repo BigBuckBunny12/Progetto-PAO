@@ -84,9 +84,30 @@ public:
         sizePolicy2.setVerticalStretch(0);
         sizePolicy2.setHeightForWidth(saveButton->sizePolicy().hasHeightForWidth());
         saveButton->setSizePolicy(sizePolicy2);
-        saveButton->setMinimumSize(QSize(24, 24));
-        saveButton->setMaximumSize(QSize(24, 24));
-        saveButton->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);"));
+        saveButton->setMinimumSize(QSize(35, 35));
+        saveButton->setMaximumSize(QSize(35, 35));
+        saveButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    color: rgb(0, 0, 0);\n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-radius: 17px;\n"
+"    border: 2px solid rgb(255, 255, 255);\n"
+"    padding: 5px 10px;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    border: 2px solid rgb(220, 220, 220);\n"
+"    background-color: rgb(250, 250, 250);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    border: 2px solid rgb(150, 150, 150);\n"
+"    background-color: rgb(230, 230, 230);\n"
+"}\n"
+"\n"
+"QPushButton:focus {\n"
+"    outline: none;\n"
+"}\n"
+""));
 
         horizontalLayout_2->addWidget(saveButton);
 
@@ -118,7 +139,8 @@ public:
         searchMediaField->setObjectName("searchMediaField");
         sizePolicy3.setHeightForWidth(searchMediaField->sizePolicy().hasHeightForWidth());
         searchMediaField->setSizePolicy(sizePolicy3);
-        searchMediaField->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);"));
+        searchMediaField->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);\n"
+"border-radius: 5px;"));
 
         horizontalLayout_2->addWidget(searchMediaField);
 
@@ -126,7 +148,6 @@ public:
 
         horizontalLayout_2->addItem(horizontalSpacer);
 
-        horizontalLayout_2->setStretch(0, 1);
         horizontalLayout_2->setStretch(1, 1);
         horizontalLayout_2->setStretch(2, 1);
         horizontalLayout_2->setStretch(3, 1);
@@ -170,7 +191,7 @@ public:
         scrollArea->setWidgetResizable(true);
         gridLayoutWidget = new QWidget();
         gridLayoutWidget->setObjectName("gridLayoutWidget");
-        gridLayoutWidget->setGeometry(QRect(0, 0, 397, 554));
+        gridLayoutWidget->setGeometry(QRect(0, 0, 397, 541));
         sizePolicy4.setHeightForWidth(gridLayoutWidget->sizePolicy().hasHeightForWidth());
         gridLayoutWidget->setSizePolicy(sizePolicy4);
         gridLayoutWidget->setAutoFillBackground(true);
@@ -186,7 +207,8 @@ public:
 
         verticalLayout_3->addWidget(contentFrame);
 
-        verticalLayout_3->setStretch(1, 756);
+        verticalLayout_3->setStretch(0, 1);
+        verticalLayout_3->setStretch(1, 10);
         MainWindow->setCentralWidget(window);
 
         retranslateUi(MainWindow);
@@ -197,11 +219,11 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
-        saveButton->setText(QCoreApplication::translate("MainWindow", "S", nullptr));
+        saveButton->setText(QString());
         loadButton->setText(QCoreApplication::translate("MainWindow", "L", nullptr));
         newMediaButton->setText(QCoreApplication::translate("MainWindow", "+", nullptr));
 #if QT_CONFIG(statustip)
-        gridLayoutWidget->setStatusTip(QCoreApplication::translate("MainWindow", "TESTO", nullptr));
+        gridLayoutWidget->setStatusTip(QString());
 #endif // QT_CONFIG(statustip)
     } // retranslateUi
 

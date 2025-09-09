@@ -49,6 +49,13 @@ void MediaManager::deleteMedia(IMedia* media) {
     emit mediaRemoved(media);
 }
 
+void MediaManager::clearMediaList() {
+    for (IMedia* media : mediaList) {
+        delete media;
+    }
+    mediaList.clear();
+}
+
 std::vector<IMedia*> MediaManager::getMediaList() const {
     return mediaList;
 }

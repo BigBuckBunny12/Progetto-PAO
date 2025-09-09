@@ -48,7 +48,9 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
         "onMediaRemoved",
         "onMediaUpdated",
         "on_searchMediaField_textChanged",
-        "arg1"
+        "arg1",
+        "on_saveButton_clicked",
+        "on_loadButton_clicked"
     };
 
     QtMocHelpers::UintData qt_methods {
@@ -70,6 +72,10 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
         QtMocHelpers::SlotData<void(const QString &)>(8, 2, QMC::AccessPrivate, QMetaType::Void, {{
             { QMetaType::QString, 9 },
         }}),
+        // Slot 'on_saveButton_clicked'
+        QtMocHelpers::SlotData<void()>(10, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'on_loadButton_clicked'
+        QtMocHelpers::SlotData<void()>(11, 2, QMC::AccessPrivate, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -98,6 +104,8 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 2: _t->onMediaRemoved((*reinterpret_cast< std::add_pointer_t<IMedia*>>(_a[1]))); break;
         case 3: _t->onMediaUpdated((*reinterpret_cast< std::add_pointer_t<IMedia*>>(_a[1]))); break;
         case 4: _t->on_searchMediaField_textChanged((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
+        case 5: _t->on_saveButton_clicked(); break;
+        case 6: _t->on_loadButton_clicked(); break;
         default: ;
         }
     }
@@ -122,14 +130,14 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 5)
+        if (_id < 7)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 5;
+        _id -= 7;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 5)
+        if (_id < 7)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 5;
+        _id -= 7;
     }
     return _id;
 }

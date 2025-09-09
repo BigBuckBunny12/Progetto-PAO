@@ -9,6 +9,7 @@ TARGET = MediaViewer
 # Sorgenti C++
 SOURCES += \
     createmediamodel.cpp \
+    jsonmanager.cpp \
     main.cpp \
     mainwindow.cpp \
     mainwindowmodel.cpp \
@@ -24,6 +25,7 @@ SOURCES += \
     checkuserinputvisitor.cpp \
     mediawidgetvisitor.cpp \
     applyuserinputvisitor.cpp \
+    savemediavisitor.cpp \
     viewmediacreationvisitor.cpp \
     viewmediadialog.cpp \
     viewmediamodel.cpp
@@ -31,6 +33,7 @@ SOURCES += \
 # Header
 HEADERS += \
     createmediamodel.h \
+    jsonmanager.h \
     mainwindow.h \
     mainwindowmodel.h \
     media.h \
@@ -48,6 +51,7 @@ HEADERS += \
     checkuserinputvisitor.h \
     mediawidgetvisitor.h \
     applyuserinputvisitor.h \
+    savemediavisitor.h \
     viewmediacreationvisitor.h \
     viewmediadialog.h \
     viewmediamodel.h
