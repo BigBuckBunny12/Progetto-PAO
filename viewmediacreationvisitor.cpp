@@ -1,14 +1,24 @@
 #include "viewmediacreationvisitor.h"
 
 void ViewMediaCreationVisitor::addStringField(const QString& label, const QString& value) {
-    list->addItem(label + ": " + value);
+    QLabel* field = new QLabel(QString("<b>%1:</b> %2").arg(label, value), parent);
+    infoLayout->addWidget(field);
 }
 
 void ViewMediaCreationVisitor::addImageField(const QString &label, const QString &imagePath) {
-    QListWidgetItem *item = new QListWidgetItem;
-    item->setIcon(QIcon(imagePath));
-    item->setText(label);
-    list->addItem(item);
+    QLabel* labelWidget = new QLabel(QString("<b>%1:</b>").arg(label), parent);
+    infoLayout->addWidget(labelWidget);
+
+    QLabel* imageLabel = new QLabel(parent);
+    QPixmap pixmap(imagePath);
+    const float IMAGE_SCALE = 0.66;
+    if (!pixmap.isNull()) {
+        imageLabel->setPixmap(pixmap.scaled(parent->width() * IMAGE_SCALE, pixmap.height(), Qt::KeepAspectRatio, Qt::SmoothTransformation));
+    } else {
+        imageLabel->setText("Nessuna immagine disponibile");
+        imageLabel->setAlignment(Qt::AlignCenter);
+    }
+    infoLayout->addWidget(imageLabel);
 }
 
 void ViewMediaCreationVisitor::visit(Book& book) {
@@ -37,4 +47,3 @@ void ViewMediaCreationVisitor::visit(Article& article) {
     addStringField("Articolo scientifico", article.getIsScientificPaper() ? "Sì" : "No");
     addImageField("Copertina", article.getCoverImageUrl());
 }
-

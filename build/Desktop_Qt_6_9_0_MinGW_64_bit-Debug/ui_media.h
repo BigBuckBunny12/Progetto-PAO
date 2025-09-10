@@ -21,6 +21,8 @@ class Ui_Media
 {
 public:
     QVBoxLayout *verticalLayout;
+    QWidget *container;
+    QVBoxLayout *verticalLayout_2;
     QLabel *mediaImage;
     QLabel *mediaTitle;
 
@@ -37,19 +39,28 @@ public:
         Media->setAutoFillBackground(false);
         Media->setStyleSheet(QString::fromUtf8("background-color: none"));
         verticalLayout = new QVBoxLayout(Media);
+        verticalLayout->setSpacing(0);
         verticalLayout->setObjectName("verticalLayout");
-        mediaImage = new QLabel(Media);
+        verticalLayout->setContentsMargins(0, 0, 0, 0);
+        container = new QWidget(Media);
+        container->setObjectName("container");
+        verticalLayout_2 = new QVBoxLayout(container);
+        verticalLayout_2->setObjectName("verticalLayout_2");
+        mediaImage = new QLabel(container);
         mediaImage->setObjectName("mediaImage");
         mediaImage->setTextFormat(Qt::TextFormat::RichText);
         mediaImage->setPixmap(QPixmap(QString::fromUtf8(":/resources/img/test.jpg")));
         mediaImage->setScaledContents(true);
 
-        verticalLayout->addWidget(mediaImage);
+        verticalLayout_2->addWidget(mediaImage);
 
-        mediaTitle = new QLabel(Media);
+        mediaTitle = new QLabel(container);
         mediaTitle->setObjectName("mediaTitle");
 
-        verticalLayout->addWidget(mediaTitle);
+        verticalLayout_2->addWidget(mediaTitle);
+
+
+        verticalLayout->addWidget(container);
 
 
         retranslateUi(Media);

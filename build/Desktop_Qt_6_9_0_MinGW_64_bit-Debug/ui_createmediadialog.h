@@ -44,6 +44,7 @@ public:
             CreateMediaDialog->setObjectName("CreateMediaDialog");
         CreateMediaDialog->resize(376, 579);
         CreateMediaDialog->setLayoutDirection(Qt::LayoutDirection::LeftToRight);
+        CreateMediaDialog->setStyleSheet(QString::fromUtf8("background-color: transparent;"));
         verticalLayout = new QVBoxLayout(CreateMediaDialog);
         verticalLayout->setObjectName("verticalLayout");
         horizontalLayout = new QHBoxLayout();
@@ -58,7 +59,12 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(dialogTitle->sizePolicy().hasHeightForWidth());
         dialogTitle->setSizePolicy(sizePolicy);
+        QFont font;
+        font.setPointSize(14);
+        font.setBold(true);
+        dialogTitle->setFont(font);
         dialogTitle->setLayoutDirection(Qt::LayoutDirection::LeftToRight);
+        dialogTitle->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);"));
         dialogTitle->setTextFormat(Qt::TextFormat::PlainText);
         dialogTitle->setIndent(0);
 
@@ -69,6 +75,82 @@ public:
 
         mediaDropdown = new QComboBox(CreateMediaDialog);
         mediaDropdown->setObjectName("mediaDropdown");
+        mediaDropdown->setStyleSheet(QString::fromUtf8("/* QComboBox base */\n"
+"QComboBox {\n"
+"    color: rgb(0, 0, 0);\n"
+"    background-color: transparent;\n"
+"    border-radius: 15px;\n"
+"    border: 2px solid rgb(233, 238, 246);\n"
+"    padding: 5px 10px;\n"
+"}\n"
+"\n"
+"/* Hover */\n"
+"QComboBox:hover {\n"
+"    border: 2px solid rgb(220, 220, 220);\n"
+"    background-color: rgb(250, 250, 250);\n"
+"}\n"
+"\n"
+"/* Premuto (quando apro il menu) */\n"
+"QComboBox:pressed,\n"
+"QComboBox::drop-down:pressed {\n"
+"    border: 2px solid rgb(150, 150, 150);\n"
+"    background-color: transparent;\n"
+"    border-bottom-left-radius: 0px;\n"
+"    border-bottom-right-radius: 0px;\n"
+"}\n"
+"\n"
+"QComboBox:on,\n"
+"QComboBox:!editable:on {\n"
+"    background-color: transparent;\n"
+"	border-bottom-left-radius: 0px;\n"
+"    border-bottom-right-radius: 0px;\n"
+"}\n"
+"\n"
+"/* Focus */\n"
+"QComboBox:focus {\n"
+"    outline: none;\n"
+"}\n"
+"\n"
+"/* Drop-down (freccia) */\n"
+"QComboBox::drop-down {\n"
+"    subcontrol-origin: padding;\n"
+"    subcontrol-position: top right;\n"
+"    wid"
+                        "th: 20px;\n"
+"    border: none;\n"
+"    background: transparent;\n"
+"}\n"
+"\n"
+"QComboBox::down-arrow {\n"
+"    image: url(:/resources/img/dropdown_arrow.png); /* tua icona */\n"
+"    width: 16px;\n"
+"    height: 16px;\n"
+"    margin-right: 12px;\n"
+"}\n"
+"\n"
+"/* Popup del QComboBox */\n"
+"QComboBox QAbstractItemView,\n"
+"QComboBox QListView {\n"
+"    border: 1px solid rgb(220, 220, 220);\n"
+"    border-bottom-left-radius: 5px;\n"
+"    border-bottom-right-radius: 5px;\n"
+"    background-color: rgb(255, 255, 255); /* stesso colore del parent */\n"
+"    outline: 0;\n"
+"}\n"
+"\n"
+"/* Singoli item nel menu */\n"
+"QComboBox QAbstractItemView::item,\n"
+"QComboBox QListView::item {\n"
+"    padding: 6px 10px;\n"
+"}\n"
+"\n"
+"/* Item selezionato (hover o selezione) */\n"
+"QComboBox QAbstractItemView::item:selected,\n"
+"QComboBox QListView::item:selected {\n"
+"    background: rgb(233, 238, 246);\n"
+"    color: rgb(0, 0, 0);\n"
+"}\n"
+""));
         mediaDropdown->setMaxVisibleItems(10);
 
         verticalLayout->addWidget(mediaDropdown);
@@ -82,6 +164,7 @@ public:
 
         lineEdit = new QLineEdit(CreateMediaDialog);
         lineEdit->setObjectName("lineEdit");
+        lineEdit->setStyleSheet(QString::fromUtf8("border-radius: 5px"));
 
         mediaInfoLayout->setWidget(0, QFormLayout::ItemRole::FieldRole, lineEdit);
 
@@ -96,11 +179,55 @@ public:
 
         CancelButton = new QPushButton(CreateMediaDialog);
         CancelButton->setObjectName("CancelButton");
+        CancelButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    color: rgb(0, 0, 0);\n"
+"    background-color: rgb(233, 238, 246);\n"
+"    border-radius: 15px;\n"
+"    border: 2px solid rgb(233, 238, 246);\n"
+"    padding: 5px 10px;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    border: 2px solid rgb(220, 220, 220);\n"
+"    background-color: rgb(250, 250, 250);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    border: 2px solid rgb(150, 150, 150);\n"
+"    background-color: rgb(230, 230, 230);\n"
+"}\n"
+"\n"
+"QPushButton:focus {\n"
+"    outline: none;\n"
+"}\n"
+""));
 
         actionButtonsLayout->addWidget(CancelButton);
 
         ConfirmButton = new QPushButton(CreateMediaDialog);
         ConfirmButton->setObjectName("ConfirmButton");
+        ConfirmButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    color: rgb(0, 0, 0);\n"
+"    background-color: rgb(233, 238, 246);\n"
+"    border-radius: 15px;\n"
+"    border: 2px solid rgb(233, 238, 246);\n"
+"    padding: 5px 10px;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    border: 2px solid rgb(220, 220, 220);\n"
+"    background-color: rgb(250, 250, 250);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    border: 2px solid rgb(150, 150, 150);\n"
+"    background-color: rgb(230, 230, 230);\n"
+"}\n"
+"\n"
+"QPushButton:focus {\n"
+"    outline: none;\n"
+"}\n"
+""));
 
         actionButtonsLayout->addWidget(ConfirmButton);
 

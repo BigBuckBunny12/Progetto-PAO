@@ -16,11 +16,11 @@
 
 class ViewMediaCreationVisitor : public MediaVisitor {
 private:
-    QListWidget* list;
+    QLayout* infoLayout;
     QWidget* parent;
 
 public:
-    ViewMediaCreationVisitor(QListWidget* list, QWidget* parent = nullptr) : list(list), parent(parent) {}
+    ViewMediaCreationVisitor(QLayout* layout, QWidget* parent = nullptr) : infoLayout(layout), parent(parent) {}
 
     void visit(Book& book) override;
     void visit(Movie& movie) override;

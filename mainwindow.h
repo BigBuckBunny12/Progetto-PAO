@@ -5,6 +5,8 @@
 #include "mainwindowmodel.h"
 #include "viewmediadialog.h"
 #include <QMainWindow>
+#include <QGraphicsDropShadowEffect>
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -30,9 +32,7 @@ private slots:
     void onMediaUpdated(IMedia* media);
 
     void on_searchMediaField_textChanged(const QString &arg1);
-
     void on_saveButton_clicked();
-
     void on_loadButton_clicked();
 
 protected:
@@ -48,5 +48,20 @@ private:
     void refreshMediaGrid(const QString mediaFilter = "");
     void displayMediaList(std::vector<IMedia*> list);
     void clearMediaGrid();
+
+    // Stylesheet per elementi GUI con aspetto variabile
+    const QString searchMediaValidStyle =
+        "background-color: rgb(233, 238, 246);"
+        "color: rgb(0, 0, 0);"
+        "border-radius: 11px;"
+        "padding-left: 6px;"
+        "padding-right: 6px;";
+
+    const QString searchMediaErrorStyle =
+        "background-color: rgb(233, 238, 246);"
+        "color: red;"
+        "border-radius: 11px;"
+        "padding-left: 6px;"
+        "padding-right: 6px;";
 };
 #endif // MAINWINDOW_H

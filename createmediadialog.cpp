@@ -6,6 +6,7 @@
 #include "getuserinputvisitor.h"
 #include "mediamanager.h"
 #include "mediaregistry.h"
+#include "qabstractitemview.h"
 #include "ui_createmediadialog.h"
 #include <QCheckBox>
 #include <QLineEdit>
@@ -27,6 +28,7 @@ CreateMediaDialog::CreateMediaDialog(QStackedWidget* container, CreateMediaModel
         ++it;
     }
     ui->mediaDropdown->setCurrentIndex(0);
+    ui->mediaDropdown->view()->window()->setWindowFlags(Qt::Popup | Qt::FramelessWindowHint | Qt::NoDropShadowWindowHint);
 }
 
 CreateMediaDialog::~CreateMediaDialog()

@@ -14,6 +14,7 @@ QLineEdit* MediaCreationFormVisitor::addLineEdit(const QString& label, const QSt
         lineWidget->setText(startText);
     }
     addRow(label, lineWidget, tag);
+    lineWidget->setStyleSheet(lineEditStyle);
     return lineWidget;
 }
 

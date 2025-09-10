@@ -35,8 +35,18 @@ MainWindow::MainWindow(MainWindowModel* windowModel, QWidget *parent)
     ui->dialogContainer->hide();
 
     // Setup degli elementi grafici
+    float const ICON_SCALE = 0.6;
     ui->saveButton->setIcon(QIcon(":/resources/img/save_icon.png"));
-    ui->saveButton->setIconSize(QSize(ui->saveButton->width() * 0.6,ui->saveButton->height() * 0.6));
+    ui->saveButton->setIconSize(QSize(ui->saveButton->width() * ICON_SCALE,ui->saveButton->height() * ICON_SCALE));
+    ui->loadButton->setIcon(QIcon(":/resources/img/load_icon.png"));
+    ui->loadButton->setIconSize(QSize(ui->loadButton->width() * ICON_SCALE,ui->loadButton->height() * ICON_SCALE));
+    ui->newMediaButton->setIcon(QIcon(":/resources/img/new_icon.png"));
+    ui->newMediaButton->setIconSize(QSize(ui->newMediaButton->width() * ICON_SCALE,ui->newMediaButton->height() * ICON_SCALE));
+    QGraphicsDropShadowEffect* shadow = new QGraphicsDropShadowEffect;
+    shadow->setBlurRadius(80);
+    shadow->setOffset(0, 10);
+    shadow->setColor(QColor(0, 0, 0, 100));
+    ui->topBar->setGraphicsEffect(shadow);
 
 }
 
@@ -81,6 +91,21 @@ void MainWindow::viewMedia(IMedia* media) const {
     ui->dialogContainer->show();
     ui->dialogContainer->setCurrentWidget(ui->viewMediaPage);
     viewMediaDialog->displayMedia(media);
+    Media* mediaWidget = model->getAssociatedMediaWidget(media);
+
+    for (int i = 0; i < ui->mediaGrid->count(); ++i) {
+        QWidget* widget = ui->mediaGrid->itemAt(i)->widget();
+        if (widget) {
+            Media* media = qobject_cast<Media*>(widget);
+            if (media) {
+                media->setSelected(false);
+            }
+        }
+    }
+
+    if(mediaWidget) {
+        mediaWidget->setSelected(true);
+    }
 }
 
 void MainWindow::onMediaCreated(IMedia* media) {
@@ -149,6 +174,11 @@ void MainWindow::refreshMediaGrid(const QString mediaFilter) {
     std::vector<IMedia*> queryResult = model->getMediaFromSearch(mediaFilter);
     displayMediaList(queryResult);
     reflowMediaGrid();
+    if (model->isSearchQueryValid(mediaFilter) && queryResult.empty()) {
+        ui->searchMediaField->setStyleSheet(searchMediaErrorStyle);
+    } else {
+        ui->searchMediaField->setStyleSheet(searchMediaValidStyle);
+    }
 }
 
 void MainWindow::displayMediaList(std::vector<IMedia*> list) {

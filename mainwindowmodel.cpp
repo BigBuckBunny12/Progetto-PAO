@@ -31,7 +31,11 @@ void MainWindowModel::clearMappings() {
     widgetMediaMap.clear();
 }
 
+bool MainWindowModel::isSearchQueryValid(const QString& query) const {
+    return !query.trimmed().isEmpty();
+}
+
 std::vector<IMedia*> MainWindowModel::getMediaFromSearch(const QString& query) const {
-    if(query.trimmed().isEmpty()) return MediaManager::instance().getMediaList();
+    if(!isSearchQueryValid(query)) return MediaManager::instance().getMediaList();
     return MediaManager::instance().getMediaMatchingString(query);
 }

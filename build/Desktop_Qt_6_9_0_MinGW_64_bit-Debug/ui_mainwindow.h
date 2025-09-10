@@ -60,6 +60,7 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(window->sizePolicy().hasHeightForWidth());
         window->setSizePolicy(sizePolicy);
+        window->setStyleSheet(QString::fromUtf8("background-color: rgb(233, 238, 246);"));
         verticalLayout_3 = new QVBoxLayout(window);
         verticalLayout_3->setSpacing(0);
         verticalLayout_3->setObjectName("verticalLayout_3");
@@ -73,8 +74,11 @@ public:
         sizePolicy1.setVerticalStretch(0);
         sizePolicy1.setHeightForWidth(topBar->sizePolicy().hasHeightForWidth());
         topBar->setSizePolicy(sizePolicy1);
-        topBar->setStyleSheet(QString::fromUtf8("background-color: rgb(119, 178, 245);"));
+        topBar->setMinimumSize(QSize(0, 55));
+        topBar->setMaximumSize(QSize(16777215, 55));
+        topBar->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255)"));
         horizontalLayout_2 = new QHBoxLayout(topBar);
+        horizontalLayout_2->setSpacing(9);
         horizontalLayout_2->setObjectName("horizontalLayout_2");
         horizontalLayout_2->setSizeConstraint(QLayout::SizeConstraint::SetDefaultConstraint);
         saveButton = new QPushButton(topBar);
@@ -88,7 +92,7 @@ public:
         saveButton->setMaximumSize(QSize(35, 35));
         saveButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    color: rgb(0, 0, 0);\n"
-"    background-color: rgb(255, 255, 255);\n"
+"    background-color: rgb(233, 238, 246);\n"
 "    border-radius: 17px;\n"
 "    border: 2px solid rgb(255, 255, 255);\n"
 "    padding: 5px 10px;\n"
@@ -115,9 +119,30 @@ public:
         loadButton->setObjectName("loadButton");
         sizePolicy2.setHeightForWidth(loadButton->sizePolicy().hasHeightForWidth());
         loadButton->setSizePolicy(sizePolicy2);
-        loadButton->setMinimumSize(QSize(24, 24));
-        loadButton->setMaximumSize(QSize(24, 24));
-        loadButton->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);"));
+        loadButton->setMinimumSize(QSize(35, 35));
+        loadButton->setMaximumSize(QSize(35, 35));
+        loadButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    color: rgb(0, 0, 0);\n"
+"    background-color: rgb(233, 238, 246);\n"
+"    border-radius: 17px;\n"
+"    border: 2px solid rgb(255, 255, 255);\n"
+"    padding: 5px 10px;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    border: 2px solid rgb(220, 220, 220);\n"
+"    background-color: rgb(250, 250, 250);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    border: 2px solid rgb(150, 150, 150);\n"
+"    background-color: rgb(230, 230, 230);\n"
+"}\n"
+"\n"
+"QPushButton:focus {\n"
+"    outline: none;\n"
+"}\n"
+""));
 
         horizontalLayout_2->addWidget(loadButton);
 
@@ -129,9 +154,30 @@ public:
         sizePolicy3.setVerticalStretch(0);
         sizePolicy3.setHeightForWidth(newMediaButton->sizePolicy().hasHeightForWidth());
         newMediaButton->setSizePolicy(sizePolicy3);
-        newMediaButton->setMinimumSize(QSize(24, 24));
-        newMediaButton->setMaximumSize(QSize(24, 24));
-        newMediaButton->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);"));
+        newMediaButton->setMinimumSize(QSize(35, 35));
+        newMediaButton->setMaximumSize(QSize(35, 35));
+        newMediaButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    color: rgb(0, 0, 0);\n"
+"    background-color: rgb(233, 238, 246);\n"
+"    border-radius: 17px;\n"
+"    border: 2px solid rgb(255, 255, 255);\n"
+"    padding: 5px 10px;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    border: 2px solid rgb(220, 220, 220);\n"
+"    background-color: rgb(250, 250, 250);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    border: 2px solid rgb(150, 150, 150);\n"
+"    background-color: rgb(230, 230, 230);\n"
+"}\n"
+"\n"
+"QPushButton:focus {\n"
+"    outline: none;\n"
+"}\n"
+""));
 
         horizontalLayout_2->addWidget(newMediaButton);
 
@@ -139,8 +185,14 @@ public:
         searchMediaField->setObjectName("searchMediaField");
         sizePolicy3.setHeightForWidth(searchMediaField->sizePolicy().hasHeightForWidth());
         searchMediaField->setSizePolicy(sizePolicy3);
-        searchMediaField->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);\n"
-"border-radius: 5px;"));
+        searchMediaField->setMinimumSize(QSize(250, 22));
+        searchMediaField->setMaximumSize(QSize(250, 22));
+        searchMediaField->setStyleSheet(QString::fromUtf8("background-color: rgb(233, 238, 246);\n"
+"color: rgb(0, 0, 0);\n"
+"border-radius: 11px;\n"
+"padding-left: 6px;\n"
+"padding-right: 6px;"));
+        searchMediaField->setClearButtonEnabled(false);
 
         horizontalLayout_2->addWidget(searchMediaField);
 
@@ -156,6 +208,7 @@ public:
 
         contentFrame = new QFrame(window);
         contentFrame->setObjectName("contentFrame");
+        contentFrame->setStyleSheet(QString::fromUtf8("border: none;"));
         contentFrame->setFrameShape(QFrame::Shape::StyledPanel);
         contentFrame->setFrameShadow(QFrame::Shadow::Raised);
         contentFrame->setLineWidth(0);
@@ -165,6 +218,15 @@ public:
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
         dialogContainer = new QStackedWidget(contentFrame);
         dialogContainer->setObjectName("dialogContainer");
+        dialogContainer->setMaximumSize(QSize(500, 16777215));
+        dialogContainer->setStyleSheet(QString::fromUtf8("background: qlineargradient(\n"
+"        x1: 0, y1: 0,\n"
+"        x2: 0, y2: 1,\n"
+"        stop: 0 rgb(233, 238, 246),\n"
+"        stop: 0.03 rgb(255, 255, 255),\n"
+"        stop: 0.03 rgb(255, 255, 255),\n"
+"        stop: 1 rgb(255, 255, 255)\n"
+"    );"));
         createMediaPage = new QWidget();
         createMediaPage->setObjectName("createMediaPage");
         dialogContainer->addWidget(createMediaPage);
@@ -187,14 +249,15 @@ public:
         sizePolicy4.setVerticalStretch(0);
         sizePolicy4.setHeightForWidth(scrollArea->sizePolicy().hasHeightForWidth());
         scrollArea->setSizePolicy(sizePolicy4);
+        scrollArea->setStyleSheet(QString::fromUtf8("border:none;"));
         scrollArea->setLineWidth(0);
         scrollArea->setWidgetResizable(true);
         gridLayoutWidget = new QWidget();
         gridLayoutWidget->setObjectName("gridLayoutWidget");
-        gridLayoutWidget->setGeometry(QRect(0, 0, 397, 541));
+        gridLayoutWidget->setGeometry(QRect(0, 0, 400, 545));
         sizePolicy4.setHeightForWidth(gridLayoutWidget->sizePolicy().hasHeightForWidth());
         gridLayoutWidget->setSizePolicy(sizePolicy4);
-        gridLayoutWidget->setAutoFillBackground(true);
+        gridLayoutWidget->setAutoFillBackground(false);
         gridLayoutWidget->setStyleSheet(QString::fromUtf8(""));
         mediaGrid = new QGridLayout(gridLayoutWidget);
         mediaGrid->setObjectName("mediaGrid");
@@ -220,8 +283,9 @@ public:
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
         saveButton->setText(QString());
-        loadButton->setText(QCoreApplication::translate("MainWindow", "L", nullptr));
-        newMediaButton->setText(QCoreApplication::translate("MainWindow", "+", nullptr));
+        loadButton->setText(QString());
+        newMediaButton->setText(QString());
+        searchMediaField->setPlaceholderText(QCoreApplication::translate("MainWindow", "Cerca", nullptr));
 #if QT_CONFIG(statustip)
         gridLayoutWidget->setStatusTip(QString());
 #endif // QT_CONFIG(statustip)

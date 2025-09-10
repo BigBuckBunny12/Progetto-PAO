@@ -13,8 +13,8 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
-#include <QtWidgets/QListWidget>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QScrollArea>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
@@ -27,8 +27,10 @@ public:
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout;
     QLabel *mediaTitle;
+    QVBoxLayout *infoContainer;
+    QScrollArea *scrollArea;
+    QWidget *mediaInfo;
     QVBoxLayout *infoLayout;
-    QListWidget *listWidget;
     QHBoxLayout *actionButtonsLayout;
     QSpacerItem *horizontalSpacer;
     QPushButton *editButton;
@@ -40,6 +42,7 @@ public:
         if (ViewMediaDialog->objectName().isEmpty())
             ViewMediaDialog->setObjectName("ViewMediaDialog");
         ViewMediaDialog->resize(400, 453);
+        ViewMediaDialog->setStyleSheet(QString::fromUtf8("background-color: transparent;"));
         verticalLayout = new QVBoxLayout(ViewMediaDialog);
         verticalLayout->setObjectName("verticalLayout");
         horizontalLayout = new QHBoxLayout();
@@ -54,7 +57,14 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(mediaTitle->sizePolicy().hasHeightForWidth());
         mediaTitle->setSizePolicy(sizePolicy);
+        QFont font;
+        font.setPointSize(15);
+        font.setBold(true);
+        font.setStrikeOut(false);
+        font.setKerning(true);
+        mediaTitle->setFont(font);
         mediaTitle->setLayoutDirection(Qt::LayoutDirection::LeftToRight);
+        mediaTitle->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);"));
         mediaTitle->setTextFormat(Qt::TextFormat::PlainText);
         mediaTitle->setIndent(0);
 
@@ -63,15 +73,22 @@ public:
 
         verticalLayout->addLayout(horizontalLayout);
 
-        infoLayout = new QVBoxLayout();
+        infoContainer = new QVBoxLayout();
+        infoContainer->setObjectName("infoContainer");
+        scrollArea = new QScrollArea(ViewMediaDialog);
+        scrollArea->setObjectName("scrollArea");
+        scrollArea->setWidgetResizable(true);
+        mediaInfo = new QWidget();
+        mediaInfo->setObjectName("mediaInfo");
+        mediaInfo->setGeometry(QRect(0, 0, 378, 358));
+        infoLayout = new QVBoxLayout(mediaInfo);
         infoLayout->setObjectName("infoLayout");
-        listWidget = new QListWidget(ViewMediaDialog);
-        listWidget->setObjectName("listWidget");
+        scrollArea->setWidget(mediaInfo);
 
-        infoLayout->addWidget(listWidget);
+        infoContainer->addWidget(scrollArea);
 
 
-        verticalLayout->addLayout(infoLayout);
+        verticalLayout->addLayout(infoContainer);
 
         actionButtonsLayout = new QHBoxLayout();
         actionButtonsLayout->setObjectName("actionButtonsLayout");
@@ -81,16 +98,82 @@ public:
 
         editButton = new QPushButton(ViewMediaDialog);
         editButton->setObjectName("editButton");
+        editButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    color: rgb(0, 0, 0);\n"
+"    background-color: rgb(233, 238, 246);\n"
+"    border-radius: 15px;\n"
+"    border: 2px solid rgb(233, 238, 246);\n"
+"    padding: 5px 10px;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    border: 2px solid rgb(220, 220, 220);\n"
+"    background-color: rgb(250, 250, 250);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    border: 2px solid rgb(150, 150, 150);\n"
+"    background-color: rgb(230, 230, 230);\n"
+"}\n"
+"\n"
+"QPushButton:focus {\n"
+"    outline: none;\n"
+"}\n"
+""));
 
         actionButtonsLayout->addWidget(editButton);
 
         deleteButton = new QPushButton(ViewMediaDialog);
         deleteButton->setObjectName("deleteButton");
+        deleteButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    color: rgb(0, 0, 0);\n"
+"    background-color: rgb(233, 238, 246);\n"
+"    border-radius: 15px;\n"
+"    border: 2px solid rgb(233, 238, 246);\n"
+"    padding: 5px 10px;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    border: 2px solid rgb(220, 220, 220);\n"
+"    background-color: rgb(250, 250, 250);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    border: 2px solid rgb(150, 150, 150);\n"
+"    background-color: rgb(230, 230, 230);\n"
+"}\n"
+"\n"
+"QPushButton:focus {\n"
+"    outline: none;\n"
+"}\n"
+""));
 
         actionButtonsLayout->addWidget(deleteButton);
 
         exitButton = new QPushButton(ViewMediaDialog);
         exitButton->setObjectName("exitButton");
+        exitButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    color: rgb(0, 0, 0);\n"
+"    background-color: rgb(233, 238, 246);\n"
+"    border-radius: 15px;\n"
+"    border: 2px solid rgb(233, 238, 246);\n"
+"    padding: 5px 10px;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    border: 2px solid rgb(220, 220, 220);\n"
+"    background-color: rgb(250, 250, 250);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    border: 2px solid rgb(150, 150, 150);\n"
+"    background-color: rgb(230, 230, 230);\n"
+"}\n"
+"\n"
+"QPushButton:focus {\n"
+"    outline: none;\n"
+"}\n"
+""));
 
         actionButtonsLayout->addWidget(exitButton);
 

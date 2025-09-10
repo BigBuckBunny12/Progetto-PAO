@@ -16,6 +16,9 @@
   <property name="layoutDirection">
    <enum>Qt::LayoutDirection::LeftToRight</enum>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: transparent;</string>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout" stretch="1,1,15,2">
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout" stretch="0">
@@ -36,8 +39,17 @@
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+         <bold>true</bold>
+        </font>
+       </property>
        <property name="layoutDirection">
         <enum>Qt::LayoutDirection::LeftToRight</enum>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);</string>
        </property>
        <property name="text">
         <string>Crea un nuovo media</string>
@@ -54,6 +66,83 @@
    </item>
    <item>
     <widget class="QComboBox" name="mediaDropdown">
+     <property name="styleSheet">
+      <string notr="true">/* QComboBox base */
+QComboBox {
+    color: rgb(0, 0, 0);
+    background-color: transparent;
+    border-radius: 15px;
+    border: 2px solid rgb(233, 238, 246);
+    padding: 5px 10px;
+}
+
+/* Hover */
+QComboBox:hover {
+    border: 2px solid rgb(220, 220, 220);
+    background-color: rgb(250, 250, 250);
+}
+
+/* Premuto (quando apro il menu) */
+QComboBox:pressed,
+QComboBox::drop-down:pressed {
+    border: 2px solid rgb(150, 150, 150);
+    background-color: transparent;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+QComboBox:on,
+QComboBox:!editable:on {
+    background-color: transparent;
+	border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+/* Focus */
+QComboBox:focus {
+    outline: none;
+}
+
+/* Drop-down (freccia) */
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 20px;
+    border: none;
+    background: transparent;
+}
+
+QComboBox::down-arrow {
+    image: url(:/resources/img/dropdown_arrow.png); /* tua icona */
+    width: 16px;
+    height: 16px;
+    margin-right: 12px;
+}
+
+/* Popup del QComboBox */
+QComboBox QAbstractItemView,
+QComboBox QListView {
+    border: 1px solid rgb(220, 220, 220);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: rgb(255, 255, 255); /* stesso colore del parent */
+    outline: 0;
+}
+
+/* Singoli item nel menu */
+QComboBox QAbstractItemView::item,
+QComboBox QListView::item {
+    padding: 6px 10px;
+}
+
+/* Item selezionato (hover o selezione) */
+QComboBox QAbstractItemView::item:selected,
+QComboBox QListView::item:selected {
+    background: rgb(233, 238, 246);
+    color: rgb(0, 0, 0);
+}
+</string>
+     </property>
      <property name="maxVisibleItems">
       <number>10</number>
      </property>
@@ -72,7 +161,11 @@
       </widget>
      </item>
      <item row="0" column="1">
-      <widget class="QLineEdit" name="lineEdit"/>
+      <widget class="QLineEdit" name="lineEdit">
+       <property name="styleSheet">
+        <string notr="true">border-radius: 5px</string>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>
@@ -93,6 +186,30 @@
      </item>
      <item>
       <widget class="QPushButton" name="CancelButton">
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    color: rgb(0, 0, 0);
+    background-color: rgb(233, 238, 246);
+    border-radius: 15px;
+    border: 2px solid rgb(233, 238, 246);
+    padding: 5px 10px;
+}
+
+QPushButton:hover {
+    border: 2px solid rgb(220, 220, 220);
+    background-color: rgb(250, 250, 250);
+}
+
+QPushButton:pressed {
+    border: 2px solid rgb(150, 150, 150);
+    background-color: rgb(230, 230, 230);
+}
+
+QPushButton:focus {
+    outline: none;
+}
+</string>
+       </property>
        <property name="text">
         <string>Annulla</string>
        </property>
@@ -100,6 +217,30 @@
      </item>
      <item>
       <widget class="QPushButton" name="ConfirmButton">
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    color: rgb(0, 0, 0);
+    background-color: rgb(233, 238, 246);
+    border-radius: 15px;
+    border: 2px solid rgb(233, 238, 246);
+    padding: 5px 10px;
+}
+
+QPushButton:hover {
+    border: 2px solid rgb(220, 220, 220);
+    background-color: rgb(250, 250, 250);
+}
+
+QPushButton:pressed {
+    border: 2px solid rgb(150, 150, 150);
+    background-color: rgb(230, 230, 230);
+}
+
+QPushButton:focus {
+    outline: none;
+}
+</string>
+       </property>
        <property name="text">
         <string>Crea</string>
        </property>
