@@ -18,7 +18,7 @@ class CreateMediaDialog : public QWidget
     Q_OBJECT
 
 public:
-    explicit CreateMediaDialog(QStackedWidget* container, CreateMediaModel* model, QWidget *parent = nullptr);
+    explicit CreateMediaDialog(CreateMediaModel* model, QWidget *parent = nullptr);
     ~CreateMediaDialog();
 
     QWidget* findWidgetByTag(const QString& tag) const;
@@ -35,6 +35,7 @@ private slots:
 signals:
     void mediaCreated(IMedia* media);
     void confirmPressed(const MediaInput& input);
+    void dialogClosed();
 
 private:
     QStackedWidget* dialogContainer;

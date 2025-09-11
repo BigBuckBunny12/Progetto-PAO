@@ -21,19 +21,40 @@ void ViewMediaCreationVisitor::addImageField(const QString &label, const QString
     infoLayout->addWidget(imageLabel);
 }
 
+QString ViewMediaCreationVisitor::formatMinutes(const int totalMinutes) const {
+    const int MINUTES_IN_DAY = 24 * 60;
+    const int MINUTES_IN_HOUR = 60;
+
+    int days = totalMinutes / MINUTES_IN_DAY;
+    int hours = (totalMinutes % MINUTES_IN_DAY) / MINUTES_IN_HOUR;
+    int minutes = totalMinutes % MINUTES_IN_HOUR;
+    QStringList parts;
+
+    if (days > 0)
+        parts << QString("%1g").arg(days);
+
+    if (hours > 0 || days > 0)
+        parts << QString("%1h").arg(hours);
+
+    parts << QString("%1m").arg(minutes);
+    return parts.join(" ");
+}
+
+
 void ViewMediaCreationVisitor::visit(Book& book) {
     addStringField("Titolo", book.getTitle());
     addStringField("Anno di pubblicazione", QString::number(book.getPublicationYear()));
     addStringField("Autore", book.getAuthor());
     addStringField("Numero pagine", QString::number(book.getTotalPages()));
     addStringField("Editore", book.getPublisher());
+    addStringField("Genere", Book::genreLabels().at(book.getGenre()));
     addImageField("Copertina", book.getCoverImageUrl());
 }
 
 void ViewMediaCreationVisitor::visit(Movie& movie) {
     addStringField("Titolo", movie.getTitle());
     addStringField("Anno di pubblicazione", QString::number(movie.getPublicationYear()));
-    addStringField("Durata (minuti)", QString::number(movie.getDuration()));
+    addStringField("Durata", formatMinutes(movie.getDuration()));
     addStringField("Produttore", movie.getProducer());
     addImageField("Copertina", movie.getCoverImageUrl());
 }

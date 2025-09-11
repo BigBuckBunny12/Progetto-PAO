@@ -9,7 +9,9 @@ void ApplyUserInputVisitor::visit(Book& book) {
     book.setAuthor(inputMap["author"].toString());
     book.setTotalPages(inputMap["pages"].toInt());
     book.setPublisher(inputMap["publisher"].toString());
+    book.setGenre(static_cast<Book::Genre>(inputMap["genre"].toInt()));
     book.setCoverImageUrl(inputMap["cover"].toString());
+    qDebug() << "book genre: " << book.getGenre();
 }
 
 void ApplyUserInputVisitor::visit(Movie& movie) {

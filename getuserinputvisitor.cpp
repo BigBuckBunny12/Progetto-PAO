@@ -2,9 +2,11 @@
 #include "book.h"
 #include "movie.h"
 #include "article.h"
+#include "qcombobox.h"
 #include <QLineEdit>
 #include <QCheckBox>
 #include <QLabel>
+#include <QSpinBox>
 
 const MediaInput& GetUserInputVisitor::getCollectedInput() const {
     return input;
@@ -42,10 +44,26 @@ void GetUserInputVisitor::collectCheckBox(const QString& tag) {
     }
 }
 
+void GetUserInputVisitor::collectSpinBox(const QString& tag) {
+    if (QWidget* w = findWidgetByTag(tag)) {
+        if (QSpinBox* spinBox = qobject_cast<QSpinBox*>(w)) {
+            input.insert(tag, spinBox->value());
+        }
+    }
+}
+
 void GetUserInputVisitor::collectImage(const QString& tag) {
     if (QWidget* w = findWidgetByTag(tag)) {
         if (QLabel* lbl = qobject_cast<QLabel*>(w)) {
             input.insert(tag, lbl->property("selectedImagePath"));
+        }
+    }
+}
+
+void GetUserInputVisitor::collectComboBox(const QString& tag) {
+    if (QWidget* w = findWidgetByTag(tag)) {
+        if (QComboBox* box = qobject_cast<QComboBox*>(w)) {
+            input.insert(tag, box->currentIndex());
         }
     }
 }
@@ -55,8 +73,9 @@ void GetUserInputVisitor::visit(Book& book) {
     collectLineEdit("title");
     collectLineEdit("year");
     collectLineEdit("author");
-    collectLineEdit("pages");
+    collectSpinBox("pages");
     collectLineEdit("publisher");
+    collectComboBox("genre");
     collectImage("cover");
 }
 

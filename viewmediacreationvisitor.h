@@ -29,6 +29,7 @@ public:
 private:
     void addStringField(const QString& label, const QString& value);
     void addImageField(const QString& label, const QString& imagePath);
+    QString formatMinutes(const int minutes) const;
 };
 
 

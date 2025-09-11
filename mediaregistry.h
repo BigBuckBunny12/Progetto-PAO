@@ -10,7 +10,7 @@
 const QMap<MediaType, MediaDefinition> mediaRegistry = {
     { MediaType::Book, {
                           "Libro",
-                          []() { return new Book("", "", 2024, -1, "", 100, ""); }
+                          []() { return new Book("", "", 2024, -1, "", 100, "", Book::OTHER); }
                       }},
     { MediaType::Movie, {
                            "Film",

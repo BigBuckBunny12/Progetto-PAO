@@ -37,7 +37,7 @@ public:
         sizePolicy.setHeightForWidth(Media->sizePolicy().hasHeightForWidth());
         Media->setSizePolicy(sizePolicy);
         Media->setAutoFillBackground(false);
-        Media->setStyleSheet(QString::fromUtf8("background-color: none"));
+        Media->setStyleSheet(QString::fromUtf8("background-color: none;"));
         verticalLayout = new QVBoxLayout(Media);
         verticalLayout->setSpacing(0);
         verticalLayout->setObjectName("verticalLayout");

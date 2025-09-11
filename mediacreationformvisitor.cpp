@@ -2,6 +2,7 @@
 #include "book.h"
 #include "movie.h"
 #include "article.h"
+#include "qcombobox.h"
 #include <QPixmap>
 
 // I seguenti metodi sono usati per facilitare la creazione del form evitando ripetizioni nel codice
@@ -24,14 +25,55 @@ QCheckBox* MediaCreationFormVisitor::addCheckBox(const QString& label, const QSt
         check->setChecked(startValue);
     }
     addRow(label, check, tag);
+    check->setStyleSheet(checkBoxStyle);
     return check;
 }
+
+QSpinBox* MediaCreationFormVisitor::addSpinBox(const QString& label,  const QString& tag, const int startValue) {
+    QSpinBox* spinBox = new QSpinBox(parent);
+    spinBox->setMinimum(0);
+    spinBox->setMaximum(999999);
+    spinBox->setStyleSheet(spinBoxStyle);
+    if(model->getBehaviour() == EDIT) {
+        spinBox->setValue(startValue);
+    }
+    addRow(label, spinBox, tag);
+    return spinBox;
+}
+
+template <typename EnumType>
+QComboBox* MediaCreationFormVisitor::addComboBox(
+    const QString& label,
+    const QString& tag,
+    const std::map<EnumType, QString>& valuesMap,
+    EnumType startValue)
+{
+    QComboBox* combo = new QComboBox(parent);
+    combo->setStyleSheet(comboBoxStyle);
+
+    for (const auto& [enumValue, name] : valuesMap) {
+        combo->addItem(name, static_cast<int>(enumValue));
+    }
+
+    if (model->getBehaviour() == EDIT) {
+        combo->setCurrentIndex(static_cast<int>(startValue));
+    }
+
+    qDebug() << "StartValue: " << startValue;
+    qDebug() << "StartValue cast to int: " << static_cast<int>(startValue);
+
+
+    addRow(label, combo, tag);
+    return combo;
+}
+
 
 QPushButton* MediaCreationFormVisitor::addImageSelector(const QString& label, const QString& tag, const QString& startText) {
     QPushButton* btn = new QPushButton("Seleziona immagine", parent);
     QLabel* imageViewer = new QLabel(parent);
     imageViewer->setFixedSize(100, 100);
     imageViewer->setScaledContents(true);
+    btn->setStyleSheet(pushButtonStyle);
 
     addRow(label, btn, tag + "_button");
     addRow(QString(), imageViewer, tag);
@@ -67,11 +109,15 @@ void MediaCreationFormVisitor::visit(Book& book) {
     // if(model->getBehaviour() == EDIT) {
     //     editingMedia = static_cast<Book*>(model->getEditingMedia());
     // }
+    qDebug() << "Book genre from visit: " << book.getGenre();
+    qDebug() << "Book genre from visit2: " << editingMedia->getGenre();
+
     addLineEdit("Titolo", "title", editingMedia->getTitle(), false);
     addLineEdit("Anno di pubblicazione", "year", QString::number(editingMedia->getPublicationYear()), true);
     addLineEdit("Autore", "author", editingMedia->getAuthor(), false);
-    addLineEdit("Numero pagine", "pages", QString::number(editingMedia->getTotalPages()), true);
+    addSpinBox("Numero pagine", "pages", editingMedia->getTotalPages());
     addLineEdit("Editore", "publisher", editingMedia->getPublisher(), false);
+    addComboBox<Book::Genre>("Genere", "genre", Book::genreLabels(), editingMedia->getGenre());
     addImageSelector("Copertina", "cover", editingMedia->getCoverImageUrl());
 }
 

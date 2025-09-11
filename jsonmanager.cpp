@@ -83,7 +83,8 @@ std::vector<IMedia*> JsonManager::loadMediaData(const QString& path) {
                 uid,
                 obj["author"].toString(),
                 obj["pages"].toInt(),
-                obj["publisher"].toString()
+                obj["publisher"].toString(),
+                Book::keyToGenre(obj["genre"].toString())
                 );
         } else if (type == "Movie") {
             media = new Movie(

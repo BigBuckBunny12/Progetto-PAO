@@ -2,8 +2,8 @@
 #include "ui_viewmediadialog.h"
 #include <QDebug>
 
-ViewMediaDialog::ViewMediaDialog(QStackedWidget* container, ViewMediaModel* viewModel, QWidget *parent)
-    : QWidget(parent), ui(new Ui::ViewMediaDialog), model(viewModel), dialogContainer(container)
+ViewMediaDialog::ViewMediaDialog(ViewMediaModel* viewModel, QWidget *parent)
+    : QWidget(parent), ui(new Ui::ViewMediaDialog), model(viewModel)
 {
     ui->setupUi(this);
     ui->mediaInfo->layout()->setAlignment(Qt::AlignTop);
@@ -25,6 +25,7 @@ void ViewMediaDialog::displayMedia(IMedia* media) {
         delete item;
     }
 
+    ui->mediaTitle->setText(media->getTitle());
     ViewMediaCreationVisitor mediaContentViewGenerator(ui->mediaInfo->layout(), this);
     media->accept(mediaContentViewGenerator);
     model->setMediaInView(media);
@@ -33,8 +34,8 @@ void ViewMediaDialog::displayMedia(IMedia* media) {
 
 void ViewMediaDialog::on_deleteButton_clicked()
 {
-    dialogContainer->hide();
     model->deleteMedia(model->getMediaInView());
+    emit dialogClosed();
 }
 
 
@@ -48,6 +49,6 @@ void ViewMediaDialog::on_editButton_clicked()
 
 void ViewMediaDialog::on_exitButton_clicked()
 {
-    dialogContainer->hide();
+    emit dialogClosed();
 }
 

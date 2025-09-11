@@ -16,8 +16,8 @@
 #include <QIntValidator>
 #include <QFileDialog>
 
-CreateMediaDialog::CreateMediaDialog(QStackedWidget* container, CreateMediaModel* viewModel, QWidget *parent)
-    : QWidget(parent), dialogContainer(container), model(viewModel)
+CreateMediaDialog::CreateMediaDialog(CreateMediaModel* viewModel, QWidget *parent)
+    : QWidget(parent), model(viewModel)
     , ui(new Ui::CreateMediaDialog)
 {
     ui->setupUi(this);
@@ -72,10 +72,6 @@ void CreateMediaDialog::updateForm(IMedia* mediaToShow) {
     mediaToShow->accept(formGenerator);
 }
 
-void CreateMediaDialog::close() {
-    dialogContainer->hide();
-}
-
 void CreateMediaDialog::on_mediaDropdown_currentIndexChanged(const int index) {
     QVariant data = ui->mediaDropdown->itemData(index);
     if (!data.isValid()) return;
@@ -92,6 +88,6 @@ void CreateMediaDialog::on_ConfirmButton_clicked() {
 
 void CreateMediaDialog::on_CancelButton_clicked()
 {
-    close();
+    emit dialogClosed();
 }
 

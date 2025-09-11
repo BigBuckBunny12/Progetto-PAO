@@ -35,7 +35,7 @@ private:
         "QWidget#container {"
         "border-radius: 5px;"
         "border: none;"
-        "background-color: rgb(240, 240, 240);"
+        "background-color: rgb(255, 255, 255);"
         "}";
 
     const QString selectedStyle =

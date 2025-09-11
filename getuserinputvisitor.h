@@ -18,6 +18,8 @@ private:
     void collectLineEdit(const QString& tag);
     void collectCheckBox(const QString& tag);
     void collectImage(const QString& tag);
+    void collectSpinBox(const QString& tag);
+    void collectComboBox(const QString& tag);
 
 public:
     GetUserInputVisitor(QFormLayout* layout) : layout(layout) {}

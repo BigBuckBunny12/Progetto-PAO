@@ -13,6 +13,7 @@ void SaveMediaVisitor::visit(Book& book) {
     obj["pages"] = book.getTotalPages();
     obj["publisher"] = book.getPublisher();
     obj["coverImageUrl"] = book.getCoverImageUrl();
+    obj["genre"] = Book::genreKeys().at(book.getGenre());
     mediaArray.append(obj);
 }
 

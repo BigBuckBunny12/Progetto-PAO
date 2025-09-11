@@ -44,6 +44,7 @@ template <> constexpr inline auto ViewMediaDialog::qt_create_metaobjectdata<qt_m
         "",
         "IMedia*",
         "media",
+        "dialogClosed",
         "on_deleteButton_clicked",
         "on_editButton_clicked",
         "on_exitButton_clicked"
@@ -54,12 +55,14 @@ template <> constexpr inline auto ViewMediaDialog::qt_create_metaobjectdata<qt_m
         QtMocHelpers::SignalData<void(IMedia *)>(1, 2, QMC::AccessPublic, QMetaType::Void, {{
             { 0x80000000 | 3, 4 },
         }}),
+        // Signal 'dialogClosed'
+        QtMocHelpers::SignalData<void()>(5, 2, QMC::AccessPublic, QMetaType::Void),
         // Slot 'on_deleteButton_clicked'
-        QtMocHelpers::SlotData<void()>(5, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'on_editButton_clicked'
         QtMocHelpers::SlotData<void()>(6, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'on_exitButton_clicked'
+        // Slot 'on_editButton_clicked'
         QtMocHelpers::SlotData<void()>(7, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'on_exitButton_clicked'
+        QtMocHelpers::SlotData<void()>(8, 2, QMC::AccessPrivate, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -84,14 +87,17 @@ void ViewMediaDialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
         case 0: _t->editMediaRequested((*reinterpret_cast< std::add_pointer_t<IMedia*>>(_a[1]))); break;
-        case 1: _t->on_deleteButton_clicked(); break;
-        case 2: _t->on_editButton_clicked(); break;
-        case 3: _t->on_exitButton_clicked(); break;
+        case 1: _t->dialogClosed(); break;
+        case 2: _t->on_deleteButton_clicked(); break;
+        case 3: _t->on_editButton_clicked(); break;
+        case 4: _t->on_exitButton_clicked(); break;
         default: ;
         }
     }
     if (_c == QMetaObject::IndexOfMethod) {
         if (QtMocHelpers::indexOfMethod<void (ViewMediaDialog::*)(IMedia * )>(_a, &ViewMediaDialog::editMediaRequested, 0))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (ViewMediaDialog::*)()>(_a, &ViewMediaDialog::dialogClosed, 1))
             return;
     }
 }
@@ -115,14 +121,14 @@ int ViewMediaDialog::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 4)
+        if (_id < 5)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 4;
+        _id -= 5;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 4)
+        if (_id < 5)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 4;
+        _id -= 5;
     }
     return _id;
 }
@@ -131,5 +137,11 @@ int ViewMediaDialog::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 void ViewMediaDialog::editMediaRequested(IMedia * _t1)
 {
     QMetaObject::activate<void>(this, &staticMetaObject, 0, nullptr, _t1);
+}
+
+// SIGNAL 1
+void ViewMediaDialog::dialogClosed()
+{
+    QMetaObject::activate(this, &staticMetaObject, 1, nullptr);
 }
 QT_WARNING_POP

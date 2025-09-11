@@ -16,12 +16,13 @@ class ViewMediaDialog : public QWidget
     Q_OBJECT
 
 public:
-    explicit ViewMediaDialog(QStackedWidget* container, ViewMediaModel* viewModel, QWidget *parent = nullptr);
+    explicit ViewMediaDialog(ViewMediaModel* viewModel, QWidget *parent = nullptr);
     ~ViewMediaDialog();
     void displayMedia(IMedia* media);
 
 signals:
     void editMediaRequested(IMedia* media);
+    void dialogClosed();
 
 private slots:
     void on_deleteButton_clicked();

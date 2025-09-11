@@ -47,6 +47,7 @@ template <> constexpr inline auto CreateMediaDialog::qt_create_metaobjectdata<qt
         "confirmPressed",
         "MediaInput",
         "input",
+        "dialogClosed",
         "on_mediaDropdown_currentIndexChanged",
         "index",
         "on_ConfirmButton_clicked",
@@ -62,14 +63,16 @@ template <> constexpr inline auto CreateMediaDialog::qt_create_metaobjectdata<qt
         QtMocHelpers::SignalData<void(const MediaInput &)>(5, 2, QMC::AccessPublic, QMetaType::Void, {{
             { 0x80000000 | 6, 7 },
         }}),
+        // Signal 'dialogClosed'
+        QtMocHelpers::SignalData<void()>(8, 2, QMC::AccessPublic, QMetaType::Void),
         // Slot 'on_mediaDropdown_currentIndexChanged'
-        QtMocHelpers::SlotData<void(const int)>(8, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { QMetaType::Int, 9 },
+        QtMocHelpers::SlotData<void(const int)>(9, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::Int, 10 },
         }}),
         // Slot 'on_ConfirmButton_clicked'
-        QtMocHelpers::SlotData<void()>(10, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'on_CancelButton_clicked'
         QtMocHelpers::SlotData<void()>(11, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'on_CancelButton_clicked'
+        QtMocHelpers::SlotData<void()>(12, 2, QMC::AccessPrivate, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -95,9 +98,10 @@ void CreateMediaDialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, in
         switch (_id) {
         case 0: _t->mediaCreated((*reinterpret_cast< std::add_pointer_t<IMedia*>>(_a[1]))); break;
         case 1: _t->confirmPressed((*reinterpret_cast< std::add_pointer_t<MediaInput>>(_a[1]))); break;
-        case 2: _t->on_mediaDropdown_currentIndexChanged((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
-        case 3: _t->on_ConfirmButton_clicked(); break;
-        case 4: _t->on_CancelButton_clicked(); break;
+        case 2: _t->dialogClosed(); break;
+        case 3: _t->on_mediaDropdown_currentIndexChanged((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 4: _t->on_ConfirmButton_clicked(); break;
+        case 5: _t->on_CancelButton_clicked(); break;
         default: ;
         }
     }
@@ -105,6 +109,8 @@ void CreateMediaDialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, in
         if (QtMocHelpers::indexOfMethod<void (CreateMediaDialog::*)(IMedia * )>(_a, &CreateMediaDialog::mediaCreated, 0))
             return;
         if (QtMocHelpers::indexOfMethod<void (CreateMediaDialog::*)(const MediaInput & )>(_a, &CreateMediaDialog::confirmPressed, 1))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (CreateMediaDialog::*)()>(_a, &CreateMediaDialog::dialogClosed, 2))
             return;
     }
 }
@@ -128,14 +134,14 @@ int CreateMediaDialog::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 5)
+        if (_id < 6)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 5;
+        _id -= 6;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 5)
+        if (_id < 6)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 5;
+        _id -= 6;
     }
     return _id;
 }
@@ -150,5 +156,11 @@ void CreateMediaDialog::mediaCreated(IMedia * _t1)
 void CreateMediaDialog::confirmPressed(const MediaInput & _t1)
 {
     QMetaObject::activate<void>(this, &staticMetaObject, 1, nullptr, _t1);
+}
+
+// SIGNAL 2
+void CreateMediaDialog::dialogClosed()
+{
+    QMetaObject::activate(this, &staticMetaObject, 2, nullptr);
 }
 QT_WARNING_POP

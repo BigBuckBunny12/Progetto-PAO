@@ -14,13 +14,13 @@ MainWindow::MainWindow(MainWindowModel* windowModel, QWidget *parent)
     ui->setupUi(this);
     // Setup delle pagine nel dialog container
     CreateMediaModel* createMediaModel = new CreateMediaModel(CREATE);
-    createMediaDialog = new CreateMediaDialog(ui->dialogContainer , createMediaModel);
+    createMediaDialog = new CreateMediaDialog(createMediaModel);
     QVBoxLayout *createMediaLayout = new QVBoxLayout(ui->createMediaPage);
     ui->createMediaPage->setLayout(createMediaLayout);
     ui->createMediaPage->layout()->addWidget(createMediaDialog);
 
     ViewMediaModel* viewMediaModel = new ViewMediaModel;
-    viewMediaDialog = new ViewMediaDialog(ui->dialogContainer , viewMediaModel);
+    viewMediaDialog = new ViewMediaDialog(viewMediaModel);
     QVBoxLayout *viewMediaLayout = new QVBoxLayout(ui->viewMediaPage);
     ui->viewMediaPage->setLayout(viewMediaLayout);
     ui->viewMediaPage->layout()->addWidget(viewMediaDialog);
@@ -30,7 +30,8 @@ MainWindow::MainWindow(MainWindowModel* windowModel, QWidget *parent)
     connect(&MediaManager::instance(), &MediaManager::mediaRemoved, this, &MainWindow::onMediaRemoved);
     connect(createMediaModel, &CreateMediaModel::mediaUpdated, this, &MainWindow::onMediaUpdated);
     connect(viewMediaDialog, &ViewMediaDialog::editMediaRequested, this, &MainWindow::editMedia);
-
+    connect(createMediaDialog, &CreateMediaDialog::dialogClosed, this, &MainWindow::closeDialogMenu);
+    connect(viewMediaDialog, &ViewMediaDialog::dialogClosed, this, &MainWindow::closeDialogMenu);
     // Chiusura dialog
     ui->dialogContainer->hide();
 
@@ -60,39 +61,10 @@ void MainWindow::on_newMediaButton_clicked()
     createMediaDialog->setBehaviour(CREATE);
     ui->dialogContainer->show();
     ui->dialogContainer->setCurrentWidget(ui->createMediaPage);
-    // qui sotto vengono creati i widget dei media
-    // qDebug() << this->width();
-
-    // const int MAX_COLUMNS = 5;
-    // Media* media = new Media();
-    // const int column = ui->mediaGrid->count() % MAX_COLUMNS;
-    // const int row = ui->mediaGrid->count() / MAX_COLUMNS;
-    // ui->mediaGrid->addWidget(media , row , column);
-    // ui->gridLayoutWidget->setFixedWidth(this->width());
-    // //ui->mediaGrid->setColumnStretch(column , 1);
-    // //ui->mediaGrid->setRowStretch(row , 1);
-    // const int mediaWidth = (this->width() - ui->mediaGrid->horizontalSpacing()) / static_cast<float>(MAX_COLUMNS) - ui->mediaGrid->horizontalSpacing();
-    // const int mediaHeight = mediaWidth / Media::aspectRatio;
-    // qDebug() << "mediaWidth:" << mediaWidth;
-    // qDebug() << "mediaHeight:" << mediaHeight;
-
-    // media->setFixedSize(mediaWidth, mediaHeight);
-    // const int spacing = ui->mediaGrid->verticalSpacing();
-    // const int totalHeight = (row + 1) * (media->height() + spacing);
-
-    // QWidget* contentWidget = ui->scrollArea->widget();
-    // contentWidget->setMinimumHeight(totalHeight);
-    // qDebug() << "grid count:" << ui->mediaGrid->count();
-
+    clearMediaSelection();
 }
 
-void MainWindow::viewMedia(IMedia* media) const {
-    qDebug() << "IMedia*: " << media;
-    ui->dialogContainer->show();
-    ui->dialogContainer->setCurrentWidget(ui->viewMediaPage);
-    viewMediaDialog->displayMedia(media);
-    Media* mediaWidget = model->getAssociatedMediaWidget(media);
-
+void MainWindow::clearMediaSelection() {
     for (int i = 0; i < ui->mediaGrid->count(); ++i) {
         QWidget* widget = ui->mediaGrid->itemAt(i)->widget();
         if (widget) {
@@ -102,6 +74,25 @@ void MainWindow::viewMedia(IMedia* media) const {
             }
         }
     }
+}
+
+void MainWindow::closeDialogMenu() {
+    ui->dialogContainer->hide();
+    QTimer::singleShot(0, this, [this]() {
+        refreshMediaGrid(ui->searchMediaField->displayText());
+    });
+
+    clearMediaSelection();
+}
+
+void MainWindow::viewMedia(IMedia* media) {
+    qDebug() << "IMedia*: " << media;
+    ui->dialogContainer->show();
+    ui->dialogContainer->setCurrentWidget(ui->viewMediaPage);
+    viewMediaDialog->displayMedia(media);
+    Media* mediaWidget = model->getAssociatedMediaWidget(media);
+
+    clearMediaSelection();
 
     if(mediaWidget) {
         mediaWidget->setSelected(true);
@@ -137,11 +128,14 @@ void MainWindow::onMediaUpdated(IMedia* updatedMedia) {
 
 void MainWindow::reflowMediaGrid()
 {
-    ui->gridLayoutWidget->setFixedWidth(this->width());
-    const int MAX_COLUMNS = 5;
     int areaWidth = ui->scrollArea->viewport()->width();
+    if(areaWidth < GRID_MIN_WIDTH) return;
+    const int SAFE_MARGIN_WIDTH = 4;
     const int spacing = ui->mediaGrid->horizontalSpacing();
-    int mediaWidth = (areaWidth - (MAX_COLUMNS + 1) * spacing) / MAX_COLUMNS;
+    QMargins margins = ui->mediaGrid->contentsMargins();
+
+    int availableWidth = areaWidth - margins.left() - margins.right() - SAFE_MARGIN_WIDTH;
+    int mediaWidth = (availableWidth - (GRID_MAX_COLUMNS - 1) * spacing) / GRID_MAX_COLUMNS;
     int mediaHeight = mediaWidth / Media::aspectRatio;
 
     for (int i = 0; i < ui->mediaGrid->count(); ++i) {
@@ -151,8 +145,9 @@ void MainWindow::reflowMediaGrid()
         }
     }
 
-    int rowCount = (ui->mediaGrid->count() + MAX_COLUMNS - 1) / MAX_COLUMNS;
+    int rowCount = (ui->mediaGrid->count() + GRID_MAX_COLUMNS - 1) / GRID_MAX_COLUMNS;
     int totalHeight = rowCount * (mediaHeight + ui->mediaGrid->verticalSpacing());
+
     QWidget* contentWidget = ui->scrollArea->widget();
     contentWidget->setMinimumHeight(totalHeight);
 }
