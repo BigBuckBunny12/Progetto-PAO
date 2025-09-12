@@ -18,7 +18,7 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout" stretch="0">
+    <layout class="QHBoxLayout" name="topLayout" stretch="0,0,0,0">
      <property name="spacing">
       <number>0</number>
      </property>
@@ -28,6 +28,19 @@
      <property name="bottomMargin">
       <number>0</number>
      </property>
+     <item>
+      <spacer name="topLeftSpacer">
+       <property name="orientation">
+        <enum>Qt::Orientation::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
      <item>
       <widget class="QLabel" name="mediaTitle">
        <property name="sizePolicy">
@@ -58,6 +71,26 @@
        </property>
        <property name="indent">
         <number>0</number>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="topRightSpacer">
+       <property name="orientation">
+        <enum>Qt::Orientation::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QLabel" name="mediaIcon">
+       <property name="text">
+        <string/>
        </property>
       </widget>
      </item>

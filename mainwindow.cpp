@@ -62,6 +62,7 @@ void MainWindow::on_newMediaButton_clicked()
     ui->dialogContainer->show();
     ui->dialogContainer->setCurrentWidget(ui->createMediaPage);
     clearMediaSelection();
+    refreshMediaGrid(ui->searchMediaField->displayText());
 }
 
 void MainWindow::clearMediaSelection() {
@@ -129,13 +130,13 @@ void MainWindow::onMediaUpdated(IMedia* updatedMedia) {
 void MainWindow::reflowMediaGrid()
 {
     int areaWidth = ui->scrollArea->viewport()->width();
-    if(areaWidth < GRID_MIN_WIDTH) return;
     const int SAFE_MARGIN_WIDTH = 4;
     const int spacing = ui->mediaGrid->horizontalSpacing();
     QMargins margins = ui->mediaGrid->contentsMargins();
 
     int availableWidth = areaWidth - margins.left() - margins.right() - SAFE_MARGIN_WIDTH;
     int mediaWidth = (availableWidth - (GRID_MAX_COLUMNS - 1) * spacing) / GRID_MAX_COLUMNS;
+    if(mediaWidth < GRID_ITEM_MIN_WIDTH) mediaWidth = GRID_ITEM_MIN_WIDTH;
     int mediaHeight = mediaWidth / Media::aspectRatio;
 
     for (int i = 0; i < ui->mediaGrid->count(); ++i) {
@@ -152,11 +153,12 @@ void MainWindow::reflowMediaGrid()
     contentWidget->setMinimumHeight(totalHeight);
 }
 
-void MainWindow::editMedia(IMedia* mediaToEdit) const {
+void MainWindow::editMedia(IMedia* mediaToEdit) {
     qDebug() << "MediaToEdit: " << mediaToEdit->getTitle();
     ui->dialogContainer->show();
     ui->dialogContainer->setCurrentWidget(ui->createMediaPage);
     createMediaDialog->setBehaviour(EDIT , mediaToEdit);
+    refreshMediaGrid(ui->searchMediaField->displayText());
 }
 
 void MainWindow::resizeEvent(QResizeEvent* event)

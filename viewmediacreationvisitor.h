@@ -17,10 +17,11 @@
 class ViewMediaCreationVisitor : public MediaVisitor {
 private:
     QLayout* infoLayout;
+    QLabel* icon;
     QWidget* parent;
 
 public:
-    ViewMediaCreationVisitor(QLayout* layout, QWidget* parent = nullptr) : infoLayout(layout), parent(parent) {}
+    ViewMediaCreationVisitor(QLayout* layout, QLabel* labelIcon, QWidget* parent = nullptr) : infoLayout(layout), icon(labelIcon), parent(parent) {}
 
     void visit(Book& book) override;
     void visit(Movie& movie) override;
@@ -29,6 +30,7 @@ public:
 private:
     void addStringField(const QString& label, const QString& value);
     void addImageField(const QString& label, const QString& imagePath);
+    void setIcon(const QString& path);
     QString formatMinutes(const int minutes) const;
 };
 

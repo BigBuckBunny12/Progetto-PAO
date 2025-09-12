@@ -20,6 +20,7 @@ private:
     void collectImage(const QString& tag);
     void collectSpinBox(const QString& tag);
     void collectComboBox(const QString& tag);
+    void collectTimeEdit(const QString& tag);
 
 public:
     GetUserInputVisitor(QFormLayout* layout) : layout(layout) {}

@@ -25,8 +25,11 @@ class Ui_ViewMediaDialog
 {
 public:
     QVBoxLayout *verticalLayout;
-    QHBoxLayout *horizontalLayout;
+    QHBoxLayout *topLayout;
+    QSpacerItem *topLeftSpacer;
     QLabel *mediaTitle;
+    QSpacerItem *topRightSpacer;
+    QLabel *mediaIcon;
     QVBoxLayout *infoContainer;
     QScrollArea *scrollArea;
     QWidget *mediaInfo;
@@ -45,11 +48,15 @@ public:
         ViewMediaDialog->setStyleSheet(QString::fromUtf8("background-color: transparent;"));
         verticalLayout = new QVBoxLayout(ViewMediaDialog);
         verticalLayout->setObjectName("verticalLayout");
-        horizontalLayout = new QHBoxLayout();
-        horizontalLayout->setSpacing(0);
-        horizontalLayout->setObjectName("horizontalLayout");
-        horizontalLayout->setSizeConstraint(QLayout::SizeConstraint::SetDefaultConstraint);
-        horizontalLayout->setContentsMargins(-1, -1, -1, 0);
+        topLayout = new QHBoxLayout();
+        topLayout->setSpacing(0);
+        topLayout->setObjectName("topLayout");
+        topLayout->setSizeConstraint(QLayout::SizeConstraint::SetDefaultConstraint);
+        topLayout->setContentsMargins(-1, -1, -1, 0);
+        topLeftSpacer = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
+
+        topLayout->addItem(topLeftSpacer);
+
         mediaTitle = new QLabel(ViewMediaDialog);
         mediaTitle->setObjectName("mediaTitle");
         QSizePolicy sizePolicy(QSizePolicy::Policy::Maximum, QSizePolicy::Policy::Maximum);
@@ -68,10 +75,19 @@ public:
         mediaTitle->setTextFormat(Qt::TextFormat::PlainText);
         mediaTitle->setIndent(0);
 
-        horizontalLayout->addWidget(mediaTitle);
+        topLayout->addWidget(mediaTitle);
+
+        topRightSpacer = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
+
+        topLayout->addItem(topRightSpacer);
+
+        mediaIcon = new QLabel(ViewMediaDialog);
+        mediaIcon->setObjectName("mediaIcon");
+
+        topLayout->addWidget(mediaIcon);
 
 
-        verticalLayout->addLayout(horizontalLayout);
+        verticalLayout->addLayout(topLayout);
 
         infoContainer = new QVBoxLayout();
         infoContainer->setObjectName("infoContainer");
@@ -259,6 +275,7 @@ public:
     {
         ViewMediaDialog->setWindowTitle(QCoreApplication::translate("ViewMediaDialog", "Form", nullptr));
         mediaTitle->setText(QCoreApplication::translate("ViewMediaDialog", "media", nullptr));
+        mediaIcon->setText(QString());
         editButton->setText(QCoreApplication::translate("ViewMediaDialog", "Modifica", nullptr));
         deleteButton->setText(QCoreApplication::translate("ViewMediaDialog", "Elimina", nullptr));
         exitButton->setText(QCoreApplication::translate("ViewMediaDialog", "Annulla", nullptr));

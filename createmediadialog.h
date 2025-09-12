@@ -48,6 +48,8 @@ private:
     void updateForm(IMedia*);
     void openMediaImageSelection(QLabel* imageViewer);
     bool areInputsValid() const;
+    void displayErrorMessages(const std::vector<QString>& messages);
+    void clearErrorMessages();
     QList<QVariant> collectUserInput(QFormLayout* layout) const;
     IMedia* pendingMedia;
 };

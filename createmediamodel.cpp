@@ -35,6 +35,7 @@ void CreateMediaModel::createMedia(IMedia* media) {
 bool CreateMediaModel::processInput(const MediaInput& userInput) {
     CheckUserInputVisitor inputChecker(userInput);
     pendingMedia->accept(inputChecker);
+    errorMessages = inputChecker.getErrorFeedback();
     if(inputChecker.getResult()) {
         qDebug() << "Input utente valido";
         ApplyUserInputVisitor inputToMediaSetter(userInput);
@@ -52,4 +53,8 @@ bool CreateMediaModel::processInput(const MediaInput& userInput) {
 
     qDebug() << "Input utente NON valido";
     return false;
+}
+
+std::vector<QString> CreateMediaModel::getErrorMessages() const {
+    return errorMessages;
 }

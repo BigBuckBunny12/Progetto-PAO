@@ -7,6 +7,7 @@ ViewMediaDialog::ViewMediaDialog(ViewMediaModel* viewModel, QWidget *parent)
 {
     ui->setupUi(this);
     ui->mediaInfo->layout()->setAlignment(Qt::AlignTop);
+    ui->topLayout->setAlignment(Qt::AlignVCenter);
 }
 
 ViewMediaDialog::~ViewMediaDialog()
@@ -26,7 +27,7 @@ void ViewMediaDialog::displayMedia(IMedia* media) {
     }
 
     ui->mediaTitle->setText(media->getTitle());
-    ViewMediaCreationVisitor mediaContentViewGenerator(ui->mediaInfo->layout(), this);
+    ViewMediaCreationVisitor mediaContentViewGenerator(ui->mediaInfo->layout(), ui->mediaIcon, this);
     media->accept(mediaContentViewGenerator);
     model->setMediaInView(media);
 }

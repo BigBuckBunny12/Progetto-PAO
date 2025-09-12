@@ -67,6 +67,23 @@ QComboBox* MediaCreationFormVisitor::addComboBox(
     return combo;
 }
 
+QTimeEdit* MediaCreationFormVisitor::addTimeEdit(const QString& label,  const QString& tag, const int startValue) {
+    QTimeEdit* timeEdit = new QTimeEdit(parent);
+    timeEdit->setDisplayFormat("HH:mm");
+    if(model->getBehaviour() == EDIT) {
+        int hours = startValue / 60;
+        int minutes = startValue % 60;
+        QTime time(hours, minutes);
+        if (time.isValid()) {
+            timeEdit->setTime(time);
+        } else {
+            timeEdit->setTime(QTime(0, 0));
+        }
+    }
+    addRow(label, timeEdit, tag);
+    timeEdit->setStyleSheet(timeEditStyle);
+    return timeEdit;
+}
 
 QPushButton* MediaCreationFormVisitor::addImageSelector(const QString& label, const QString& tag, const QString& startText) {
     QPushButton* btn = new QPushButton("Seleziona immagine", parent);
@@ -128,7 +145,7 @@ void MediaCreationFormVisitor::visit(Movie& movie) {
     // }
     addLineEdit("Titolo", "title", editingMedia->getTitle(), false);
     addLineEdit("Anno di pubblicazione", "year", QString::number(editingMedia->getPublicationYear()), true);
-    addLineEdit("Durata (minuti)", "duration", QString::number(editingMedia->getDuration()), true);
+    addTimeEdit("Durata", "duration", editingMedia->getDuration());
     addLineEdit("Produttore", "producer", editingMedia->getProducer(), false);
     addImageSelector("Copertina", "cover", editingMedia->getCoverImageUrl());
 }

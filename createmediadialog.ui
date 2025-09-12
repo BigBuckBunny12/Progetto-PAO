@@ -19,7 +19,7 @@
   <property name="styleSheet">
    <string notr="true">background-color: transparent;</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout" stretch="1,1,15,2">
+  <layout class="QVBoxLayout" name="verticalLayout" stretch="1,1,15,0,2">
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout" stretch="0">
      <property name="spacing">
@@ -168,6 +168,9 @@ QComboBox QListView::item:selected {
       </widget>
      </item>
     </layout>
+   </item>
+   <item>
+    <layout class="QVBoxLayout" name="errorMessagesLayout"/>
    </item>
    <item>
     <layout class="QHBoxLayout" name="actionButtonsLayout">

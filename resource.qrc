@@ -9,5 +9,8 @@
         <file>img/checkmark.png</file>
         <file>img/app_icon.png</file>
         <file>img/dropdown_arrow_up.png</file>
+        <file>img/article_icon.png</file>
+        <file>img/book_icon.png</file>
+        <file>img/movie_icon.png</file>
     </qresource>
 </RCC>

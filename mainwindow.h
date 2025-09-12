@@ -23,7 +23,7 @@ public:
     ~MainWindow();
     void createMedia(IMedia* media) const;
     void viewMedia(IMedia* media);
-    void editMedia(IMedia* media) const;
+    void editMedia(IMedia* media);
 
 private slots:
     void on_newMediaButton_clicked();
@@ -45,7 +45,7 @@ private:
     CreateMediaDialog* createMediaDialog;
     ViewMediaDialog* viewMediaDialog;
     const int GRID_MAX_COLUMNS = 5;
-    const int GRID_MIN_WIDTH = 350;
+    const int GRID_ITEM_MIN_WIDTH = 100;
     void reflowMediaGrid();
     void refreshMediaGrid(const QString mediaFilter = "");
     void displayMediaList(std::vector<IMedia*> list);

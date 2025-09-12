@@ -4,6 +4,7 @@
 Media::Media(IMedia* mediaObj, QWidget *parent): QWidget(parent), ui(new Ui::Media), mediaObject(mediaObj)
 {
     ui->setupUi(this);
+    ui->icon->setScaledContents(true);
     setSelected(false);
 }
 
@@ -20,8 +21,35 @@ void Media::setLabel(QString str) {
 
 void Media::setImage(QString path) {
     QPixmap pixmap(path);
-    if(pixmap.isNull()) return;
-    ui->mediaImage->setPixmap(pixmap);
+    image = pixmap;
+    updateImageSize();
+}
+
+// ridimensionamento copertina: emula la funzionalità cover di CSS
+void Media::updateImageSize() {
+    if (image.isNull()) return;
+
+    QPixmap scaled = image.scaled(size(), Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation);
+
+    int xOffset = (scaled.width() - width()) / 2;
+    int yOffset = (scaled.height() - height()) / 2;
+
+    QPixmap cropped = scaled.copy(xOffset, yOffset, width(), height());
+    ui->mediaImage->setPixmap(cropped);
+    ui->mediaImage->setAlignment(Qt::AlignCenter);
+}
+
+void Media::resizeEvent(QResizeEvent* event) {
+    updateImageSize();
+    QWidget::resizeEvent(event);
+}
+
+void Media::setIcon(QString path) {
+    QPixmap pixmap(path);
+    QPixmap scaled = pixmap.scaledToHeight(ICON_HEIGHT, Qt::SmoothTransformation);
+    ui->icon->setPixmap(scaled);
+    ui->icon->setFixedSize(scaled.size());
+    ui->icon->setAlignment(Qt::AlignCenter);
 }
 
 void Media::setSelected(bool selected) {

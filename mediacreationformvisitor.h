@@ -12,6 +12,7 @@
 #include <QIntValidator>
 #include <QFileDialog>
 #include <QSpinBox>
+#include <QTimeEdit>
 
 class MediaCreationFormVisitor : public MediaVisitor {
 private:
@@ -32,6 +33,7 @@ private:
     QCheckBox* addCheckBox(const QString& label, const QString& tag, const bool& startValue = false);
     QPushButton* addImageSelector(const QString& label,  const QString& tag, const QString& startText = "");
     QSpinBox* addSpinBox(const QString& label,  const QString& tag, const int startValue = 0);
+    QTimeEdit* addTimeEdit(const QString& label,  const QString& tag, const int startValue = 0);
     template <typename EnumType>
     QComboBox* addComboBox(
         const QString& label,
@@ -224,6 +226,55 @@ private:
         "QComboBox QListView::item:selected {"
         "    background: rgb(233, 238, 246);"
         "    color: rgb(0, 0, 0);"
+        "}";
+
+        const QString timeEditStyle =
+        "QTimeEdit {"
+        "    color: rgb(0, 0, 0);"
+        "    background-color: transparent;"
+        "    border-radius: 15px;"
+        "    border: 2px solid rgb(233, 238, 246);"
+        "    padding: 5px 10px;"
+        "}"
+        "QTimeEdit:hover {"
+        "    border: 2px solid rgb(220, 220, 220);"
+        "    background-color: rgb(250, 250, 250);"
+        "}"
+        "QTimeEdit:focus {"
+        "    outline: none;"
+        "    border: 2px solid rgb(150, 150, 150);"
+        "}"
+        "QTimeEdit::up-button, QTimeEdit::down-button {"
+        "    border: 2px solid rgb(233, 238, 246);"
+        "    background-color: rgb(233, 238, 246);"
+        "    width: 16px;"
+        "    subcontrol-origin: border;"
+        "}"
+        "QTimeEdit::up-button {"
+        "    subcontrol-position: top right;"
+        "    border-top-right-radius: 7px;"
+        "}"
+        "QTimeEdit::down-button {"
+        "    subcontrol-position: bottom right;"
+        "    border-bottom-right-radius: 7px;"
+        "}"
+        "QTimeEdit::up-button:hover, QTimeEdit::down-button:hover {"
+        "    border: 2px solid rgb(220, 220, 220);"
+        "    background-color: rgb(250, 250, 250);"
+        "}"
+        "QTimeEdit::up-button:pressed, QTimeEdit::down-button:pressed {"
+        "    border: 2px solid rgb(150, 150, 150);"
+        "    background-color: rgb(230, 230, 230);"
+        "}"
+        "QTimeEdit::up-arrow {"
+        "    width: 8px;"
+        "    height: 8px;"
+        "    image: url(:/resources/img/dropdown_arrow_up.png);"
+        "}"
+        "QTimeEdit::down-arrow {"
+        "    width: 8px;"
+        "    height: 8px;"
+        "    image: url(:/resources/img/dropdown_arrow.png);"
         "}";
 
 };

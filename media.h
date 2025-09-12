@@ -18,6 +18,7 @@ public:
     ~Media();
     void setLabel(QString str);
     void setImage(QString path);
+    void setIcon(QString path);
     void setSelected(bool selected);
     IMedia* getMediaObject() const;
 
@@ -27,10 +28,14 @@ signals:
 
 protected:
     void mousePressEvent(QMouseEvent* event) override;
+    void resizeEvent(QResizeEvent* event) override;
 
 private:
     Ui::Media *ui;
     IMedia* mediaObject;
+    QPixmap image;
+    void updateImageSize();
+    const int ICON_HEIGHT = 32;
     const QString deselectedStyle =
         "QWidget#container {"
         "border-radius: 5px;"

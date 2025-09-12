@@ -33,6 +33,7 @@ public:
     QFormLayout *mediaInfoLayout;
     QLabel *label_2;
     QLineEdit *lineEdit;
+    QVBoxLayout *errorMessagesLayout;
     QHBoxLayout *actionButtonsLayout;
     QSpacerItem *horizontalSpacer;
     QPushButton *CancelButton;
@@ -171,6 +172,11 @@ public:
 
         verticalLayout->addLayout(mediaInfoLayout);
 
+        errorMessagesLayout = new QVBoxLayout();
+        errorMessagesLayout->setObjectName("errorMessagesLayout");
+
+        verticalLayout->addLayout(errorMessagesLayout);
+
         actionButtonsLayout = new QHBoxLayout();
         actionButtonsLayout->setObjectName("actionButtonsLayout");
         horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
@@ -237,7 +243,7 @@ public:
         verticalLayout->setStretch(0, 1);
         verticalLayout->setStretch(1, 1);
         verticalLayout->setStretch(2, 15);
-        verticalLayout->setStretch(3, 2);
+        verticalLayout->setStretch(4, 2);
 
         retranslateUi(CreateMediaDialog);
 

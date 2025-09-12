@@ -14,13 +14,16 @@ public:
     void visit(Movie& movie) override;
     void visit(Article& article) override;
     bool getResult() const;
+    std::vector<QString> getErrorFeedback() const;
 
 private:
     MediaInput userInput;
     bool isValidInput;
-    void checkInputNotEmpty(const QVariant& input);
-    void checkPositiveInteger(const QVariant& input, const int threshold = 2147483647);
+    void checkInputNotEmpty(const QVariant& input, const QString errorMessage);
+    void checkPositiveInteger(const QVariant& input, const QString errorMessage, const int threshold = 2147483647);
     void checkValidYear(const QVariant& input);
+    void clearFeedback();
+    std::vector<QString> feedback;
 };
 
 #endif // CHECKUSERINPUTVISITOR_H

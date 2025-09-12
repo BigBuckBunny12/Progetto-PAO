@@ -40,8 +40,18 @@ QString ViewMediaCreationVisitor::formatMinutes(const int totalMinutes) const {
     return parts.join(" ");
 }
 
+void ViewMediaCreationVisitor::setIcon(const QString& path) {
+    const int ICON_SIZE = 32;
+    QPixmap pixmap(path);
+    QPixmap scaledPixmap = pixmap.scaled(ICON_SIZE, ICON_SIZE, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation);
+
+    icon->setPixmap(scaledPixmap);
+    icon->setFixedSize(ICON_SIZE, ICON_SIZE);
+    icon->setAlignment(Qt::AlignCenter);
+}
 
 void ViewMediaCreationVisitor::visit(Book& book) {
+    setIcon(":/resources/img/book_icon.png");
     addStringField("Titolo", book.getTitle());
     addStringField("Anno di pubblicazione", QString::number(book.getPublicationYear()));
     addStringField("Autore", book.getAuthor());
@@ -52,6 +62,7 @@ void ViewMediaCreationVisitor::visit(Book& book) {
 }
 
 void ViewMediaCreationVisitor::visit(Movie& movie) {
+    setIcon(":/resources/img/movie_icon.png");
     addStringField("Titolo", movie.getTitle());
     addStringField("Anno di pubblicazione", QString::number(movie.getPublicationYear()));
     addStringField("Durata", formatMinutes(movie.getDuration()));
@@ -60,6 +71,7 @@ void ViewMediaCreationVisitor::visit(Movie& movie) {
 }
 
 void ViewMediaCreationVisitor::visit(Article& article) {
+    setIcon(":/resources/img/article_icon.png");
     addStringField("Titolo", article.getTitle());
     addStringField("Anno di pubblicazione", QString::number(article.getPublicationYear()));
     addStringField("Fonte", article.getSource());

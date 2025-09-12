@@ -70,6 +70,7 @@ void CreateMediaDialog::updateForm(IMedia* mediaToShow) {
     }
     MediaCreationFormVisitor formGenerator(ui->mediaInfoLayout, model, this);
     mediaToShow->accept(formGenerator);
+    clearErrorMessages();
 }
 
 void CreateMediaDialog::on_mediaDropdown_currentIndexChanged(const int index) {
@@ -83,7 +84,34 @@ void CreateMediaDialog::on_ConfirmButton_clicked() {
     GetUserInputVisitor inputCollector(ui->mediaInfoLayout);
     model->getPendingMedia()->accept(inputCollector);
     MediaInput input = inputCollector.getCollectedInput();
-    bool result = model->processInput(input);
+    bool success = model->processInput(input);
+    displayErrorMessages(model->getErrorMessages());
+    if(model->getBehaviour() == EDIT && success) {
+        emit dialogClosed();
+    }
+}
+
+void CreateMediaDialog::displayErrorMessages(const std::vector<QString>& messages) {
+    clearErrorMessages();
+
+    for (const QString& msg : messages) {
+        QLabel* label = new QLabel(msg, this);
+        label->setStyleSheet("color: red;");
+        label->setWordWrap(true);
+        ui->errorMessagesLayout->addWidget(label);
+    }
+
+    ui->errorMessagesLayout->addStretch();
+}
+
+void CreateMediaDialog::clearErrorMessages() {
+    QLayoutItem* item;
+    while ((item = ui->errorMessagesLayout->takeAt(0)) != nullptr) {
+        if (QWidget* widget = item->widget()) {
+            widget->deleteLater();
+        }
+        delete item;
+    }
 }
 
 void CreateMediaDialog::on_CancelButton_clicked()

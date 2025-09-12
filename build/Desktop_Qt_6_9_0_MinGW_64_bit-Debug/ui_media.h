@@ -11,7 +11,9 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -24,7 +26,10 @@ public:
     QWidget *container;
     QVBoxLayout *verticalLayout_2;
     QLabel *mediaImage;
+    QHBoxLayout *textLayout;
     QLabel *mediaTitle;
+    QSpacerItem *horizontalSpacer;
+    QLabel *icon;
 
     void setupUi(QWidget *Media)
     {
@@ -54,10 +59,24 @@ public:
 
         verticalLayout_2->addWidget(mediaImage);
 
+        textLayout = new QHBoxLayout();
+        textLayout->setObjectName("textLayout");
         mediaTitle = new QLabel(container);
         mediaTitle->setObjectName("mediaTitle");
 
-        verticalLayout_2->addWidget(mediaTitle);
+        textLayout->addWidget(mediaTitle);
+
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
+
+        textLayout->addItem(horizontalSpacer);
+
+        icon = new QLabel(container);
+        icon->setObjectName("icon");
+
+        textLayout->addWidget(icon);
+
+
+        verticalLayout_2->addLayout(textLayout);
 
 
         verticalLayout->addWidget(container);
@@ -73,6 +92,7 @@ public:
         Media->setWindowTitle(QCoreApplication::translate("Media", "Form", nullptr));
         mediaImage->setText(QString());
         mediaTitle->setText(QCoreApplication::translate("Media", "<html><head/><body><p align=\"center\">Il conte di Montecristo</p></body></html>", nullptr));
+        icon->setText(QString());
     } // retranslateUi
 
 };

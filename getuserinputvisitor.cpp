@@ -7,6 +7,7 @@
 #include <QCheckBox>
 #include <QLabel>
 #include <QSpinBox>
+#include <QTimeEdit>
 
 const MediaInput& GetUserInputVisitor::getCollectedInput() const {
     return input;
@@ -68,6 +69,16 @@ void GetUserInputVisitor::collectComboBox(const QString& tag) {
     }
 }
 
+void GetUserInputVisitor::collectTimeEdit(const QString& tag) {
+    if (QWidget* w = findWidgetByTag(tag)) {
+        if (QTimeEdit* timeEdit = qobject_cast<QTimeEdit*>(w)) {
+            QTime time = timeEdit->time();
+            int minutes = time.hour() * 60 + time.minute();
+            input.insert(tag, minutes);
+        }
+    }
+}
+
 // Visitor implementations
 void GetUserInputVisitor::visit(Book& book) {
     collectLineEdit("title");
@@ -82,7 +93,7 @@ void GetUserInputVisitor::visit(Book& book) {
 void GetUserInputVisitor::visit(Movie& movie) {
     collectLineEdit("title");
     collectLineEdit("year");
-    collectLineEdit("duration");
+    collectTimeEdit("duration");
     collectLineEdit("producer");
     collectImage("cover");
 }

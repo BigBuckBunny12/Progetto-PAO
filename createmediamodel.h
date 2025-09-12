@@ -23,11 +23,13 @@ public:
     void createMedia(IMedia* mediaToCreate);
     void editMedia(IMedia* mediaToEdit, IMedia* editedMedia);
     bool processInput(const MediaInput& input);
+    std::vector<QString> getErrorMessages() const;
 
 private:
     IMedia* editingMedia;
     IMedia* pendingMedia;
     MediaCreationBehaviour currentBehaviour;
+    std::vector<QString> errorMessages;
 
 signals:
     void mediaUpdated(IMedia* media);
