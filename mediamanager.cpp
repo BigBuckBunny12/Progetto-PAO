@@ -12,7 +12,7 @@ MediaManager& MediaManager::instance() {
     return singletonInstance;
 }
 
-// aggiunge un media all'elenco dei media
+// Aggiunge un media all'elenco dei media
 void MediaManager::addMedia(IMedia* media) {
     if(!media) return;
     media->setUid(currentUid);
@@ -21,6 +21,8 @@ void MediaManager::addMedia(IMedia* media) {
     emit mediaCreated(media);
 }
 
+// Binary search per un media specifico dato l'UID.
+// IMPORTANTE: in mediaList i media sono ordinati in ordine crescente di UID
 int MediaManager::findMediaIndexByUid(int uid) const {
     int left = 0;
     int right = mediaList.size() - 1;
@@ -44,9 +46,9 @@ int MediaManager::findMediaIndexByUid(int uid) const {
 void MediaManager::deleteMedia(IMedia* media) {
     int index = findMediaIndexByUid(media->getUid());
     if(index == -1) return;
+    emit mediaRemoved(media);
     delete mediaList[index];
     mediaList.erase(mediaList.begin() + index);
-    emit mediaRemoved(media);
 }
 
 void MediaManager::clearMediaList() {
@@ -56,7 +58,7 @@ void MediaManager::clearMediaList() {
     mediaList.clear();
 }
 
-std::vector<IMedia*> MediaManager::getMediaList() const {
+const std::vector<IMedia*>& MediaManager::getMediaList() const {
     return mediaList;
 }
 

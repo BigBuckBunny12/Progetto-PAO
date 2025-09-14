@@ -5,8 +5,13 @@
 #include "mediaregistry.h"
 #include <QDebug>
 
+CreateMediaModel::CreateMediaModel(MediaCreationBehaviour behaviour) : currentBehaviour(behaviour) {
+    pendingMedia = nullptr;
+    editingMedia = nullptr;
+}
+
 IMedia* CreateMediaModel::setPendingMedia(MediaType type) {
-    //if(pendingMedia) delete pendingMedia;
+    delete pendingMedia;
     pendingMedia = mediaRegistry[type].factory();
     return pendingMedia;
 }
@@ -28,7 +33,7 @@ IMedia* CreateMediaModel::getEditingMedia() const {
     return editingMedia;
 }
 
-void CreateMediaModel::createMedia(IMedia* media) {
+void CreateMediaModel::createMedia(IMedia* media) const {
     MediaManager::instance().addMedia(media);
 }
 
@@ -37,7 +42,6 @@ bool CreateMediaModel::processInput(const MediaInput& userInput) {
     pendingMedia->accept(inputChecker);
     errorMessages = inputChecker.getErrorFeedback();
     if(inputChecker.getResult()) {
-        qDebug() << "Input utente valido";
         ApplyUserInputVisitor inputToMediaSetter(userInput);
         if(currentBehaviour == CREATE) {
             pendingMedia->accept(inputToMediaSetter);
@@ -51,7 +55,6 @@ bool CreateMediaModel::processInput(const MediaInput& userInput) {
         }
     }
 
-    qDebug() << "Input utente NON valido";
     return false;
 }
 

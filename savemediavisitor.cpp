@@ -12,7 +12,7 @@ void SaveMediaVisitor::visit(Book& book) {
     obj["author"] = book.getAuthor();
     obj["pages"] = book.getTotalPages();
     obj["publisher"] = book.getPublisher();
-    obj["coverImageUrl"] = book.getCoverImageUrl();
+    obj["coverImagePath"] = book.getCoverImagePath();
     obj["genre"] = Book::genreKeys().at(book.getGenre());
     mediaArray.append(obj);
 }
@@ -24,7 +24,7 @@ void SaveMediaVisitor::visit(Movie& movie) {
     obj["year"] = movie.getPublicationYear();
     obj["duration"] = movie.getDuration();
     obj["producer"] = movie.getProducer();
-    obj["coverImageUrl"] = movie.getCoverImageUrl();
+    obj["coverImagePath"] = movie.getCoverImagePath();
     mediaArray.append(obj);
 }
 
@@ -37,13 +37,15 @@ void SaveMediaVisitor::visit(Article& article) {
     obj["doi"] = article.getDoi();
     obj["issueNumber"] = article.getIssueNumber();
     obj["isScientificPaper"] = article.getIsScientificPaper();
-    obj["coverImageUrl"] = article.getCoverImageUrl();
+    obj["coverImagePath"] = article.getCoverImagePath();
     mediaArray.append(obj);
 }
 
-QJsonObject SaveMediaVisitor::getResult() const {
+// Ritorna il JSON completo e resetta il visitor allo stato originale per ulteriori salvataggi
+QJsonObject SaveMediaVisitor::getResult() {
     QJsonObject root;
     root["mediaList"] = mediaArray;
+    reset();
     return root;
 }
 

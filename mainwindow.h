@@ -21,7 +21,6 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(MainWindowModel* windowModel, QWidget *parent = nullptr);
     ~MainWindow();
-    void createMedia(IMedia* media) const;
     void viewMedia(IMedia* media);
     void editMedia(IMedia* media);
 
@@ -44,11 +43,13 @@ private:
     MainWindowModel* model;
     CreateMediaDialog* createMediaDialog;
     ViewMediaDialog* viewMediaDialog;
+    QLabel* mediaGridLabel;
+    const float TOP_BUTTONS_ICON_SCALE = 0.6;
     const int GRID_MAX_COLUMNS = 5;
     const int GRID_ITEM_MIN_WIDTH = 100;
     void reflowMediaGrid();
     void refreshMediaGrid(const QString mediaFilter = "");
-    void displayMediaList(std::vector<IMedia*> list);
+    void populateMediaList(std::vector<IMedia*> list);
     void clearMediaGrid();
     void clearMediaSelection();
 
@@ -66,5 +67,10 @@ private:
         "border-radius: 11px;"
         "padding-left: 6px;"
         "padding-right: 6px;";
+
+    const QString mediaGridLabelStyle =
+        "background-color: transparent;"
+        "color: rgb(150, 150, 150);"
+        "font-size: 18px;";
 };
 #endif // MAINWINDOW_H

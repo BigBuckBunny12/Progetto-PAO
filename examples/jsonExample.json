@@ -1,0 +1,88 @@
+{
+    "mediaList": [
+        {
+            "author": "Alexandre Dumas",
+            "coverImagePath": "data/i_tre_moschettieri.png",
+            "genre": "Action",
+            "pages": 721,
+            "publisher": "Einaudi",
+            "title": "I Tre Moschettieri",
+            "type": "Book",
+            "year": 1844
+        },
+        {
+            "coverImagePath": "data/kill_bill.png",
+            "duration": 111,
+            "producer": "Quentin Tarantino",
+            "title": "Kill Bill",
+            "type": "Movie",
+            "year": 2003
+        },
+        {
+            "coverImagePath": "data/black_hole.jpg",
+            "doi": "10.3847/2041-8213/ab0e85",
+            "isScientificPaper": true,
+            "issueNumber": 875,
+            "source": "The Astrophysical Journal Letters",
+            "title": "M87 Event Horizon Telescope Results",
+            "type": "Article",
+            "year": 2019
+        },
+        {
+            "coverImagePath": "data/comprendere_la_filosofia.jpg",
+            "doi": "10.1080/0020174X.2022.2146186",
+            "isScientificPaper": false,
+            "issueNumber": 1,
+            "source": "Inquiry",
+            "title": "Comprendere La Filosofia",
+            "type": "Article",
+            "year": 2022
+        },
+        {
+            "author": "Charles Dickens",
+            "coverImagePath": "data/david_copperfield.png",
+            "genre": "Other",
+            "pages": 1152,
+            "publisher": "Mondadori",
+            "title": "David Copperfield",
+            "type": "Book",
+            "year": 1849
+        },
+        {
+            "coverImagePath": "data/avengers_endgame.png",
+            "duration": 181,
+            "producer": "Anthony Russo",
+            "title": "Avengers: Endgame",
+            "type": "Movie",
+            "year": 2019
+        },
+        {
+            "author": "George Orwell",
+            "coverImagePath": "data/la_fattoria_degli_animali.png",
+            "genre": "Action",
+            "pages": 141,
+            "publisher": "Feltrinelli",
+            "title": "La Fattoria Degli Animali",
+            "type": "Book",
+            "year": 1945
+        },
+        {
+            "coverImagePath": "data/attention_is_all_you_need.png",
+            "doi": "10.48550/arXiv.1706.03762",
+            "isScientificPaper": true,
+            "issueNumber": 1,
+            "source": "NeurIPS",
+            "title": "Attention Is All You Need",
+            "type": "Article",
+            "year": 2017
+        },
+        {
+            "coverImagePath": "data/jaws.png",
+            "duration": 124,
+            "producer": "Steven Spielberg",
+            "title": "Jaws",
+            "type": "Movie",
+            "year": 1975
+        }
+    ]
+}

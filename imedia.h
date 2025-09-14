@@ -1,7 +1,7 @@
 #ifndef IMEDIA_H
 #define IMEDIA_H
-#include "mediatypes.h"
 #include "mediavisitor.h"
+#include "mediaregistry.h"
 #include <QString>
 #include <qvariant.h>
 
@@ -18,11 +18,14 @@ public:
     virtual IMedia* clone() const = 0;
 
     QString getTitle() const;
-    QString getCoverImageUrl() const;
+    QString getCoverImagePath() const;
     int getPublicationYear() const;
     int getUid() const;
+
+    void setTitle(const QString& t);
+    void setPublicationYear(int y);
+    void setCoverImageUrl(const QString& url);
     void setUid(int);
-    virtual QList<MediaParam> getMediaParams() const = 0;
     virtual void accept(MediaVisitor& visitor) = 0;
 };
 

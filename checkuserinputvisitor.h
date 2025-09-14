@@ -22,6 +22,7 @@ private:
     void checkInputNotEmpty(const QVariant& input, const QString errorMessage);
     void checkPositiveInteger(const QVariant& input, const QString errorMessage, const int threshold = 2147483647);
     void checkValidYear(const QVariant& input);
+    void checkValidDoi(const QVariant& input);
     void clearFeedback();
     std::vector<QString> feedback;
 };

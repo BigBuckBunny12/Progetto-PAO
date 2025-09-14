@@ -1,4 +1,6 @@
 #include "jsonmanager.h"
+#include "qdir.h"
+#include "qfileinfo.h"
 #include "savemediavisitor.h"
 #include "book.h"
 #include "movie.h"
@@ -44,7 +46,7 @@ std::vector<IMedia*> JsonManager::loadMediaData(const QString& path) {
 
     QFile file(path);
     if (!file.open(QIODevice::ReadOnly)) {
-        qWarning() << "Impossibile aprire file per lettura:" << path;
+        qWarning() << "Impossibile aprire il file per la lettura:" << path;
         return result;
     }
 
@@ -67,6 +69,8 @@ std::vector<IMedia*> JsonManager::loadMediaData(const QString& path) {
     QJsonObject root = doc.object();
     QJsonArray mediaArray = root["mediaList"].toArray();
 
+    QString baseDir = QFileInfo(path).absolutePath();
+
     int uid = 1;
     for (const QJsonValue& value : mediaArray) {
         if (!value.isObject()) continue;
@@ -75,12 +79,17 @@ std::vector<IMedia*> JsonManager::loadMediaData(const QString& path) {
         QString type = obj["type"].toString();
         IMedia* media = nullptr;
 
+        // Se il path è relativo, si ricostruisce il path assoluto
+        QString coverPath = obj["coverImagePath"].toString();
+        if (QDir::isRelativePath(coverPath)) {
+            coverPath = QDir(baseDir).filePath(coverPath);
+        }
+
         if (type == "Book") {
             media = new Book(
-                obj["coverImageUrl"].toString(),
+                coverPath,
                 obj["title"].toString(),
                 obj["year"].toInt(),
-                uid,
                 obj["author"].toString(),
                 obj["pages"].toInt(),
                 obj["publisher"].toString(),
@@ -88,25 +97,27 @@ std::vector<IMedia*> JsonManager::loadMediaData(const QString& path) {
                 );
         } else if (type == "Movie") {
             media = new Movie(
-                obj["coverImageUrl"].toString(),
+                coverPath,
                 obj["title"].toString(),
                 obj["year"].toInt(),
-                uid,
                 obj["duration"].toInt(),
                 obj["producer"].toString()
                 );
         } else if (type == "Article") {
             media = new Article(
-                obj["coverImageUrl"].toString(),
+                coverPath,
                 obj["title"].toString(),
                 obj["year"].toInt(),
-                uid,
                 obj["source"].toString(),
                 obj["doi"].toString(),
                 obj["issueNumber"].toInt(),
                 obj["isScientificPaper"].toBool()
                 );
+        } else {
+            qWarning() << "Il tipo" << type << "non è un tipo valido e sarà saltato";
+            continue;
         }
+        media->setUid(uid);
         uid++;
 
         if (media) {

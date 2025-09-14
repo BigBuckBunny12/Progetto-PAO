@@ -41,7 +41,6 @@ QString ViewMediaCreationVisitor::formatMinutes(const int totalMinutes) const {
 }
 
 void ViewMediaCreationVisitor::setIcon(const QString& path) {
-    const int ICON_SIZE = 32;
     QPixmap pixmap(path);
     QPixmap scaledPixmap = pixmap.scaled(ICON_SIZE, ICON_SIZE, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation);
 
@@ -58,7 +57,7 @@ void ViewMediaCreationVisitor::visit(Book& book) {
     addStringField("Numero pagine", QString::number(book.getTotalPages()));
     addStringField("Editore", book.getPublisher());
     addStringField("Genere", Book::genreLabels().at(book.getGenre()));
-    addImageField("Copertina", book.getCoverImageUrl());
+    addImageField("Copertina", book.getCoverImagePath());
 }
 
 void ViewMediaCreationVisitor::visit(Movie& movie) {
@@ -66,8 +65,8 @@ void ViewMediaCreationVisitor::visit(Movie& movie) {
     addStringField("Titolo", movie.getTitle());
     addStringField("Anno di pubblicazione", QString::number(movie.getPublicationYear()));
     addStringField("Durata", formatMinutes(movie.getDuration()));
-    addStringField("Produttore", movie.getProducer());
-    addImageField("Copertina", movie.getCoverImageUrl());
+    addStringField("Regista", movie.getProducer());
+    addImageField("Copertina", movie.getCoverImagePath());
 }
 
 void ViewMediaCreationVisitor::visit(Article& article) {
@@ -78,5 +77,5 @@ void ViewMediaCreationVisitor::visit(Article& article) {
     addStringField("DOI", article.getDoi());
     addStringField("Numero fascicolo", QString::number(article.getIssueNumber()));
     addStringField("Articolo scientifico", article.getIsScientificPaper() ? "Sì" : "No");
-    addImageField("Copertina", article.getCoverImageUrl());
+    addImageField("Copertina", article.getCoverImagePath());
 }

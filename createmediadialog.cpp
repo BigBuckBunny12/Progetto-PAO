@@ -21,7 +21,8 @@ CreateMediaDialog::CreateMediaDialog(CreateMediaModel* viewModel, QWidget *paren
     , ui(new Ui::CreateMediaDialog)
 {
     ui->setupUi(this);
-    pendingMedia = nullptr;
+
+    // Setup del menu a tendina per la selezione del tipo di media
     auto it = mediaRegistry.begin();
     while (it != mediaRegistry.end()) {
         ui->mediaDropdown->addItem(it->label , static_cast<int>(it.key()));
@@ -34,9 +35,12 @@ CreateMediaDialog::CreateMediaDialog(CreateMediaModel* viewModel, QWidget *paren
 CreateMediaDialog::~CreateMediaDialog()
 {
     delete ui;
+    delete model;
 }
 
-void CreateMediaDialog::setBehaviour(MediaCreationBehaviour targetBehaviour, IMedia* mediaToEdit) {
+// Imposta il dialog in modalità creazione o modifica.
+// La modalità EDIT (modifica) richiede il passaggio del media da modificare come argomento
+void CreateMediaDialog::setBehaviour(const MediaCreationBehaviour targetBehaviour, IMedia* mediaToEdit) {
     model->setBehaviour(targetBehaviour, mediaToEdit);
 
     if(targetBehaviour == CREATE) {
@@ -62,7 +66,6 @@ void CreateMediaDialog::setBehaviour(MediaCreationBehaviour targetBehaviour, IMe
 }
 
 void CreateMediaDialog::updateForm(IMedia* mediaToShow) {
-    qDebug() << "Media to show form" << mediaToShow->getTitle();
     QLayoutItem *child;
     while ((child = ui->mediaInfoLayout->takeAt(0)) != nullptr) {
         delete child->widget();

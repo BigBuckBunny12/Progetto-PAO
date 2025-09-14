@@ -35,10 +35,10 @@ public:
     QWidget *mediaInfo;
     QVBoxLayout *infoLayout;
     QHBoxLayout *actionButtonsLayout;
-    QSpacerItem *horizontalSpacer;
-    QPushButton *editButton;
     QPushButton *deleteButton;
+    QSpacerItem *horizontalSpacer;
     QPushButton *exitButton;
+    QPushButton *editButton;
 
     void setupUi(QWidget *ViewMediaDialog)
     {
@@ -177,37 +177,6 @@ public:
 
         actionButtonsLayout = new QHBoxLayout();
         actionButtonsLayout->setObjectName("actionButtonsLayout");
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
-
-        actionButtonsLayout->addItem(horizontalSpacer);
-
-        editButton = new QPushButton(ViewMediaDialog);
-        editButton->setObjectName("editButton");
-        editButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"    color: rgb(0, 0, 0);\n"
-"    background-color: rgb(233, 238, 246);\n"
-"    border-radius: 15px;\n"
-"    border: 2px solid rgb(233, 238, 246);\n"
-"    padding: 5px 10px;\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    border: 2px solid rgb(220, 220, 220);\n"
-"    background-color: rgb(250, 250, 250);\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    border: 2px solid rgb(150, 150, 150);\n"
-"    background-color: rgb(230, 230, 230);\n"
-"}\n"
-"\n"
-"QPushButton:focus {\n"
-"    outline: none;\n"
-"}\n"
-""));
-
-        actionButtonsLayout->addWidget(editButton);
-
         deleteButton = new QPushButton(ViewMediaDialog);
         deleteButton->setObjectName("deleteButton");
         deleteButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
@@ -219,13 +188,13 @@ public:
 "}\n"
 "\n"
 "QPushButton:hover {\n"
-"    border: 2px solid rgb(220, 220, 220);\n"
-"    background-color: rgb(250, 250, 250);\n"
+"    border: 2px solid rgb(242, 94, 89);\n"
+"    background-color: rgb(244, 150, 141);\n"
 "}\n"
 "\n"
 "QPushButton:pressed {\n"
-"    border: 2px solid rgb(150, 150, 150);\n"
-"    background-color: rgb(230, 230, 230);\n"
+"    border: 2px solid rgb(224, 71, 79);\n"
+"    background-color: rgb(249, 102, 99);\n"
 "}\n"
 "\n"
 "QPushButton:focus {\n"
@@ -234,6 +203,10 @@ public:
 ""));
 
         actionButtonsLayout->addWidget(deleteButton);
+
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
+
+        actionButtonsLayout->addItem(horizontalSpacer);
 
         exitButton = new QPushButton(ViewMediaDialog);
         exitButton->setObjectName("exitButton");
@@ -262,6 +235,33 @@ public:
 
         actionButtonsLayout->addWidget(exitButton);
 
+        editButton = new QPushButton(ViewMediaDialog);
+        editButton->setObjectName("editButton");
+        editButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    color: rgb(0, 0, 0);\n"
+"    background-color: rgb(233, 238, 246);\n"
+"    border-radius: 15px;\n"
+"    border: 2px solid rgb(233, 238, 246);\n"
+"    padding: 5px 10px;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    border: 2px solid rgb(220, 220, 220);\n"
+"    background-color: rgb(250, 250, 250);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    border: 2px solid rgb(150, 150, 150);\n"
+"    background-color: rgb(230, 230, 230);\n"
+"}\n"
+"\n"
+"QPushButton:focus {\n"
+"    outline: none;\n"
+"}\n"
+""));
+
+        actionButtonsLayout->addWidget(editButton);
+
 
         verticalLayout->addLayout(actionButtonsLayout);
 
@@ -276,9 +276,9 @@ public:
         ViewMediaDialog->setWindowTitle(QCoreApplication::translate("ViewMediaDialog", "Form", nullptr));
         mediaTitle->setText(QCoreApplication::translate("ViewMediaDialog", "media", nullptr));
         mediaIcon->setText(QString());
-        editButton->setText(QCoreApplication::translate("ViewMediaDialog", "Modifica", nullptr));
         deleteButton->setText(QCoreApplication::translate("ViewMediaDialog", "Elimina", nullptr));
         exitButton->setText(QCoreApplication::translate("ViewMediaDialog", "Annulla", nullptr));
+        editButton->setText(QCoreApplication::translate("ViewMediaDialog", "Modifica", nullptr));
     } // retranslateUi
 
 };

@@ -32,6 +32,7 @@ private:
     void addImageField(const QString& label, const QString& imagePath);
     void setIcon(const QString& path);
     QString formatMinutes(const int minutes) const;
+    const int ICON_SIZE = 32;
 };
 
 

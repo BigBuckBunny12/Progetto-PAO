@@ -17,7 +17,7 @@ public:
     void visit(Movie& movie) override;
     void visit(Article& article) override;
 
-    QJsonObject getResult() const;
+    QJsonObject getResult();
 
 private:
     QJsonArray mediaArray;

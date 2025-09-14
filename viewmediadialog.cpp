@@ -16,8 +16,7 @@ ViewMediaDialog::~ViewMediaDialog()
 }
 
 void ViewMediaDialog::displayMedia(IMedia* media) {
-    qDebug() << "IMedia* (displayMedia): " << media;
-
+    if(!media) return;
     QLayoutItem* item;
     while ((item = ui->mediaInfo->layout()->takeAt(0)) != nullptr) {
         if (item->widget()) {

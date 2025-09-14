@@ -41,6 +41,7 @@ QSpinBox* MediaCreationFormVisitor::addSpinBox(const QString& label,  const QStr
     return spinBox;
 }
 
+// ComboBox generico pensato per mostrare qualsiasi enum a cui sia associata una mappatura key->label
 template <typename EnumType>
 QComboBox* MediaCreationFormVisitor::addComboBox(
     const QString& label,
@@ -58,10 +59,6 @@ QComboBox* MediaCreationFormVisitor::addComboBox(
     if (model->getBehaviour() == EDIT) {
         combo->setCurrentIndex(static_cast<int>(startValue));
     }
-
-    qDebug() << "StartValue: " << startValue;
-    qDebug() << "StartValue cast to int: " << static_cast<int>(startValue);
-
 
     addRow(label, combo, tag);
     return combo;
@@ -85,7 +82,7 @@ QTimeEdit* MediaCreationFormVisitor::addTimeEdit(const QString& label,  const QS
     return timeEdit;
 }
 
-QPushButton* MediaCreationFormVisitor::addImageSelector(const QString& label, const QString& tag, const QString& startText) {
+QPushButton* MediaCreationFormVisitor::addImageSelector(const QString& label, const QString& tag, const QString& startPath) {
     QPushButton* btn = new QPushButton("Seleziona immagine", parent);
     QLabel* imageViewer = new QLabel(parent);
     imageViewer->setFixedSize(100, 100);
@@ -112,6 +109,16 @@ QPushButton* MediaCreationFormVisitor::addImageSelector(const QString& label, co
         }
     });
 
+    if(model->getBehaviour() == EDIT && !startPath.isEmpty()) {
+        QPixmap pixmap(startPath);
+        if (!pixmap.isNull()) {
+            imageViewer->setPixmap(pixmap.scaled(QSize(100,100), Qt::KeepAspectRatio, Qt::SmoothTransformation));
+            imageViewer->setProperty("selectedImagePath", startPath);
+        } else {
+            imageViewer->setText("Errore nel caricamento");
+        }
+    }
+
     return btn;
 }
 
@@ -123,43 +130,31 @@ void MediaCreationFormVisitor::addRow(const QString& label, QWidget* widget, con
 // Visitor pattern
 void MediaCreationFormVisitor::visit(Book& book) {
     Book* editingMedia = &book;
-    // if(model->getBehaviour() == EDIT) {
-    //     editingMedia = static_cast<Book*>(model->getEditingMedia());
-    // }
-    qDebug() << "Book genre from visit: " << book.getGenre();
-    qDebug() << "Book genre from visit2: " << editingMedia->getGenre();
-
     addLineEdit("Titolo", "title", editingMedia->getTitle(), false);
     addLineEdit("Anno di pubblicazione", "year", QString::number(editingMedia->getPublicationYear()), true);
     addLineEdit("Autore", "author", editingMedia->getAuthor(), false);
     addSpinBox("Numero pagine", "pages", editingMedia->getTotalPages());
     addLineEdit("Editore", "publisher", editingMedia->getPublisher(), false);
     addComboBox<Book::Genre>("Genere", "genre", Book::genreLabels(), editingMedia->getGenre());
-    addImageSelector("Copertina", "cover", editingMedia->getCoverImageUrl());
+    addImageSelector("Copertina", "cover", editingMedia->getCoverImagePath());
 }
 
 void MediaCreationFormVisitor::visit(Movie& movie) {
     Movie* editingMedia = &movie;
-    // if(model->getBehaviour() == EDIT) {
-    //     editingMedia = static_cast<Movie*>(model->getEditingMedia());
-    // }
     addLineEdit("Titolo", "title", editingMedia->getTitle(), false);
     addLineEdit("Anno di pubblicazione", "year", QString::number(editingMedia->getPublicationYear()), true);
     addTimeEdit("Durata", "duration", editingMedia->getDuration());
-    addLineEdit("Produttore", "producer", editingMedia->getProducer(), false);
-    addImageSelector("Copertina", "cover", editingMedia->getCoverImageUrl());
+    addLineEdit("Regista", "producer", editingMedia->getProducer(), false);
+    addImageSelector("Copertina", "cover", editingMedia->getCoverImagePath());
 }
 
 void MediaCreationFormVisitor::visit(Article& article) {
     Article* editingMedia = &article;
-    // if(model->getBehaviour() == EDIT) {
-    //     editingMedia = static_cast<Article*>(model->getEditingMedia());
-    // }
     addLineEdit("Titolo", "title", editingMedia->getTitle(), false);
     addLineEdit("Anno di pubblicazione", "year", QString::number(editingMedia->getPublicationYear()), true);
     addLineEdit("Fonte", "source", editingMedia->getSource(), false);
     addLineEdit("DOI", "doi", editingMedia->getDoi(), false);
     addLineEdit("Numero fascicolo", "issueNumber", QString::number(editingMedia->getIssueNumber()), true);
     addCheckBox("Articolo scientifico", "isScientificPaper", editingMedia->getIsScientificPaper());
-    addImageSelector("Copertina", "cover", editingMedia->getCoverImageUrl());
+    addImageSelector("Copertina", "cover", editingMedia->getCoverImagePath());
 }

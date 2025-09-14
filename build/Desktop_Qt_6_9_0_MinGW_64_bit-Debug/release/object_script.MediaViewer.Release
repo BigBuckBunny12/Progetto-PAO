@@ -7,6 +7,7 @@ release/media.o
 release/mediamanager.o
 release/imedia.o
 release/book.o
+release/mediaregistry.o
 release/movie.o
 release/article.o
 release/createmediadialog.o

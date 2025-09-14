@@ -13,13 +13,13 @@ Media::~Media()
     delete ui;
 }
 
-float Media::aspectRatio = 311.0 / 500.0;
+const float Media::aspectRatio = 311.0 / 500.0;
 
-void Media::setLabel(QString str) {
+void Media::setLabel(const QString& str) {
     ui->mediaTitle->setText(str);
 }
 
-void Media::setImage(QString path) {
+void Media::setImage(const QString& path) {
     QPixmap pixmap(path);
     image = pixmap;
     updateImageSize();
@@ -44,7 +44,7 @@ void Media::resizeEvent(QResizeEvent* event) {
     QWidget::resizeEvent(event);
 }
 
-void Media::setIcon(QString path) {
+void Media::setIcon(const QString& path) {
     QPixmap pixmap(path);
     QPixmap scaled = pixmap.scaledToHeight(ICON_HEIGHT, Qt::SmoothTransformation);
     ui->icon->setPixmap(scaled);

@@ -16,13 +16,13 @@ class Media : public QWidget
 public:
     explicit Media(IMedia* mediaObject , QWidget *parent = nullptr);
     ~Media();
-    void setLabel(QString str);
-    void setImage(QString path);
-    void setIcon(QString path);
-    void setSelected(bool selected);
+    void setLabel(const QString& str);
+    void setImage(const QString& path);
+    void setIcon(const QString& path);
+    void setSelected(const bool selected);
     IMedia* getMediaObject() const;
+    static const float aspectRatio;
 
-    static float aspectRatio;
 signals:
     void clicked(Media* self);
 

@@ -15,13 +15,13 @@ MainWindow::MainWindow(MainWindowModel* windowModel, QWidget *parent)
     // Setup delle pagine nel dialog container
     CreateMediaModel* createMediaModel = new CreateMediaModel(CREATE);
     createMediaDialog = new CreateMediaDialog(createMediaModel);
-    QVBoxLayout *createMediaLayout = new QVBoxLayout(ui->createMediaPage);
+    QVBoxLayout* createMediaLayout = new QVBoxLayout(ui->createMediaPage);
     ui->createMediaPage->setLayout(createMediaLayout);
     ui->createMediaPage->layout()->addWidget(createMediaDialog);
 
     ViewMediaModel* viewMediaModel = new ViewMediaModel;
     viewMediaDialog = new ViewMediaDialog(viewMediaModel);
-    QVBoxLayout *viewMediaLayout = new QVBoxLayout(ui->viewMediaPage);
+    QVBoxLayout* viewMediaLayout = new QVBoxLayout(ui->viewMediaPage);
     ui->viewMediaPage->setLayout(viewMediaLayout);
     ui->viewMediaPage->layout()->addWidget(viewMediaDialog);
 
@@ -36,24 +36,30 @@ MainWindow::MainWindow(MainWindowModel* windowModel, QWidget *parent)
     ui->dialogContainer->hide();
 
     // Setup degli elementi grafici
-    float const ICON_SCALE = 0.6;
     ui->saveButton->setIcon(QIcon(":/resources/img/save_icon.png"));
-    ui->saveButton->setIconSize(QSize(ui->saveButton->width() * ICON_SCALE,ui->saveButton->height() * ICON_SCALE));
+    ui->saveButton->setIconSize(QSize(ui->saveButton->width() * TOP_BUTTONS_ICON_SCALE,ui->saveButton->height() * TOP_BUTTONS_ICON_SCALE));
     ui->loadButton->setIcon(QIcon(":/resources/img/load_icon.png"));
-    ui->loadButton->setIconSize(QSize(ui->loadButton->width() * ICON_SCALE,ui->loadButton->height() * ICON_SCALE));
+    ui->loadButton->setIconSize(QSize(ui->loadButton->width() * TOP_BUTTONS_ICON_SCALE,ui->loadButton->height() * TOP_BUTTONS_ICON_SCALE));
     ui->newMediaButton->setIcon(QIcon(":/resources/img/new_icon.png"));
-    ui->newMediaButton->setIconSize(QSize(ui->newMediaButton->width() * ICON_SCALE,ui->newMediaButton->height() * ICON_SCALE));
-    QGraphicsDropShadowEffect* shadow = new QGraphicsDropShadowEffect;
-    shadow->setBlurRadius(80);
-    shadow->setOffset(0, 10);
-    shadow->setColor(QColor(0, 0, 0, 100));
-    ui->topBar->setGraphicsEffect(shadow);
+    ui->newMediaButton->setIconSize(QSize(ui->newMediaButton->width() * TOP_BUTTONS_ICON_SCALE,ui->newMediaButton->height() * TOP_BUTTONS_ICON_SCALE));
 
+    mediaGridLabel = new QLabel();
+    mediaGridLabel->setStyleSheet(mediaGridLabelStyle);
+
+    QHBoxLayout* overlayLayout = new QHBoxLayout(ui->scrollArea->viewport());
+    overlayLayout->addStretch();
+    overlayLayout->addWidget(mediaGridLabel);
+    overlayLayout->addStretch();
+    overlayLayout->setAlignment(mediaGridLabel, Qt::AlignCenter);
+
+    refreshMediaGrid();
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete createMediaDialog;
+    delete viewMediaDialog;
 }
 
 void MainWindow::on_newMediaButton_clicked()
@@ -87,7 +93,6 @@ void MainWindow::closeDialogMenu() {
 }
 
 void MainWindow::viewMedia(IMedia* media) {
-    qDebug() << "IMedia*: " << media;
     ui->dialogContainer->show();
     ui->dialogContainer->setCurrentWidget(ui->viewMediaPage);
     viewMediaDialog->displayMedia(media);
@@ -105,7 +110,6 @@ void MainWindow::onMediaCreated(IMedia* media) {
     MediaWidgetVisitor mediaCustomizer(*mediaWidget);
     media->accept(mediaCustomizer);
     connect(mediaWidget, &Media::clicked, this, [this](Media* media){
-        qDebug() << "Media* (connect): " << media;
         viewMedia(model->getAssociatedMediaObject(media));
     });
     model->mapMediaToWidget(media, mediaWidget);
@@ -117,7 +121,9 @@ void MainWindow::onMediaRemoved(IMedia* media) {
     ui->mediaGrid->removeWidget(mediaWidget);
     model->unmapMediaFromWidget(media, mediaWidget);
     delete mediaWidget;
-    refreshMediaGrid(ui->searchMediaField->displayText());
+    QTimer::singleShot(0, this, [this]() {
+        refreshMediaGrid(ui->searchMediaField->displayText());
+    });
 }
 
 void MainWindow::onMediaUpdated(IMedia* updatedMedia) {
@@ -154,7 +160,6 @@ void MainWindow::reflowMediaGrid()
 }
 
 void MainWindow::editMedia(IMedia* mediaToEdit) {
-    qDebug() << "MediaToEdit: " << mediaToEdit->getTitle();
     ui->dialogContainer->show();
     ui->dialogContainer->setCurrentWidget(ui->createMediaPage);
     createMediaDialog->setBehaviour(EDIT , mediaToEdit);
@@ -169,16 +174,21 @@ void MainWindow::resizeEvent(QResizeEvent* event)
 
 void MainWindow::refreshMediaGrid(const QString mediaFilter) {
     std::vector<IMedia*> queryResult = model->getMediaFromSearch(mediaFilter);
-    displayMediaList(queryResult);
+    populateMediaList(queryResult);
     reflowMediaGrid();
     if (model->isSearchQueryValid(mediaFilter) && queryResult.empty()) {
         ui->searchMediaField->setStyleSheet(searchMediaErrorStyle);
+        mediaGridLabel->setText("La ricerca non ha prodotto alcun risultato");
     } else {
         ui->searchMediaField->setStyleSheet(searchMediaValidStyle);
+        mediaGridLabel->setText("");
+        if(ui->mediaGrid->count() == 0) {
+            mediaGridLabel->setText("Aggiungi i tuoi media per iniziare");
+        }
     }
 }
 
-void MainWindow::displayMediaList(std::vector<IMedia*> list) {
+void MainWindow::populateMediaList(std::vector<IMedia*> list) {
     QLayoutItem* item;
     while ((item = ui->mediaGrid->takeAt(0)) != nullptr) {
         if (item->widget()) {

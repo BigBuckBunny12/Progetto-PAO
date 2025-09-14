@@ -17,6 +17,7 @@ SOURCES += \
     mediamanager.cpp \
     imedia.cpp \
     book.cpp \
+    mediaregistry.cpp \
     movie.cpp \
     article.cpp \
     createmediadialog.cpp \
@@ -44,7 +45,6 @@ HEADERS += \
     article.h \
     createmediadialog.h \
     mediaregistry.h \
-    mediatypes.h \
     mediavisitor.h \
     mediacreationformvisitor.h \
     getuserinputvisitor.h \
