@@ -6,7 +6,7 @@
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../../../createmediadialog.h"
+#include "../../../headers/gui/createmediadialog.h"
 #include <QtGui/qtextcursor.h>
 #include <QtCore/qmetatype.h>
 

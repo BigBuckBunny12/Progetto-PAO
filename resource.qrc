@@ -1,6 +1,6 @@
 <RCC>
     <qresource prefix="/resources">
-        <file>img/test.jpg</file>
+        <file>img/default_cover.jpg</file>
         <file>img/load_icon.png</file>
         <file>img/new_icon.png</file>
         <file>img/save_icon.png</file>

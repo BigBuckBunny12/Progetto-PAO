@@ -6,67 +6,76 @@ CONFIG -= app_bundle
 TEMPLATE = app
 TARGET = MediaViewer
 
+# Directory di include (necessario per trovare gli header nelle sottocartelle)
+INCLUDEPATH += headers \
+               headers/gui \
+               headers/logic
+
 # Sorgenti C++
 SOURCES += \
-    createmediamodel.cpp \
-    jsonmanager.cpp \
-    main.cpp \
-    mainwindow.cpp \
-    mainwindowmodel.cpp \
-    media.cpp \
-    mediamanager.cpp \
-    imedia.cpp \
-    book.cpp \
-    mediaregistry.cpp \
-    movie.cpp \
-    article.cpp \
-    createmediadialog.cpp \
-    mediacreationformvisitor.cpp \
-    getuserinputvisitor.cpp \
-    checkuserinputvisitor.cpp \
-    mediawidgetvisitor.cpp \
-    applyuserinputvisitor.cpp \
-    savemediavisitor.cpp \
-    viewmediacreationvisitor.cpp \
-    viewmediadialog.cpp \
-    viewmediamodel.cpp
+    sources/gui/createmediadialog.cpp \
+    sources/gui/mainwindow.cpp \
+    sources/gui/media.cpp \
+    sources/gui/mediacreationformvisitor.cpp \
+    sources/gui/mediawidgetvisitor.cpp \
+    sources/gui/viewmediacreationvisitor.cpp \
+    sources/gui/viewmediadialog.cpp \
+    sources/logic/applyuserinputvisitor.cpp \
+    sources/logic/article.cpp \
+    sources/logic/book.cpp \
+    sources/logic/checkuserinputvisitor.cpp \
+    sources/logic/createmediamodel.cpp \
+    sources/logic/getuserinputvisitor.cpp \
+    sources/logic/imedia.cpp \
+    sources/logic/jsonmanager.cpp \
+    sources/logic/main.cpp \
+    sources/logic/mainwindowmodel.cpp \
+    sources/logic/mediafilter.cpp \
+    sources/logic/mediamanager.cpp \
+    sources/logic/mediaregistry.cpp \
+    sources/logic/movie.cpp \
+    sources/logic/savemediavisitor.cpp \
+    sources/logic/viewmediamodel.cpp
 
 # Header
 HEADERS += \
-    createmediamodel.h \
-    jsonmanager.h \
-    mainwindow.h \
-    mainwindowmodel.h \
-    media.h \
-    mediamanager.h \
-    imedia.h \
-    book.h \
-    movie.h \
-    article.h \
-    createmediadialog.h \
-    mediaregistry.h \
-    mediavisitor.h \
-    mediacreationformvisitor.h \
-    getuserinputvisitor.h \
-    checkuserinputvisitor.h \
-    mediawidgetvisitor.h \
-    applyuserinputvisitor.h \
-    savemediavisitor.h \
-    viewmediacreationvisitor.h \
-    viewmediadialog.h \
-    viewmediamodel.h
+    headers/gui/createmediadialog.h \
+    headers/gui/mainwindow.h \
+    headers/gui/media.h \
+    headers/gui/mediacreationformvisitor.h \
+    headers/gui/mediawidgetvisitor.h \
+    headers/gui/viewmediacreationvisitor.h \
+    headers/gui/viewmediadialog.h \
+    headers/logic/applyuserinputvisitor.h \
+    headers/logic/article.h \
+    headers/logic/book.h \
+    headers/logic/checkuserinputvisitor.h \
+    headers/logic/createmediamodel.h \
+    headers/logic/getuserinputvisitor.h \
+    headers/logic/imedia.h \
+    headers/logic/jsonmanager.h \
+    headers/logic/mainwindowmodel.h \
+    headers/logic/mediaconstvisitor.h \
+    headers/logic/mediafilter.h \
+    headers/logic/mediamanager.h \
+    headers/logic/mediaregistry.h \
+    headers/logic/mediavisitor.h \
+    headers/logic/movie.h \
+    headers/logic/savemediavisitor.h \
+    headers/logic/viewmediamodel.h
 
 # Form UI
 FORMS += \
-    mainwindow.ui \
-    media.ui \
-    createmediadialog.ui \
-    viewmediadialog.ui
+    uiFiles/mainwindow.ui \
+    uiFiles/media.ui \
+    uiFiles/createmediadialog.ui \
+    uiFiles/viewmediadialog.ui
 
-# Risorse
+# Risorse (qrc deve essere aggiornato per riflettere i nuovi path delle immagini)
 RESOURCES += \
-    resource.qrc
+    resource.qrc \
+    uiFiles/resource.qrc
 
-# File extra (immagini, ecc.)
+# File extra
 DISTFILES += \
     img/test.jpg

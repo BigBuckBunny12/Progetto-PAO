@@ -54,7 +54,7 @@ public:
         mediaImage = new QLabel(container);
         mediaImage->setObjectName("mediaImage");
         mediaImage->setTextFormat(Qt::TextFormat::RichText);
-        mediaImage->setPixmap(QPixmap(QString::fromUtf8(":/resources/img/test.jpg")));
+        mediaImage->setPixmap(QPixmap(QString::fromUtf8(":/resources/img/default_cover.jpg")));
         mediaImage->setScaledContents(true);
 
         verticalLayout_2->addWidget(mediaImage);
