@@ -1,4 +1,4 @@
-#include "mediaRegistry.h"
+#include "mediaregistry.h"
 #include "book.h"
 #include "movie.h"
 #include "article.h"
