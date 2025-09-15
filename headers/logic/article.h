@@ -1,7 +1,7 @@
 #ifndef ARTICLE_H
 #define ARTICLE_H
 
-#include "IMedia.h"
+#include "imedia.h"
 #include <QtGlobal>
 
 class Article : public IMedia {

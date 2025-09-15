@@ -1,4 +1,4 @@
-#include "IMedia.h"
+#include "imedia.h"
 
 IMedia::IMedia(const QString& path, const QString& title, int publicationYear):
     coverImagePath(path),

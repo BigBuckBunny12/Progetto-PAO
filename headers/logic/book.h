@@ -1,6 +1,6 @@
 #ifndef BOOK_H
 #define BOOK_H
-#include "IMedia.h"
+#include "imedia.h"
 #include <QtGlobal>
 
 class Book : public IMedia {

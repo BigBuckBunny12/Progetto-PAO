@@ -1,7 +1,7 @@
 #ifndef CREATEMEDIADIALOG_H
 #define CREATEMEDIADIALOG_H
 
-#include "GetUserInputVisitor.h"
+#include "getuserinputvisitor.h"
 #include "createmediamodel.h"
 #include "imedia.h"
 #include <QWidget>

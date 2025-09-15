@@ -1,4 +1,4 @@
-#include "GetUserInputVisitor.h"
+#include "getuserinputvisitor.h"
 #include "book.h"
 #include "movie.h"
 #include "article.h"

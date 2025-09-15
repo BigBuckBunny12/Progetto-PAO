@@ -1,7 +1,7 @@
 #ifndef MOVIE_H
 #define MOVIE_H
 
-#include "IMedia.h"
+#include "imedia.h"
 #include <QtGlobal>
 
 class Movie : public IMedia {

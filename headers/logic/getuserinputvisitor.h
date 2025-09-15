@@ -1,7 +1,7 @@
 #ifndef GETUSERINPUTVISITOR_H
 #define GETUSERINPUTVISITOR_H
 
-#include "MediaConstVisitor.h"
+#include "mediaconstvisitor.h"
 #include <QFormLayout>
 #include <QVariant>
 #include <QString>

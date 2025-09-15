@@ -1,8 +1,8 @@
 #ifndef CHECKUSERINPUTVISITOR_H
 #define CHECKUSERINPUTVISITOR_H
 
-#include "GetUserInputVisitor.h"
-#include "MediaConstVisitor.h"
+#include "getuserinputvisitor.h"
+#include "mediaconstvisitor.h"
 #include <qformlayout.h>
 
 class CheckUserInputVisitor : public MediaConstVisitor

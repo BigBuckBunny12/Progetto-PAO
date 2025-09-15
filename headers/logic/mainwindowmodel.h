@@ -1,7 +1,7 @@
 #ifndef MAINWINDOWMODEL_H
 #define MAINWINDOWMODEL_H
 
-#include "IMedia.h"
+#include "imedia.h"
 #include "media.h"
 #include "mediamanager.h"
 class MainWindowModel

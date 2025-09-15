@@ -1,7 +1,7 @@
 #ifndef VIEWMEDIAMODEL_H
 #define VIEWMEDIAMODEL_H
 
-#include "IMedia.h"
+#include "imedia.h"
 #include "mediamanager.h"
 
 class ViewMediaModel

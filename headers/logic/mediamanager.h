@@ -2,7 +2,7 @@
 #define MEDIAMANAGER_H
 
 #include <vector>
-#include "IMedia.h"
+#include "imedia.h"
 
 class MediaManager : public QObject
 {

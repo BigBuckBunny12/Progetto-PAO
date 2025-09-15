@@ -74,7 +74,6 @@ FORMS += \
 # Risorse (qrc deve essere aggiornato per riflettere i nuovi path delle immagini)
 RESOURCES += \
     resource.qrc \
-    uiFiles/resource.qrc
 
 # File extra
 DISTFILES += \

@@ -1,7 +1,7 @@
 #ifndef MEDIA_H
 #define MEDIA_H
 
-#include "IMedia.h"
+#include "imedia.h"
 #include <QWidget>
 #include <QMouseEvent>
 
