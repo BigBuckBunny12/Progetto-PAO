@@ -51,7 +51,7 @@ void CheckUserInputVisitor::checkValidDoi(const QVariant& value) {
     }
 }
 
-void CheckUserInputVisitor::visit(const Book &book) {
+void CheckUserInputVisitor::visit(const Book& book) {
     feedback.clear();
     isValidInput = true;
     checkInputNotEmpty(userInput.value("title"), "Il titolo non può essere vuoto");

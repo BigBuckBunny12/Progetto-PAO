@@ -258,7 +258,7 @@ void MainWindow::on_loadButton_clicked()
 
     std::vector<IMedia*> mediaList = JsonManager::instance().loadMediaData(filePath);
     ui->searchMediaField->setText("");
-    refreshMediaGrid();
+    closeDialogMenu();
 }
 
 

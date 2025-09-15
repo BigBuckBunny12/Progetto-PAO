@@ -4,6 +4,7 @@ ViewMediaModel::ViewMediaModel() {}
 
 void ViewMediaModel::setMediaInView(IMedia* media) {
     mediaInView = media;
+    qDebug() << mediaInView->getTitle();
 }
 
 IMedia* ViewMediaModel::getMediaInView() const {

@@ -84,8 +84,12 @@ void CreateMediaDialog::on_mediaDropdown_currentIndexChanged(const int index) {
 }
 
 void CreateMediaDialog::on_ConfirmButton_clicked() {
+    IMedia* mediaToProcess = model->getPendingMedia();
+    if(model->getBehaviour() == EDIT) {
+        mediaToProcess = model->getEditingMedia();
+    }
     GetUserInputVisitor inputCollector(ui->mediaInfoLayout);
-    model->getPendingMedia()->accept(inputCollector);
+    mediaToProcess->accept(inputCollector);
     MediaInput input = inputCollector.getCollectedInput();
     bool success = model->processInput(input);
     displayErrorMessages(model->getErrorMessages());

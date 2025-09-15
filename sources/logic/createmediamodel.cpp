@@ -38,8 +38,11 @@ void CreateMediaModel::createMedia(IMedia* media) const {
 }
 
 bool CreateMediaModel::processInput(const MediaInput& userInput) {
+    IMedia* mediaToProcess = pendingMedia;
+    if(currentBehaviour == EDIT) mediaToProcess = editingMedia;
+
     CheckUserInputVisitor inputChecker(userInput);
-    pendingMedia->accept(inputChecker);
+    mediaToProcess->accept(inputChecker);
     errorMessages = inputChecker.getErrorFeedback();
     if(inputChecker.getResult()) {
         ApplyUserInputVisitor inputToMediaSetter(userInput);
