@@ -5,6 +5,8 @@
 #include "mediawidgetvisitor.h"
 #include "jsonmanager.h"
 #include <QDebug>
+#include <QScrollArea>
+#include <QScrollBar>
 #include <qstackedwidget.h>
 
 
@@ -52,6 +54,8 @@ MainWindow::MainWindow(MainWindowModel* windowModel, QWidget *parent)
     overlayLayout->addStretch();
     overlayLayout->setAlignment(mediaGridLabel, Qt::AlignCenter);
 
+    ui->scrollArea->verticalScrollBar()->setStyleSheet(ui->scrollArea->styleSheet());
+    ui->scrollArea->horizontalScrollBar()->setStyleSheet(ui->scrollArea->styleSheet());
     refreshMediaGrid();
 }
 

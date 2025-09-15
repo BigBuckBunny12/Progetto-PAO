@@ -21,6 +21,11 @@ JsonManager& JsonManager::instance() {
 }
 
 void JsonManager::saveMediaData(const std::vector<IMedia*>& data, const QString& path) {
+    QString filePath = path;
+    if (!filePath.endsWith(".json", Qt::CaseInsensitive)) {
+        filePath += ".json";
+    }
+
     SaveMediaVisitor visitor;
     for (IMedia* media : data) {
         if (media) {
@@ -31,9 +36,9 @@ void JsonManager::saveMediaData(const std::vector<IMedia*>& data, const QString&
     QJsonObject root = visitor.getResult();
     QJsonDocument doc(root);
 
-    QFile file(path);
+    QFile file(filePath);
     if (!file.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
-        qWarning() << "Impossibile aprire file per scrittura:" << path;
+        qWarning() << "Impossibile aprire file per scrittura:" << filePath;
         return;
     }
 
