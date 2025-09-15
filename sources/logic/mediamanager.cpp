@@ -24,6 +24,11 @@ void MediaManager::addMedia(IMedia* media) {
 // Binary search per un media specifico dato l'UID.
 // IMPORTANTE: in mediaList i media sono ordinati in ordine crescente di UID
 int MediaManager::findMediaIndexByUid(int uid) const {
+
+    if (uid >= 0 && uid < mediaList.size() && mediaList[uid]->getUid() == uid) {
+        return uid;
+    }
+
     int left = 0;
     int right = mediaList.size() - 1;
 
