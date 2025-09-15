@@ -13,7 +13,7 @@ private:
 
 public:
     Article();
-    Article(const QString& coverImageUrl, const QString& title, const int publicationYear, const QString& source, const QString& doi, int issueNumber, bool isScientificPaper = false);
+    Article(const QString& coverImagePath, const QString& title, const int publicationYear, const QString& source, const QString& doi, int issueNumber, bool isScientificPaper = false);
     IMedia* clone() const override;
     void accept(MediaVisitor& visitor) override {
         visitor.visit(*this);

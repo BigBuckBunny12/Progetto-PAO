@@ -7,7 +7,7 @@
 #include <qvariant.h>
 
 class IMedia {
-protected:
+private:
     QString coverImagePath;
     QString title;
     int publicationYear;

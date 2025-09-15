@@ -26,7 +26,7 @@ private:
 
 public:
     Book();
-    Book(const QString& coverImageUrl, const QString& title, const int publicationYear, const QString& author, int totalPages, const QString& publisher, const Genre g);
+    Book(const QString& coverImagePath, const QString& title, const int publicationYear, const QString& author, int totalPages, const QString& publisher, const Genre g);
     IMedia* clone() const override;
     void accept(MediaVisitor& visitor) override {
         visitor.visit(*this);
